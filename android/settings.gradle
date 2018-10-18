@@ -1,0 +1,3 @@
+rootProject.name = 'wixMobileCrashCourse'
+
+include ':app'

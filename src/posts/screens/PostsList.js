@@ -11,8 +11,28 @@ class PostsList extends Component {
 
   constructor(props) {
     super(props);
+    Navigation.events().bindComponent(this);
 
     this.pushViewPostScreen = this.pushViewPostScreen.bind(this);
+  }
+
+  static get options() {
+    return {
+      topBar: {
+        rightButtons: [
+          {
+            id: 'addPost',
+            text: 'Add'
+          }
+        ]
+      }
+    };
+  }
+
+  navigationButtonPressed({buttonId}) {
+    if (buttonId === 'addPost') {
+      this.showAddPostModal();
+    }
   }
 
   pushViewPostScreen() {
@@ -29,6 +49,18 @@ class PostsList extends Component {
             }
           }
         }
+      }
+    });
+  }
+
+  showAddPostModal() {
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'blog.AddPost',
+          }
+        }]
       }
     });
   }

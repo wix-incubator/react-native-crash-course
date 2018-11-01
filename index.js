@@ -1,14 +1,27 @@
-import { Navigation } from "react-native-navigation";
-import App from "./App";
+import {Navigation} from 'react-native-navigation';
+import {registerScreens} from './src/screens';
 
-Navigation.registerComponent(`navigation.playground.WelcomeScreen`, () => App);
+registerScreens();
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
-      root: {
-        component: {
-            name: "navigation.playground.WelcomeScreen"
+    root: {
+      stack: {
+        children: [
+          {
+            component: {
+              name: 'blog.PostsList',
+              options: {
+                topBar: {
+                  title: {
+                    text: 'Blog'
+                  }
+                }
+              }
+            }
           }
+        ],
       }
+    }
   });
 });

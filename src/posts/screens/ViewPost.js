@@ -1,12 +1,20 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import PropTypes from 'prop-types';
+
 
 class ViewPost extends Component {
+
+  static propTypes = {
+    componentId: PropTypes.string,
+    somePropToPass: PropTypes.string
+  };
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>ViewPost Screen</Text>
+        <Text>{this.props.somePropToPass}</Text>
       </View>
     );
   }
@@ -19,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#D3EDFF',
+    backgroundColor: '#FCDDDB',
   },
   text: {
     fontSize: 28,

@@ -14,6 +14,7 @@ class AddPost extends Component {
     Navigation.events().bindComponent(this);
 
     this.onChangeText = this.onChangeText.bind(this);
+    this.onSavePressed = this.onSavePressed.bind(this);
   }
 
   static get options() {
@@ -39,7 +40,7 @@ class AddPost extends Component {
     if (buttonId === 'cancelBtn') {
       Navigation.dismissModal(this.props.componentId);
     } else if (buttonId === 'saveBtn') {
-      alert('saveBtn');
+      this.onSavePressed();
     }
   }
 
@@ -53,7 +54,15 @@ class AddPost extends Component {
         }]
       }
     });
-  }s
+  }
+
+  onSavePressed() {
+    Navigation.dismissModal(this.props.componentId);
+    //In here, we will send a request for saving the post.
+    setTimeout(() => {
+      alert('post was saved');
+    }, 1000);
+  }
 
   render() {
     return (

@@ -36,6 +36,10 @@ const setters = remx.setters({
 
   setPosts(posts) {
     state.posts = posts;
+  },
+
+  addPost(post) {
+    state.posts = [...state.posts, post];
   }
 
 });

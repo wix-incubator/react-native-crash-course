@@ -3,6 +3,8 @@ import {View, Text, TextInput, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {Navigation} from 'react-native-navigation/lib/dist/index';
 
+import * as postsActions from '../posts.actions';
+
 class AddPost extends Component {
 
   static propTypes = {
@@ -13,6 +15,12 @@ class AddPost extends Component {
     super(props);
     Navigation.events().bindComponent(this);
 
+    this.state = {
+      title: '',
+      text: ''
+    };
+
+    this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeText = this.onChangeText.bind(this);
     this.onSavePressed = this.onSavePressed.bind(this);
   }
@@ -44,24 +52,31 @@ class AddPost extends Component {
     }
   }
 
-  onChangeText(text) {
+  onChangeTitle(title) {
+    this.setState({title});
     Navigation.mergeOptions(this.props.componentId, {
       topBar: {
         rightButtons: [{
           id: 'saveBtn',
           text: 'Save',
-          enabled: !!text
+          enabled: !!title
         }]
       }
     });
   }
 
+  onChangeText(text) {
+    this.setState({text});
+  }
+
   onSavePressed() {
     Navigation.dismissModal(this.props.componentId);
-    //In here, we will send a request for saving the post.
-    setTimeout(() => {
-      alert('post was saved');
-    }, 1000);
+    const randomImageNumber = Math.floor((Math.random() * 500) + 1);
+    postsActions.addPost({
+      title: this.state.title,
+      text: this.state.text,
+      img: `https://picsum.photos/200/200/?image=${randomImageNumber}`
+    });
   }
 
   render() {
@@ -69,7 +84,13 @@ class AddPost extends Component {
       <View style={styles.container}>
         <Text style={styles.text}>AddPost Screen</Text>
         <TextInput
-          placeholder="Start writing to enable the save btn"
+          placeholder="Add a Catchy Title"
+          value={this.state.title}
+          onChangeText={this.onChangeTitle}
+        />
+        <TextInput
+          placeholder="This is the beginning of a great post"
+          value={this.state.text}
           onChangeText={this.onChangeText}
         />
       </View>

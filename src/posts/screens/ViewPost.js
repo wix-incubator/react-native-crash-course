@@ -8,7 +8,7 @@ class ViewPost extends Component {
 
   static propTypes = {
     componentId: PropTypes.string,
-    somePropToPass: PropTypes.string
+    post: PropTypes.object
   };
 
   constructor(props) {
@@ -28,7 +28,7 @@ class ViewPost extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>ViewPost Screen</Text>
-        <Text>{this.props.somePropToPass}</Text>
+        <Text>{JSON.stringify(this.props.post)}</Text>
         <Button
           title="Delete Post"
           onPress={this.onPostDeletePressed}

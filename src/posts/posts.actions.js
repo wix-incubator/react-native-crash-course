@@ -19,3 +19,10 @@ export async function addPost(post) {
   postsStore.addPost(postToAdd);
 }
 
+export async function deletePost(id) {
+  await fetch(`http://localhost:3000/posts/${id}`, {
+    method: 'DELETE'
+  });
+  postsStore.deletePost(id);
+}
+

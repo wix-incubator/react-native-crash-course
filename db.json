@@ -3,14 +3,50 @@
     {
       "id": 1,
       "title": "Post 1",
-      "text": "Post 1 text",
+      "text": "TIL Target had to apologize after a labeling error resulted in plus-sized customers feeling insulted. Target was selling two dresses of the same color but at different sizes. The small was listed as Gray while the larger's color was listed as Manatee Gray. Target pulled the dresses.",
       "img": "https://picsum.photos/200/200/?image=1"
     },
     {
       "id": 2,
       "title": "Post 2",
-      "text": "Post 2 text",
+      "text": "Scientists have developed catalysts that can convert carbon dioxide – the main cause of global warming – into plastics, fabrics, resins and other products. The discovery, based on the chemistry of artificial photosynthesis, is detailed in the journal Energy & Environmental Science.",
       "img": "https://picsum.photos/200/200/?image=2"
+    },
+    {
+      "id": 3,
+      "title": "Post 3",
+      "text": "It is one of the blessings of old friends that you can afford to be stupid with them.",
+      "img": "https://picsum.photos/200/200/?image=33"
+    },
+    {
+      "id": 4,
+      "title": "Post 4",
+      "text": "Be crazy, be stupid, be silly, be weird. Be whatever, because life is too short to be anything but happy.",
+      "img": "https://picsum.photos/200/200/?image=44"
+    },
+    {
+      "id": 5,
+      "title": "Post 5",
+      "text": "Lead me not into temptation... Oh who am I kidding, follow me, I know a shortcut.",
+      "img": "https://picsum.photos/200/200/?image=55"
+    },
+    {
+      "id": 6,
+      "title": "Post 6",
+      "text": "It’s the ship that made the Kessel run in less than twelve parsecs. I’ve outrun Imperial starships. Not the local bulk cruisers, mind you. I’m talking about the big Corellian ships, now. She’s fast enough for you, old man.",
+      "img": "https://picsum.photos/200/200/?image=66"
+    },
+    {
+      "id": 7,
+      "title": "Post 7",
+      "text": "I’ll never turn to the dark side. You’ve failed, your highness. I am a Jedi, like my father before me.",
+      "img": "https://picsum.photos/200/200/?image=77"
+    },
+    {
+      "id": 8,
+      "title": "Post 8",
+      "text": "Fear is the path to the dark side. Fear leads to anger; anger leads to hate; hate leads to suffering. I sense much fear in you.",
+      "img": "https://picsum.photos/200/200/?image=88"
     }
   ]
 }

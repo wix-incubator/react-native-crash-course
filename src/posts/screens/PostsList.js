@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, FlatList} from 'react-native';
-import {View, Text} from 'react-native-ui-lib';
+import {Text, ListItem, Colors, BorderRadiuses, Image} from 'react-native-ui-lib';
 import PropTypes from 'prop-types';
 import {Navigation} from 'react-native-navigation';
 import {connect} from 'remx';
@@ -76,20 +76,36 @@ class PostsList extends Component {
   }
 
   renderItem = ({item}) => (
-    <Text onPress={() => this.pushViewPostScreen(item)}>
-      {item.title}
-    </Text>);
+    <ListItem
+      activeBackgroundColor={Colors.purple70}
+      activeOpacity={0.1}
+      height={77.5}
+      onPress={() => this.pushViewPostScreen(item)}
+    >
+      <ListItem.Part left>
+        <Image
+          source={{uri: item.img}}
+          style={styles.image}
+        />
+      </ListItem.Part>
+      <ListItem.Part middle column containerStyle={[styles.border, {paddingRight: 17}]}>
+        <ListItem.Part containerStyle={{marginBottom: 3}}>
+          <Text dark10 text70 style={{flex: 1, marginRight: 10}} numberOfLines={1}>{item.title}</Text>
+        </ListItem.Part>
+        <ListItem.Part>
+          <Text style={{flex: 1, marginRight: 10}} text90 dark40 numberOfLines={1}>{item.text}</Text>
+        </ListItem.Part>
+      </ListItem.Part>
+    </ListItem>
+  );
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>PostsList Screen</Text>
-        <FlatList
-          data={this.props.posts}
-          keyExtractor={item => `{key-${item.id}`}
-          renderItem={this.renderItem}
-        />
-      </View>
+      <FlatList
+        data={this.props.posts}
+        keyExtractor={item => `{key-${item.id}`}
+        renderItem={this.renderItem}
+      />
     );
   }
 }
@@ -102,16 +118,16 @@ function mapStateToProps() {
 
 export default connect(mapStateToProps)(PostsList);
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#D3EDFF',
+  image: {
+    width: 54,
+    height: 54,
+    borderRadius: BorderRadiuses.br20,
+    marginHorizontal: 14,
   },
-  text: {
-    fontSize: 28,
-    textAlign: 'center',
-    margin: 10,
+  border: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: Colors.dark60,
   }
 });

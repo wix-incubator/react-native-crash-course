@@ -82,8 +82,8 @@ class AddPost extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>AddPost Screen</Text>
+      <View flex padding-24>
+        <Text text40 green10 marginB-12>Add Post</Text>
         <TextInput
           placeholder="Add a Catchy Title"
           value={this.state.title}
@@ -100,17 +100,3 @@ class AddPost extends Component {
 }
 
 export default AddPost;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#E8F7EF',
-  },
-  text: {
-    fontSize: 28,
-    textAlign: 'center',
-    margin: 10,
-  }
-});

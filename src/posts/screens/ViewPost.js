@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Button} from 'react-native';
-import {View, Text} from 'react-native-ui-lib';
+import {View, Text, Button, Colors} from 'react-native-ui-lib';
 import {Navigation} from 'react-native-navigation';
 import PropTypes from 'prop-types';
 import {deletePost} from '../posts.actions';
@@ -33,9 +32,12 @@ class ViewPost extends Component {
           <Text text70 dark20 marginT-12>{text}</Text>
         </View>
         <Button
-          title="Delete Post"
+          label="Delete Post"
+          text80
+          red20
+          bg-red70
+          fullWidth
           onPress={this.onPostDeletePressed}
-          color={'red'}
         />
       </View>
     );

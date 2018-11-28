@@ -103,6 +103,7 @@ class PostsList extends Component {
     return (
       <FlatList
         data={this.props.posts}
+        testID="posts-list"
         keyExtractor={item => `{key-${item.id}`}
         renderItem={this.renderItem}
       />

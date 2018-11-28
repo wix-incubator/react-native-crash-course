@@ -16,6 +16,7 @@
     "no-alert": 0
   },
   "globals": {
-    "waitFor": true
+    "waitFor": true,
+    "device": true
   }
 }

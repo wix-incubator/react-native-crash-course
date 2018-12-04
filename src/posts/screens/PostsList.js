@@ -28,6 +28,7 @@ class PostsList extends Component {
         rightButtons: [
           {
             id: 'addPost',
+            testID: 'add-post-btn',
             text: 'Add'
           }
         ]
@@ -77,6 +78,7 @@ class PostsList extends Component {
 
   renderItem = ({item}) => (
     <ListItem
+      testID={`postItem-${item.id}`}
       activeBackgroundColor={Colors.purple70}
       activeOpacity={0.1}
       height={77.5}

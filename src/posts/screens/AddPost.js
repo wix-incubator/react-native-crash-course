@@ -33,6 +33,7 @@ class AddPost extends Component {
         },
         rightButtons: [{
           id: 'saveBtn',
+          testID: 'save-post-btn',
           text: 'Save',
           enabled: false
         }],
@@ -58,6 +59,7 @@ class AddPost extends Component {
       topBar: {
         rightButtons: [{
           id: 'saveBtn',
+          testID: 'save-post-btn',
           text: 'Save',
           enabled: !!title
         }]
@@ -84,6 +86,7 @@ class AddPost extends Component {
       <View flex padding-24>
         <Text text40 purple10 marginB-24>Add Post</Text>
         <TextInput
+          testID="add-title-input"
           text70
           containerStyle={{marginBottom: 12}}
           floatingPlaceholder
@@ -92,6 +95,7 @@ class AddPost extends Component {
           floatOnFocus
         />
         <TextInput
+          testID="add-text-input"
           text70
           floatingPlaceholder
           placeholder="This is the beginning of a great post"

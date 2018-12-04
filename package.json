@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
+    "e2e": "detox test",
     "fake-server": "json-server --watch db.json",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },

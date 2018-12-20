@@ -11,7 +11,7 @@ The Kickstart course is divided into 2 sections:
 ![The app that we are going to build](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/finalApp.gif)
 
 
-So head over to the repo Wiki and let's start. 🚀
+So head over to the repo [**Wiki**](https://github.com/wix-playground/wix-mobile-crash-course/wiki) and let's start. 🚀
 
 > Note: The most important thing about any onboarding course, is to keep it up to date. We encourage the old Scout's rule: "Leave the campground cleaner than you found it". If you find any issues or out of date content, please open an issue and we will take care of it. Thanks!
 

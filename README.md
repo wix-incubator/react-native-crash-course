@@ -1,5 +1,7 @@
 # Wix Mobile Kickstart
 
+> **WIP**: We are still working on moving all the course content to the repo. Currently, you can follow the content from this doc: https://docs.google.com/document/d/1S5m-0Zm7693pNm6Cy8K4LGFdC3mVDn83bRQAFyAl3OY/edit?usp=sharing. Please contact Levv to get your own copy of a trello board that will help you find everything you need ;)
+
 The Mobile Kickstart course is a self-learning course that helps you learn everything you need to know before diving into writing production code in React Native. This course is part of the official onboarding plan for every new developer in the Wix Mobile Guild. 
 
 The Kickstart course is divided into 2 sections:

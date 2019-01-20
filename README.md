@@ -6,7 +6,7 @@ The Mobile Kickstart course is a self-learning course that helps you learn every
 
 The Kickstart course is divided into 2 sections:
 
-1. [**Learn the basics**](https://github.com/wix-playground/wix-mobile-crash-course/wiki/Building-you-first-app---Intro) - helps you untangle the environment setup, learn basics or refresh your knowledge of JS, React Native, etc.
+1. [**Learn the basics**](https://github.com/wix-playground/wix-mobile-crash-course/wiki/Environment-setup) - helps you untangle the environment setup, learn basics or refresh your knowledge of JS, React Native, etc.
 
 2. [**Build your first app**](https://github.com/wix-playground/wix-mobile-crash-course/wiki/Building-you-first-app---Intro) - this step by step guide teaches you the best practices and open source tools that we are using at Wix while building a simple app. Here is how our app will look:
 

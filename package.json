@@ -19,8 +19,9 @@
     "remx": "^2.0.51"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.0.0",
-    "babel-jest": "23.6.0",
+    "babel-jest": "^23.6.0",
     "babel-preset-react-native": "4.0.0",
     "detox": "^9.1.2",
     "eslint": "^4.0.0",
@@ -28,12 +29,21 @@
     "eslint-plugin-react-native": "^3.0.0",
     "jest": "^23.6.0",
     "metro-react-native-babel-preset": "0.48.1",
-    "react-test-renderer": "16.5.0"
+    "react-test-renderer": "16.5.0",
+    "regenerator-runtime": "^0.13.1"
   },
-  "jest": {
-    "preset": "react-native"
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          "react-native"
+        ],
+        "retainLines": true
+      }
+    }
   },
   "detox": {
+    "specs": "e2e",
     "configurations": {
       "ios.sim.debug": {
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/wixMobileCrashCourse.app",

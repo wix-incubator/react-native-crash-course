@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start-e2e": "RN_SRC_EXT=e2e.js react-native start",
     "test": "jest",
     "e2e": "detox test",
     "fake-server": "json-server --watch db.json",

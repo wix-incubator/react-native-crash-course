@@ -1,8 +1,13 @@
 const driver = require('./firstTest.driver');
+const MockServerApi = require('../src/api.e2e');
 
 describe('Example', () => {
   beforeEach(async () => {
     await device.reloadReactNative();
+  });
+
+  afterEach(() => {
+    MockServerApi.reset();
   });
 
   it('should display the posts list on app launch', async () => {
@@ -19,7 +24,6 @@ describe('Example', () => {
 
   it('should add a post', async () => {
     const newPost = {
-      id: '9',
       title: 'New Post Title',
     };
 
@@ -27,19 +31,18 @@ describe('Example', () => {
     await driver.when.typeTitle(newPost.title);
     await driver.when.pressOnSave();
     await driver.when.scrollToBottom();
-    await driver.when.pressOnPost(newPost.id);
+    await driver.when.pressOnPost(3);
 
     await expect(driver.get.postTitle()).toHaveText(newPost.title);
   });
 
   it('should delete a post', async () => {
     await driver.when.scrollToBottom();
-    await driver.when.pressOnPost(9);
+    await driver.when.pressOnPost(2);
     await driver.when.pressOnDeletePost();
     await driver.when.scrollToBottom();
 
-    await expect(driver.get.post(9)).toBeNotVisible();
+    await expect(driver.get.post(2)).toBeNotVisible();
   });
-
 
 });

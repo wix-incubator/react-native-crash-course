@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, TextInput} from 'react-native-ui-lib';
 import PropTypes from 'prop-types';
-import {Navigation} from 'react-native-navigation/lib/dist/index';
-
-import * as postsActions from '../posts.actions';
+import {Navigation} from 'react-native-navigation';
+import * as Presenter from './AddPost.presenter';
 
 class AddPost extends Component {
 
@@ -19,10 +18,6 @@ class AddPost extends Component {
       title: '',
       text: ''
     };
-
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeText = this.onChangeText.bind(this);
-    this.onSavePressed = this.onSavePressed.bind(this);
   }
 
   static get options() {
@@ -53,31 +48,23 @@ class AddPost extends Component {
     }
   }
 
-  onChangeTitle(title) {
+  onChangeTitle = title => {
     this.setState({title});
-    Navigation.mergeOptions(this.props.componentId, {
-      topBar: {
-        rightButtons: [{
-          id: 'saveBtn',
-          testID: 'save-post-btn',
-          text: 'Save',
-          enabled: !!title
-        }]
-      }
+    Presenter.onChangeTitle({
+      componentId: this.props.componentId,
+      title
     });
-  }
+  };
 
-  onChangeText(text) {
+  onChangeText = text => {
     this.setState({text});
-  }
+  };
 
-  onSavePressed() {
-    Navigation.dismissModal(this.props.componentId);
-    const randomImageNumber = Math.floor((Math.random() * 500) + 1);
-    postsActions.addPost({
+  onSavePressed = () => {
+    Presenter.onSavePressed({
+      componentId: this.props.componentId,
       title: this.state.title,
-      text: this.state.text,
-      img: `https://picsum.photos/200/200/?image=${randomImageNumber}`,
+      text: this.state.text
     });
   }
 

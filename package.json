@@ -43,7 +43,13 @@
         ],
         "retainLines": true
       }
-    }
+    },
+    "plugins": [
+      ["transform-runtime", {
+        "polyfill": false,
+        "regenerator": true
+      }]
+    ]
   },
   "detox": {
     "test-runner": "mocha",

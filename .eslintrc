@@ -17,6 +17,7 @@
   },
   "globals": {
     "waitFor": true,
-    "device": true
+    "device": true,
+    "jest": true
   }
 }

@@ -1,4 +1,5 @@
 module.exports = {
-  getSourceExts: () => process.env.RN_SRC_EXT ?
-    process.env.RN_SRC_EXT.split(',') : []
+  resolver: {
+    sourceExts: process.env.RN_SOURCE_EXTENSIONS ? process.env.RN_SOURCE_EXTENSIONS.split(',').concat(['ts', 'tsx', 'js']) : ['js'],
+  },
 };

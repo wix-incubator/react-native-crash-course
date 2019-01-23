@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "start-e2e": "RN_SRC_EXT=e2e.js react-native start",
+    "start-e2e": "RN_SOURCE_EXTENSIONS=e2e.js react-native start",
     "test": "jest && detox test",
     "e2e": "detox test",
     "watch": "jest --watch",
@@ -14,13 +14,18 @@
   "dependencies": {
     "lodash": "^4.17.11",
     "react": "16.6.0-alpha.8af6728",
-    "react-native": "~0.56.0",
-    "react-native-navigation": "^2.0.2588",
+    "react-native": "~0.57.0",
+    "react-native-navigation": "^2.7.1",
     "react-native-ui-lib": "^3.5.0",
     "remx": "^2.0.51"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.2.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/runtime": "^7.2.0",
+    "babel-plugin-jest-hoist": "^23.2.0",
+    "metro-react-native-babel-preset": "^0.48.0",
     "babel-eslint": "^8.0.0",
     "babel-jest": "^23.6.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -30,26 +35,9 @@
     "eslint-config-wix": "^1.1.4",
     "eslint-plugin-react-native": "^3.0.0",
     "jest": "^23.6.0",
-    "metro-react-native-babel-preset": "0.48.1",
     "mocha": "^5.2.0",
     "react-test-renderer": "16.5.0",
     "regenerator-runtime": "^0.13.1"
-  },
-  "babel": {
-    "env": {
-      "test": {
-        "presets": [
-          "react-native"
-        ],
-        "retainLines": true
-      }
-    },
-    "plugins": [
-      ["transform-runtime", {
-        "polyfill": false,
-        "regenerator": true
-      }]
-    ]
   },
   "detox": {
     "test-runner": "mocha",

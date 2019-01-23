@@ -5,8 +5,9 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "start-e2e": "RN_SRC_EXT=e2e.js react-native start",
-    "test": "jest",
+    "test": "jest && detox test",
     "e2e": "detox test",
+    "watch": "jest --watch",
     "fake-server": "json-server --watch db.json",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
@@ -22,6 +23,7 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.0.0",
     "babel-jest": "^23.6.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-react-native": "4.0.0",
     "detox": "^9.1.2",
     "eslint": "^4.0.0",
@@ -40,7 +42,13 @@
         ],
         "retainLines": true
       }
-    }
+    },
+    "plugins": [
+      ["transform-runtime", {
+        "polyfill": false,
+        "regenerator": true
+      }]
+    ]
   },
   "detox": {
     "specs": "e2e",

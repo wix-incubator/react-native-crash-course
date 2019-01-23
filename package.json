@@ -31,6 +31,7 @@
     "eslint-plugin-react-native": "^3.0.0",
     "jest": "^23.6.0",
     "metro-react-native-babel-preset": "0.48.1",
+    "mocha": "^5.2.0",
     "react-test-renderer": "16.5.0",
     "regenerator-runtime": "^0.13.1"
   },
@@ -42,16 +43,10 @@
         ],
         "retainLines": true
       }
-    },
-    "plugins": [
-      ["transform-runtime", {
-        "polyfill": false,
-        "regenerator": true
-      }]
-    ]
+    }
   },
   "detox": {
-    "specs": "e2e",
+    "test-runner": "mocha",
     "configurations": {
       "ios.sim.debug": {
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/wixMobileCrashCourse.app",
@@ -59,7 +54,6 @@
         "type": "ios.simulator",
         "name": "iPhone 8"
       }
-    },
-    "test-runner": "jest"
+    }
   }
 }

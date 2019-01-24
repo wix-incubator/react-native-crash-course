@@ -9,7 +9,7 @@ The Kickstart course is divided into 2 sections:
 1. [**Learn the basics**](https://github.com/wix-playground/wix-mobile-crash-course/wiki/Environment-setup) - helps you untangle the environment setup, learn basics or refresh your knowledge of JS, React, Node, Git, etc. If you already feel comfortable with these subjects,you can jump straight into the next section.
 
 
-2. [**Build your first app**](https://github.com/wix-playground/wix-mobile-crash-course/wiki/Building-you-first-app---Intro) - this step by step guide teaches you the best practices and open source tools that we are using at Wix while building a simple app. Here is how our app will look:
+2. [**Build your first app**](https://github.com/wix-playground/wix-mobile-crash-course/wiki/Building-Your-First-App) - this step by step guide teaches you the best practices and open source tools that we are using at Wix while building a simple app. Here is how our app will look:
 
 ![The app that we are going to build](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/finalApp.gif)
 

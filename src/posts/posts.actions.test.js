@@ -47,7 +47,7 @@ describe('posts actions', () => {
     expect(mockStore.addPost).toHaveBeenCalledWith({...mockPost, id: 'mock-id'});
   });
 
-  it('should ', async () => {
+  it('should delete a post', async () => {
     await postsActions.deletePost('mock-id');
     expect(mockStore.deletePost).toHaveBeenCalledWith('mock-id');
   });

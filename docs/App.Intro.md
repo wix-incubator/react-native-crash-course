@@ -43,11 +43,11 @@ We will use our own simple local server that we will create (Just to make sure t
 ## Preliminaries
 Before you dive into this tutorial, you should feel comfortable with the basics of JS and React.
 
-We recommend going over the Basics section in the [onboarding](https://github.com/wix-playground/wix-mobile-crash-course/wiki/Environment-setup) plan before you start. It will help you untangle the environment setup, learn or refresh your basic knowledge of JS, React, Node, Git, etc .
+We recommend going over the Basics section in the [onboarding](https://github.com/wix-playground/wix-mobile-crash-course#1-learn-the-basics) plan before you start. It will help you untangle the environment setup, learn or refresh your basic knowledge of JS, React, Node, Git, etc .
 
 If you choose to dive straight into this section and start building your app, the minimum requirement is to complete the official [React Native Getting Started guide](https://facebook.github.io/react-native/docs/getting-started.html) (Choose building project with Native code and not quick start), to install and build your first Hello world app and ensure that your environment setup is ready.
 
 Have fun 🚀
 
 ## What's Next
-[Step #1: Build the App Navigation (with React-native-navigation)](https://github.com/wix-playground/wix-mobile-crash-course/wiki/Step-%231:-App-Navigation-(with-react-native-navigation)) 
+[Step #1: Build the App Navigation (with React-native-navigation)](App.Navigation.md) 

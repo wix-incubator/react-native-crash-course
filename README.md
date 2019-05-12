@@ -9,16 +9,16 @@ The Kickstart course is divided into 2 sections:
 Helps you untangle the environment setup, learn basics or refresh your knowledge of JS, React, Node, Git, etc. If you already feel comfortable with these subjects,you can jump straight into the next section.
 
 * [Environment setup](/docs/Basics.enviromentSetup.md)
-* [Intro to Git & GitHub](Basics.IntroToGit.md)
-* [JS](Basics.JavaScript.md)
-* [React Native](Basics.ReactNative.md)
+* [Intro to Git & GitHub](/docs/Basics.IntroToGit.md)
+* [JS](/docs/Basics.JavaScript.md)
+* [React Native](/docs/Basics.ReactNative.md)
 
 
 ## 2. Build your first app
 
 This step by step guide teaches you the best practices and open source tools that we are using at Wix while building a simple blog app.
 
-1. [Intro](/docs/Intro.md)
+1. [Intro](/docs/App.Intro.md)
 2. [Build the **app navigation**](/docs/App.Navigation.md)(with React-native-navigation)
 3. [Adding the **app business logic** and **state management**](/docs/App.Remx.md)(with Remx)
 4. [**Style** the app](/docs/App.UiLib.md) (with react-native-ui-lib)

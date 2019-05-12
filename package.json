@@ -5,6 +5,8 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "start-e2e": "RN_SOURCE_EXTENSIONS=e2e.js react-native start",
+    "run-ios": "react-native run-ios --simulator='iPhone 8'",
+    "run-android": "react-native run-android",
     "test": "jest && detox test",
     "e2e": "detox test",
     "watch": "jest --watch",
@@ -15,7 +17,7 @@
     "lodash": "^4.17.11",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "~0.57.0",
-    "react-native-navigation": "^2.7.1",
+    "react-native-navtigation": "^2.7.1",
     "react-native-ui-lib": "^3.5.0",
     "remx": "^2.0.51"
   },

@@ -1,5 +1,5 @@
-#Creating a Native Module in React Native
-##What’s a Native Module?
+# Creating a Native Module in React Native
+## What’s a Native Module?
 A native module is a set of javascript functions that are implemented natively for each platform (in our case is iOS and Android). It is used in cases where native capabilities are needed, that react native doesn’t have a corresponding module yet, or when the native performance is better.
 
 NOTE: Just so you know, there is also such a thing called a Native UI Component that creates a native view that can be used inside the jsx. In a native module (what we will do here) we can only create functions, to be called from the React Native application.

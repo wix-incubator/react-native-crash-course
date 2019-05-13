@@ -27,7 +27,7 @@ Here is the outline of what we are going to build in this section:
 # Getting Started
 ### 1. Start with a simple react-native init project
 
-You can follow the react-native [getting started guide](https://facebook.github.io/react-native/docs/getting-started) to make sure that you have all dependencies installed. If this is not the first time you are creating a react-native project just go to your terminal and run:
+You can follow the react-native [getting started guide](https://facebook.github.io/react-native/docs/getting-started)(Choose "React Native CLI Quickstart" and not "Expo Quickstart") to make sure that you have all dependencies installed. If this is not the first time you are creating a react-native project just go to your terminal and run:
 
 ```
 react-native init wixMobileCrashCourse
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
 
 Every screen component in your app must be registered with a unique name before you are able to use it. So create a `src/screens.js` file and [register the new screens](https://wix.github.io/react-native-navigation/#/docs/Usage?id=registercomponentscreenid-generator) that you just created.  
 
-[Here](https://gist.github.com/drorbiran/97bb093fe82ef8653e434894e5593263) is what your `screens.js` file should look like.
+[Here](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/src/screens.js) is what your `screens.js` file should look like.
 
 
 ### 4. Initialize the App Layout 
@@ -148,8 +148,8 @@ Here is how `PostsList.js` will look like:
 
 ```js
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
+import {View, Text, StyleSheet} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 
 class PostsList extends Component {
@@ -158,13 +158,7 @@ class PostsList extends Component {
     componentId: PropTypes.string
   };
 
-  constructor(props) {
-    super(props);
-
-    this.pushViewPostScreen = this.pushViewPostScreen.bind(this);
-  }
-
-  pushViewPostScreen() {
+  pushViewPostScreen = () => {
     Navigation.push(this.props.componentId, {
       component: {
         name: 'blog.ViewPost',
@@ -182,6 +176,7 @@ class PostsList extends Component {
     });
   }
 
+
   render() {
     return (
       <View style={styles.container}>
@@ -190,6 +185,7 @@ class PostsList extends Component {
     );
   }
 }
+...
 ```
 > Two things in the code above that we didn’t cover are:  
 > **passProps** - you can pass props to the screen that we are pushing.  
@@ -206,7 +202,7 @@ On the PostsLists screen, we want to have an “Add” button that opens the Add
 
 ### 6. Add the “Add” Button (to PostList Screen)
 
-Declare the button in the PostsList screen statically. Top bar buttons have [multiple options for](https://wix.github.io/react-native-navigation/#/docs/topBar-buttons?id=button-options) customization, but we will declare a very simple button with a title and id.
+Declare the button in the PostsList screen [statically](https://wix.github.io/react-native-navigation/#/docs/topBar-buttons?id=declaring-buttons-statically). Top bar buttons have [multiple options for](https://wix.github.io/react-native-navigation/#/docs/topBar-buttons?id=button-options) customization, but we will declare a very simple button with a title and id.
 
 We want the component to [handle the button click](https://wix.github.io/react-native-navigation/#/docs/topBar-buttons?id=handling-button-press-events), so you will need to do 2 things:
 * Add events().bindComponent(this)to the constructor.
@@ -225,7 +221,7 @@ class PostsList extends PureComponent {
     Navigation.events().bindComponent(this);
  ...
 
-  static get options() {
+  static options() {
     return {
       topBar: {
         rightButtons: [
@@ -247,20 +243,32 @@ class PostsList extends PureComponent {
 ```
 
 Now you have an Add button and whenever you press it, you should get an alert with the `buttonId` (in our example it is `addPost`).
-Next, handle the press event and show the AddPost screen as a [modal](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/modality/) with [Navigation.showModal](https://wix.github.io/react-native-navigation/#/docs/screen-api).
 
-All the steps from this section can be viewed in this [commit](https://github.com/drorbiran/react-native-simple-blog/commit/https://github.com/wix-playground/wix-mobile-crash-course/commit/5165ad5ee81e55577120e2ceb5007d4ed52dd0d0).
+Next, Instead of the just displaying the buttonId as an alert, try to handle the press event and show the AddPost screen as a [modal](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/modality/) with [Navigation.showModal](https://wix.github.io/react-native-navigation/#/docs/screen-api).
+
+All the steps from this section can be viewed in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/5165ad5ee81e55577120e2ceb5007d4ed52dd0d0).
 
 ### 7. Add “Cancel” and “Save” Buttons (to AddPost Screen)
 
-In the same way you we added the **Add** Button, add the **Cancel** and **Save** buttons to the Top bar of the AddPost screen. Whenever the **Cancel** button is clicked, use [Navigation.dismissModal](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=dismissmodalcomponentid) to dismiss the modal and go back to the PostsList screen.  
+In the same that we added the **Add** Button, add the **Cancel** and **Save** buttons to the Top bar of the AddPost screen. Whenever the **Cancel** button is clicked, use [Navigation.dismissModal](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=dismissmodalcomponentid) to dismiss the modal and go back to the PostsList screen.  
 
 ```js
+...
+import PropTypes from 'prop-types';
+import {Navigation} from 'react-native-navigation'
+
 class AddPost extends PureComponent {
 
-...
+  static propTypes = {
+    componentId: PropTypes.string
+  };
 
-  static get options() {
+  constructor(props) {
+    super(props);
+    Navigation.events().bindComponent(this);
+  }
+
+  static options() {
     return {
       topBar: {
         title: {
@@ -294,22 +302,26 @@ class AddPost extends PureComponent {
 All the steps from this section can be viewed in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/cd2afd9d5f0a611f04c2bf316c08bb990340cd7a).
 
 ### 8. Set the Style of the “Save” Button
-But how do we set styles dynamically? Glad you asked. [Navigation.mergeOptions](https://wix.github.io/react-native-navigation/#/docs/styling?id=setting-styles-dynamically) to the rescue! You can pass any Options object in the mergeOptions method that dynamically changes a screen style. These options are merged with the existing Options object. 
+At the full app gif (At the bottom of this tutorial), the `Save` button is disabled until the user starts typing something in the TextInput. 
+To disable the button, we can simply add `enabled: false` in the button option.
 
-So this is what the AddPost screen looks like now:
+But how do we set styles dynamically? Glad you asked. 
+[Navigation.mergeOptions](https://wix.github.io/react-native-navigation/#/docs/styling?id=setting-styles-dynamically) to the rescue! 
+You can pass any Options object in the mergeOptions method that dynamically changes a screen style. 
+These options are merged with the existing Options object.
+
+Let's add a `TextInput` and set the `Save` Button dynamically.   
+
+This is how our `AddPost` screen will look like:
 ```js
+...
+import {View, Text, TextInput, StyleSheet} from 'react-native';
+...
 class AddPost extends Component {
 
-  static propTypes = {
-    componentId: PropTypes.string
-  };
-
-  constructor(props) {
-    super(props);
-    Navigation.events().bindComponent(this);
-  }
-
-  static get options() {
+  ...
+ 
+  static options() {
     return {
       topBar: {
         title: {
@@ -317,7 +329,8 @@ class AddPost extends Component {
         },
         rightButtons: [{
           id: 'saveBtn',
-          text: 'Save'
+          text: 'Save',
+          enabled: false
         }],
         leftButtons: [{
           id: 'cancelBtn',
@@ -327,18 +340,28 @@ class AddPost extends Component {
     };
   }
 
-  navigationButtonPressed({buttonId}) {
-    if (buttonId === 'cancelBtn') {
-      Navigation.dismissModal(this.props.componentId);
-    } else if (buttonId === 'saveBtn') {
-      alert('saveBtn');
-    }
+  ...
+  
+  onChangeText = text => {
+    Navigation.mergeOptions(this.props.componentId, {
+      topBar: {
+        rightButtons: [{
+          id: 'saveBtn',
+          text: 'Save',
+          enabled: !!text
+        }]
+      }
+    });
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>AddPost Screen</Text>
+        <TextInput
+          placeholder="Start writing to enable the save btn"
+          onChangeText={this.onChangeText}
+        />
       </View>
     );
   }
@@ -353,8 +376,10 @@ You can check this [commit](https://github.com/wix-playground/wix-mobile-crash-c
 The app navigation skeleton is almost ready and we will leave the rest to you.
 
 ### 9. Implement the remaining buttons' press events:
-* **Delete** - use [Navigation.pop](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=popcomponentid) to pop the ViewPost screen from the stack and reveal the PostsList screen underneath.
-* **Save** - Dismiss the modal in the same way the Cancel button does.
+* **Save** - Dismiss the modal when clicking on the `Save` button in the same way the Cancel button does.
+* **Delete** - In The `ViewPost` screen, add the `Delete` button. Use [Navigation.pop](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=popcomponentid) to pop the ViewPost screen from the stack and reveal the PostsList screen underneath.
+
+You can check out these commits if you need a hint: [Save Button](https://github.com/wix-playground/wix-mobile-crash-course/commit/3fb02f426f362328d6f78351ac5dbfa893b32ba4), [Delete Button](https://github.com/wix-playground/wix-mobile-crash-course/commit/e71e54325b05adf52cfb8c812d8a914654264e1c).
 
 Your app should now look something like this:
 

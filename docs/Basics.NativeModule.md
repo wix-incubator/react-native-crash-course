@@ -7,7 +7,7 @@ NOTE: Just so you know, there is also such a thing called a Native UI Component 
 In this example, we will implement a toast mechanism step by step. You will:
 * Create a module with a single function `show(title:)`, to display a “native toast” in Android and iOS. Here’s what a “native toast” looks like:
 
-<Img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeToastGif.gif" allign="center">
+<p align="center"><Img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeToastGif.gif" allign="center"></p>
 * Wrap that module up in a library and add it to npm.
 * Create an example application that calls this library to display Toast upon a click of a button.
 
@@ -31,7 +31,7 @@ And then create your module:
 
 Your new module project should look like this
 
-<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleFolder.png" align="center">
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleFolder.png" align="center"></p>
 
 As you can see it contains Android, iOS, and Windows platforms.
 
@@ -92,21 +92,21 @@ Since we don’t have gradle here like we do in Android, we’ll add a RN iOS Pr
 
 Open the **RNNativeToastLibrary (1)** and select the **Build Phases (2)** tab. Click **Link Binary with Libraries (3)** and then click on the plus button **(4)**.
 
-<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png" align="center">
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png" align="center"></p>
 
 In the popup window click the Add Other… button, and choose node_modules > react-native > React > React.xcodeproj:
 
-<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleReactFiles.png" align="center">
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleReactFiles.png" align="center"></p>
 
 2. Add a React Native iOS Library
 
 Open the **RNNativeToastLibrary (1)** project on the top (with the blue icon) and select the **Build Phases (2)** tab. Click **Link Binary with Libraries (3)** and then click on the plus button **(4)**
 
-<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png" align="center">
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png" align="center"></p>
 
 In the popup window choose **libReact.a** from ‘React’ target — as shown here:
 
-<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLib.png" align="center">
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLib.png" align="center"></p>
 
 Build your project (Command + B). You should see that RCTBridgeModule.h is recognized.
 
@@ -233,7 +233,7 @@ Click the `RNNativeToastExample` project file (2) > Build Phases (3) >
 Link Binary with Libraries (4).
 In the list you should see the `libRNNativeToastLibrary.a` file (5).
 
-<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleiOSLibraryCheck.png" align="center">
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleiOSLibraryCheck.png" align="center"></p>
 
 **Important note** — in simple projects and libraries like this the linking should work. Where projects or libraries are not standards, the linking command may not work completely. n that case you should perform those operations manually.
 
@@ -258,7 +258,7 @@ Open the terminal in the `RNNativeToastExample` project and type `react-native r
 
 Here’s what you should see:
 
-<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleToastDone.png" align="center">
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleToastDone.png" align="center"></p>
 
 # Optional
 

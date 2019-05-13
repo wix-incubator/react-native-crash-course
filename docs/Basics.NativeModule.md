@@ -3,11 +3,11 @@
 A native module is a set of javascript functions that are implemented natively for each platform (in our case is iOS and Android). It is used in cases where native capabilities are needed, that react native doesn’t have a corresponding module yet, or when the native performance is better.
 
 NOTE: Just so you know, there is also such a thing called a Native UI Component that creates a native view that can be used inside the jsx. In a native module (what we will do here) we can only create functions, to be called from the React Native application.
-##What we’re going to do
+## What we’re going to do
 In this example, we will implement a toast mechanism step by step. You will:
 * Create a module with a single function `show(title:)`, to display a “native toast” in Android and iOS. Here’s what a “native toast” looks like:
 
-![nativeToastGif](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeToastGif.gif)
+<Img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeToastGif.gif" allign="center">
 * Wrap that module up in a library and add it to npm.
 * Create an example application that calls this library to display Toast upon a click of a button.
 
@@ -16,7 +16,7 @@ In Android, we will use the native Android toast command.
 In iOS, we will use the native UIAlertController.
 
 You can view the final code [here](https://github.com/roiberlin/native-toast-library).
-#Getting Started
+# Getting Started
 * Create the module project
 Like in the case of creating a react native project, there is also a template that creates a react native module, called **react-native-create-library**.
 Open the terminal and reach the folder where you want to put your project.
@@ -31,7 +31,7 @@ And then create your module:
 
 Your new module project should look like this
 
-![Files](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleFolder.png)
+<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleFolder.png" align="center">
 
 As you can see it contains Android, iOS, and Windows platforms.
 
@@ -92,21 +92,21 @@ Since we don’t have gradle here like we do in Android, we’ll add a RN iOS Pr
 
 Open the **RNNativeToastLibrary (1)** and select the **Build Phases (2)** tab. Click **Link Binary with Libraries (3)** and then click on the plus button **(4)**.
 
-![Add React Native Library](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png)
+<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png" align="center">
 
 In the popup window click the Add Other… button, and choose node_modules > react-native > React > React.xcodeproj:
 
-![React Folder in node modules](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleReactFiles.png)
+<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleReactFiles.png" align="center">
 
 2. Add a React Native iOS Library
 
 Open the **RNNativeToastLibrary (1)** project on the top (with the blue icon) and select the **Build Phases (2)** tab. Click **Link Binary with Libraries (3)** and then click on the plus button **(4)**
 
-![Add React Native Library](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png)
+<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png" align="center">
 
 In the popup window choose **libReact.a** from ‘React’ target — as shown here:
 
-![React Native Lib](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLib.png)
+<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLib.png" align="center">
 
 Build your project (Command + B). You should see that RCTBridgeModule.h is recognized.
 
@@ -233,7 +233,7 @@ Click the `RNNativeToastExample` project file (2) > Build Phases (3) >
 Link Binary with Libraries (4).
 In the list you should see the `libRNNativeToastLibrary.a` file (5).
 
-![iOS Library Check](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleiOSLibraryCheck.png)
+<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleiOSLibraryCheck.png" align="center">
 
 **Important note** — in simple projects and libraries like this the linking should work. Where projects or libraries are not standards, the linking command may not work completely. n that case you should perform those operations manually.
 
@@ -258,7 +258,7 @@ Open the terminal in the `RNNativeToastExample` project and type `react-native r
 
 Here’s what you should see:
 
-![Toast](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleToastDone.png)
+<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleToastDone.png" align="center">
 
 # Optional
 

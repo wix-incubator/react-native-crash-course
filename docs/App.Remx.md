@@ -59,18 +59,16 @@ The first thing that we need to decide is how our state will be structured - for
 > There are many tips for structuring your app state. You can read the following post: [Avoiding Accidental Complexity When Structuring Your App State](https://hackernoon.com/avoiding-accidental-complexity-when-structuring-your-app-state-6e6d22ad5e2a) by Tal Kol.  
 Following the tips in this article will probably lead you **not to use arrays** in a real project - indeed, it's not the smartest choice. We're doing it here just to keep our example as simple as possible, and to avoid the need to parse our data.
 
-# Defining your Remx store
-
 Remx API is super slim and includes only 4 functions, we will use 3 of them now to hold and manage our posts' data in our `posts.store.js` file: state, getters, and setters.
 
-## 3. Define the state as an empty post array
+### Define the state as an empty post array
 
-Any change to the state will trigger a re-render of any connected react component that should be effected from the change. So for example if you have a state with two props, A and B, and you have a connected component that is using only prop A, only changes to prop A will trigger a re-render of the component.  
+We will define our state using `remx.state(initialState)`.
 
-> **About** `remx.state(initialState)`  
-> * The `state` function takes a plain object and makes it observable (i.e., an object we're following its every change).
-> * The state should be defined **inside** the store, and should not be exported. 
-> * All interactions with the state should be done through **exported** getters and setters. 
+* The `state` function takes a plain object and makes it observable (i.e., an object we're following its every change).
+Any change to the state will trigger a re-render of any connected react component that should be effected from the change. So for example if you have a state with two props, A and B, and you have a connected component that is using only prop A, only changes to prop A will trigger a re-render of the component.
+* The state should be defined **inside** the store, and should not be exported. 
+* All interactions with the state should be done through **exported** getters and setters. 
 
 Here's what your `posts.store.js` file should look like:
 
@@ -84,7 +82,9 @@ const state = remx.state(initialState);
 
 ## 4. Add Getters and Setters 
 
-To **return** parts of the state, we will use `remx.getters(...)`. To **change** parts of the state, we will use `remx.setters(...)`. So:
+To **return** parts of the state, we will use `remx.getters(...)`. 
+
+To **change** parts of the state, we will use `remx.setters(...)`. So:
   
 * All functions that will **return** parts of the state should be wrapped within the **getters** function. 
 * All functions that will **change** parts of the state should be wrapped within the **setters** function
@@ -301,7 +301,8 @@ addPost(post) {
 }
 ```
 
-> Normally, a Javascript array's contents is modified using mutative functions like push, unshift, and splice. In our case, react-native FlatList is a pure component so we can’t mutate the state directly. Here is a good link to learn more about [Immutable Update Patterns](https://redux.js.org/recipes/structuringreducers/immutableupdatepatterns). Another option will be to use [FlatList](http://extraData) extraData prop.
+> Normally, a Javascript array's contents is modified using mutative functions like push, unshift, and splice. 
+In our case, react-native FlatList(Which we are going to use) is a pure component so we can’t mutate the state directly. Here is a good link to learn more about [Immutable Update Patterns](https://redux.js.org/recipes/structuringreducers/immutableupdatepatterns). Another option will be to use [FlatList](https://facebook.github.io/react-native/docs/flatlist#extradata) extraData prop.
 
 Add your new action in `posts.actions.js`:
 
@@ -320,10 +321,50 @@ export async function addPost(post) {
 }
 ```
 
-Use the `addPost` action when save is pressed:
+Now, we will use the `addPost` action to save new posts.
+
+* We will add a `TextInput` in the `AddPost` screen.
+* We will use the component state to save the values of our text inputs.
+* We will use those values as our post data.
+
+Here is what your `AddPost.js` should look:
 
 ```js
-onSavePressed() {
+import * as postsActions from '../posts.actions';
+
+class AddPost extends Component {
+
+  ...
+  
+  constructor(props) {
+    super(props);
+    Navigation.events().bindComponent(this);
+    this.state =  {
+      title: '',
+      text: ''
+    }
+  }
+
+  ...
+
+  onChangeTitle = title => {
+    this.setState({title});
+    Navigation.mergeOptions(this.props.componentId, {
+      topBar: {
+        rightButtons: [{
+          id: 'saveBtn',
+          text: 'Save',
+          enabled: !!title
+        }]
+      }
+    });
+  };
+
+  onChangeText = text => {
+    this.setState({text})
+  };
+
+  onSavePressed = () => {
     Navigation.dismissModal(this.props.componentId);
     const randomImageNumber = Math.floor((Math.random() * 500) + 1);
     postsActions.addPost({
@@ -331,56 +372,102 @@ onSavePressed() {
       text: this.state.text,
       img: `https://picsum.photos/200/200/?image=${randomImageNumber}`
     });
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>AddPost Screen</Text>
+        <TextInput
+          placeholder="Add a Catchy Title"
+          value={this.state.title}
+          onChangeText={this.onChangeTitle}
+        />
+        <TextInput
+          placeholder="This is the beginning of a great post"
+          value={this.state.text}
+          onChangeText={this.onChangeText}
+        />
+      </View>
+    );
   }
+}
+
+export default AddPost;
 ```
 
-All actions described in this section are provided in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/d88307d9b0eb8084957e8c571e8d3427e60853a5).
+Now, you should be able to add a new post.
+Your new post will be visible in the `PostsList` screen.
 
-## 11. Display a Post
+All actions described in this section are provided in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/d88307d9b0eb8084957e8c571e8d3427e60853a5).
+            
+## 11. Displaying a Post on the `ViewPost` screen
 
 It’s time to spend some time on our posts list and ViewPost screen. 
 
-Use react-native FlatList to create a list of your posts, and pass the post to the ViewPost screen:
+Use react-native [FlatList](https://facebook.github.io/react-native/docs/flatlist) to create a list of your posts, and pass the post to the ViewPost screen.
 
+This is how your `PostsList.js` file should look like
 ```js
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 ...
-pushViewPostScreen(post) {
+class PostsList extends Component {
+
+  ...
+
+  pushViewPostScreen = post => {
     Navigation.push(this.props.componentId, {
       component: {
         name: 'blog.ViewPost',
         passProps: {
-          somePropToPass: 'Some props that we are passing'
+          somePropToPass: 'Some props that we are passing',
           post
         },
         options: {
           topBar: {
-   ...
-   renderItem = ({item}) => (
+            title: {
+              text: 'Post1'
+            }
+          }
+        }
+      }
+    });
+  };
+
+  ...
+
+  renderItem = ({item}) => (
     <Text onPress={() => this.pushViewPostScreen(item)}>
       {item.title}
-    </Text>);
-   ...       
-   render() {
+    </Text>
+  );
+
+  postKeyExtractor =  item => `${item.id}-key`;
+
+  render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text} onPress={this.pushViewPostScreen}>PostsList Screen</Text>
-        <Text>{JSON.stringify(this.props.posts)}</Text>
         <Text style={styles.text}>PostsList Screen</Text>
         <FlatList
           data={this.props.posts}
-          keyExtractor={item => item.id}
+          keyExtractor={this.postKeyExtractor}
           renderItem={this.renderItem}
         />
       </View>
-    ...
+    );
+  }
+}
+...
 ```
 
-Use this to display it on the ViewPost screen.
+We are now passing the post as a prop to the `ViewPost` screen.
+Go ahead and render the post on the ViewPost screen.
+
 
 All actions described in this section are provided in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/1cfffd6be2cb7255d6bb2d86f1b342cf47bdf46a?diff=unified).
 
 ## 12. Delete a Post
-We will delete the post from the server and then delete it from our state.   
+When clicking on the `Delete` button on the `ViewPost` scrren, we will need to delete the post from the server and then delete it from our state.   
 Again, start with your store and add a `deletePost` setter in the store:
 
 ```js
@@ -407,15 +494,16 @@ All actions described in this section are provided in this [commit](https://gith
 
 ## Quick Recap
 
-In this step, you've:
+So here is what we did so far:
 
-* Created a Remx store and connected it to your `PostList` screen
+* Created a Remx store and connected it to our `PostList` screen
 * Created a fake server in 30 sec.
 * Learned how to work with Remx and async actions.
 * Started to implement our app features. Each feature started with creating the setter in the store > implementing the action > using it in the component.
 
 ## Feel like you're up for a challenge?
-Try implementing the following feature: from the `PostView` screen add an **Edit button** which will open a modal, in which you will be able to edit posts. Think about the following questions before you start:
+Try implementing the following feature: from the `PostView` screen add an **Edit button** which will open a modal, in which you will be able to edit posts. 
+Think about the following questions before you start:
 1. Should the `EditPost` screen be a pushed screen or a modal?
 2. When you update the post, would the `PostList` screen be re-rendered and updated? Why? 
 3. Would the `ViewPost` screen be re-rendered and updated? Why? What do we need to do to make it work?

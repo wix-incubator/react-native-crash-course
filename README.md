@@ -38,6 +38,5 @@ Let's start. 🚀
 ```
 npm install
 npm run fake-server
-npm run start
-react-native run-ios/android
+react-native run-ios / run-android
 ```

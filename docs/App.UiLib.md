@@ -6,9 +6,7 @@
 ## What we're going to do
 Our app works well now but let’s face it - only we think it's beautiful. In this step, we will make our app look stunning with [react-native-ui-lib](https://github.com/wix/react-native-ui-lib). 
 
-To that end, we are going to:
-- Use wrapped (with style) components from react-native-ui-lib.
-- Play with their default style.
+To that end, we are going to use [react-native-ui-lib](https://github.com/wix/react-native-ui-lib)
 
 ## About react-native-ui-lib
 [react-native-ui-lib](https://github.com/wix/react-native-ui-lib) is Wix's open source UI toolset & components library for React Native. It is fully maintained by the react-native-ui-lib team at Wix. 
@@ -31,7 +29,9 @@ It was designed to enable developers to build and customize their own visual lan
 Go to your terminal and run: `npm install --save react-native-ui-lib`
 
 ## 2. Change to wrapped components 
-react-native-ui-lib is a wrapper around react-native components (i.e., it takes a normal react-native component and adds it additional capabilities and styling), change all of your components imports from **react-native** to **react-native-ui-lib**.
+react-native-ui-lib is a wrapper around react-native components 
+(i.e., it takes a normal react-native component and adds it additional capabilities and styling). 
+As a starting point, change all of your `View` and `Text` imports from **react-native** to **react-native-ui-lib**.
 
 All of the changes above can be found in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/0695bd62bef51709ec9775fb6f4a0630ad82e5e2).
 
@@ -130,27 +130,28 @@ Here is how our button will look now:
 
 ## 5. Make your Text Inputs float and open
 
-Import the ui-lib's [`TextInput`](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/TextInput/) component and use it to get a floating placeholder for the title and to open a modal for writing the post's text. 
+Import the ui-lib's [`TextField`](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/TextField/) component.
+Use it to get a floating placeholder for the title and to open a modal for writing the post's text. 
 
 ```js
-<TextInput
-     text70
-     containerStyle={{marginBottom: 12}}
-     floatingPlaceholder
-     placeholder="Add a Catchy Title"
-     onChangeText={this.onChangeTitle}
-     floatOnFocus
- />
-<TextInput
-      text70
-      floatingPlaceholder
-      placeholder="This is the beginning of a great post"
-      onChangeText={this.onChangeText}
-      Expandable
+ <TextField
+  text70
+  containerStyle={{marginBottom: 12}}
+  floatingPlaceholder
+  placeholder="Add a Catchy Title"
+  onChangeText={this.onChangeTitle}
+  floatOnFocus
+/>
+<TextField
+  text70
+  floatingPlaceholder
+  placeholder="This is the beginning of a great post"
+  onChangeText={this.onChangeText}
+  expandable
 />
 ```
 
-Here is how our `TextInput` fields should look like now:  
+Here is how our `TextField`s should look like now:  
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/textInputs.gif" align="center" height="600px">
 
 ## 6. Style your Posts List

@@ -235,12 +235,14 @@ Create a `db.json` file on the root folder with some initial post data, for exam
     {
       "id": 1,
       "title": "Post 1",
+      "text": "Scientists have developed catalysts that can convert carbon dioxide – the main cause of global warming – into plastics, fabrics, resins and other products. The discovery, based on the chemistry of artificial photosynthesis, is detailed in the journal Energy & Environmental Science.",
       "author": "Post 1 text",
       "img": "https://picsum.photos/200/200/?image=1"
     },
     {
       "id": 2,
       "title": "Post 2",
+      "text": "It is one of the blessings of old friends that you can afford to be stupid with them.",
       "author": "Post 2 text",
       "img": "https://picsum.photos/200/200/?image=2"
     }

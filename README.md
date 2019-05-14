@@ -23,7 +23,8 @@ This step by step guide teaches you the best practices and open source tools tha
 3. [Adding the **app business logic** and **state management**](/docs/App.Remx.md)(with Remx)
 4. [**Style** the app](/docs/App.UiLib.md) (with react-native-ui-lib)
 5. [Add **e2e tests**](/docs/App.e2e.md) (with Detox)
-6. [Add **unit tests**](/docs/App.tests.md) (with Jest) 
+6. [Add **unit tests**](/docs/App.tests.md) (with Jest)
+7. [Adding a **Native Module**](/docs/App.NativeModule.md) 
 
 Here is how our app will look:
 

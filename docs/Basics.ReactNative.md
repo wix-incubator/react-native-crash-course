@@ -14,7 +14,7 @@
 
 ## React Native
 
-Please make sure to read all the below material and perform the coding exercises along the documentation. 
+Please make sure to read through all the material below and complete the coding exercises mentioned in the documentation.
 
 * [The Basics](https://facebook.github.io/react-native/docs/getting-started) (the entire section) -  Choose building project with native code
 * [Basic Components](https://facebook.github.io/react-native/docs/components-and-apis)

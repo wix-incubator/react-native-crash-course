@@ -38,6 +38,8 @@ Let's start. 🚀
 
 > Note: The most important thing about any course, is to keep it up to date. We encourage the old Scout's rule: "Leave the campground cleaner than you found it". If you find any issues or out of date content, please send us a pull request or open an issue we will take care of it. Thanks!
 
+We are always working on improving the course content and we would love to get your [feedback](https://docs.google.com/forms/d/e/1FAIpQLSfceLeyvKe2jkk0dkT6LdVE9CA5uq3J-Jt3sCkEhs07hQRVZQ/viewform?usp=sf_link).
+
 ## How To Run the App
 ```
 npm install

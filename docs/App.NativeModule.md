@@ -265,3 +265,7 @@ Here’s what you should see:
 If you would like to remove your library from the npm repository, you have 72 hours to do so.
 
 Open terminal and type `npm unpublish react-native-native-toast-library-XXXX` (where XXXX is your unique part — see [here](#Upload-your-library-to-NPM)).
+
+
+## What’s Next
+* [Performance - Tools and Best Practices](App.performance.md)

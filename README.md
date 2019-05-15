@@ -1,10 +1,8 @@
-# Learn React Native - The Mobile Kickstart Course by Wix
+# React Native Crash Course by Wix
 
-> :point_right: *FROM ROMAN: This is how I have formatted all my comments and notes here and below. Just search for the `:point_right:` emoji. These, of course, MUST be removed before merging any changes into the playground repo, let alone into anything more visible to the world.*
-
-> :point_right: *I think it's important to mention the core technology in the title. We aren't just sharing this with potential / prospect / recent hire, but with anyone interested in React Native. *
-
-The React Mobile Kickstart by Wix is a self-learning course designed to help you learn everything you need to know before diving into writing production code in [React Native](https://facebook.github.io/react-native/). This course is part of the official onboarding plan for every new developer joining the Wix Mobile Guild.
+The React Native crash course by Wix is a self-learning course designed to help you learn everything 
+you need to know before diving into writing production code in [React Native](https://facebook.github.io/react-native/).
+This course is part of the official onboarding plan for every new developer joining the Wix Mobile Guild.
 
 The Kickstart course is divided into 2 sections:
 

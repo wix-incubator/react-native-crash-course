@@ -24,7 +24,7 @@ Open the terminal and reach the folder where you want to put your project.
 In order to create the react native module project, use the install **react-native-create-library** command:
 
 `npm install -g react-native-create-library`
-
+here is how
 And then create your module:
 
 `react-native-create-library - — platforms ios,android NativeToastLibrary`

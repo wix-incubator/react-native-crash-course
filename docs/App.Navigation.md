@@ -213,7 +213,7 @@ Here is how your `postList.js` file will look like:
 ```js
 ...
 
-class PostsList extends PureComponent {
+class PostsList extends Component {
 
  constructor(props) {
     super(props);
@@ -259,7 +259,7 @@ Left buttons on Android only support icons, so we will add an "X" icon which you
 import PropTypes from 'prop-types';
 import {Navigation} from 'react-native-navigation'
 
-class AddPost extends PureComponent {
+class AddPost extends Component {
 
   static propTypes = {
     componentId: PropTypes.string

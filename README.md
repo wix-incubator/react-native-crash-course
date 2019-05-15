@@ -46,3 +46,9 @@ npm install
 npm run fake-server
 react-native run-ios / run-android
 ```
+
+## How To Run the Tests
+```
+npm run start-e2e
+npm run test
+```

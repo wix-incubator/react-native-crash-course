@@ -257,6 +257,9 @@ Run the fake server: `npm run fake-server`
 
 That's it, you now have your own REST API server - go to [http://localhost:3000/posts/1](http://localhost:3000/posts/1) to get your posts.
 
+> Bug alert: If you are having issues with fetching from localhost on Android please follow this issue or use iOS:
+  https://github.com/facebook/react-native/pull/23984
+
 ## 8. Fetch Posts from the Server
 
 In your `fetchPosts` action, fetch the posts' data from our fake server (instead of mocking it).

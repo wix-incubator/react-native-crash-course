@@ -259,6 +259,7 @@ That's it, you now have your own REST API server - go to [http://localhost:3000/
 
 > Bug alert: If you are having issues with fetching from localhost on Android please follow this issue or use iOS:
   https://github.com/facebook/react-native/pull/23984
+  You can also try to run [adb reverse](http://blog.grio.com/2015/07/android-tip-adb-reverse.html)
 
 ## 8. Fetch Posts from the Server
 

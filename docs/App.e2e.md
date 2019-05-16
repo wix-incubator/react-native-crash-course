@@ -117,18 +117,25 @@ First thing's first: coffee. Next: for your app to use a *mock* server, you’ll
 
 In order to do it:
 
-Follow the instructions [here](https://github.com/wix/Detox/blob/master/docs/Guide.Mocking.md#configuration) to configure `Metro` by creating `rn-cli.config.js` in the project directory and setting resolver.sourceExts to prioritize any given source extension over the default one.
+Follow the instructions [here](https://github.com/wix/Detox/blob/master/docs/Guide.Mocking.md#configuration) 
 
-Here is how it looks in our project:
+Here is how your `metro.config.js` file should look like:
 
 ```js
 const defaultSourceExts = require('metro-config/src/defaults/defaults').sourceExts
+
 module.exports = {
-  resolver: { 
-    sourceExts: process.env.RN_SRC_EXT
-                ? process.env.RN_SRC_EXT.split(',').concat(defaultSourceExts)
-                : defaultSourceExts
-  }
+  resolver: {
+    sourceExts: process.env.RN_SRC_EXT ? process.env.RN_SRC_EXT.split(',').concat(defaultSourceExts) : defaultSourceExts
+  },
+  transformer: {
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: false,
+        inlineRequires: true,
+      },
+    }),
+  },
 };
 ```
 

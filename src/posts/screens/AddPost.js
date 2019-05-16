@@ -34,7 +34,7 @@ class AddPost extends Component {
         }],
         leftButtons: [{
           id: 'cancelBtn',
-          icon: require('../../assets/x.png')
+          icon: require('../../icons/x.png')
         }]
       }
     };

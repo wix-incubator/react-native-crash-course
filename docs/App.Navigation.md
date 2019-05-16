@@ -282,7 +282,7 @@ class AddPost extends Component {
         }],
         leftButtons: [{
           id: 'cancelBtn',
-          icon: require('../../assets/x.icon.png')
+          icon: require('../../icons/x.icon.png')
         }]
       }
     };
@@ -336,7 +336,7 @@ class AddPost extends Component {
         }],
         leftButtons: [{
           id: 'cancelBtn',
-          icon: require('../../assets/x.icon.png')
+          icon: require('../../icons/x.icon.png')
         }]
       }
     };

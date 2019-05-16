@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput} from 'react-native-ui-lib';
+import {View, Text, TextField} from 'react-native-ui-lib';
 import PropTypes from 'prop-types';
 import {Navigation} from 'react-native-navigation';
+
 import * as Presenter from './AddPost.presenter';
 
 class AddPost extends Component {
@@ -13,14 +14,13 @@ class AddPost extends Component {
   constructor(props) {
     super(props);
     Navigation.events().bindComponent(this);
-
-    this.state = {
+    this.state =  {
       title: '',
       text: ''
-    };
+    }
   }
 
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {
@@ -34,7 +34,7 @@ class AddPost extends Component {
         }],
         leftButtons: [{
           id: 'cancelBtn',
-          text: 'Cancel'
+          icon: require('../../assets/x.png')
         }]
       }
     };
@@ -57,7 +57,7 @@ class AddPost extends Component {
   };
 
   onChangeText = text => {
-    this.setState({text});
+    this.setState({text})
   };
 
   onSavePressed = () => {
@@ -66,13 +66,13 @@ class AddPost extends Component {
       title: this.state.title,
       text: this.state.text
     });
-  }
+  };
 
   render() {
     return (
       <View flex padding-24>
-        <Text text40 purple10 marginB-24>Add Post</Text>
-        <TextInput
+        <Text  text40 green10 marginB-12>AddPost Screen</Text>
+        <TextField
           testID="add-title-input"
           text70
           containerStyle={{marginBottom: 12}}
@@ -81,7 +81,7 @@ class AddPost extends Component {
           onChangeText={this.onChangeTitle}
           floatOnFocus
         />
-        <TextInput
+        <TextField
           testID="add-text-input"
           text70
           floatingPlaceholder

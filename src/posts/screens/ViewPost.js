@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {View, Text, Button} from 'react-native-ui-lib';
-import {Navigation} from 'react-native-navigation';
 import PropTypes from 'prop-types';
-import {deletePost} from '../posts.actions';
+import {Navigation} from 'react-native-navigation';
 
+import * as postsActions from '../posts.actions';
 
 class ViewPost extends Component {
 
@@ -12,14 +12,9 @@ class ViewPost extends Component {
     post: PropTypes.object
   };
 
-  constructor(props) {
-    super(props);
-    this.onPostDeletePressed = this.onPostDeletePressed.bind(this);
-  }
-
   onPostDeletePressed = async () => {
     Navigation.pop(this.props.componentId);
-    await deletePost(this.props.post.id);
+    await postsActions.deletePost(this.props.post.id);
   }
 
   render() {

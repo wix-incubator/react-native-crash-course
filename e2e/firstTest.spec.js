@@ -1,5 +1,5 @@
 const driver = require('./firstTest.driver');
-const MockServerApi = require('../src/api.e2e');
+const MockServerApi = require('../src/posts/api.e2e');
 
 describe('Example', () => {
   beforeEach(async () => {

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import {StyleSheet, FlatList} from 'react-native';
-import {Text, ListItem, Colors, BorderRadiuses, Image} from 'react-native-ui-lib';
 import PropTypes from 'prop-types';
+import {StyleSheet, FlatList, Image} from 'react-native';
+import {Text, ListItem, Colors, BorderRadiuses,View} from 'react-native-ui-lib';
 import {Navigation} from 'react-native-navigation';
 import {connect} from 'remx';
 import * as postsNavigation from '../posts.navigation';
 
-import {postsStore} from '../posts.store';
 import * as postsActions from '../posts.actions';
+import {postsStore} from '../posts.store';
 
 class PostsList extends Component {
 
@@ -18,10 +18,11 @@ class PostsList extends Component {
 
   constructor(props) {
     super(props);
+
     Navigation.events().bindComponent(this);
   }
 
-  static get options() {
+  static options() {
     return {
       topBar: {
         rightButtons: [
@@ -35,14 +36,14 @@ class PostsList extends Component {
     };
   }
 
-  componentDidMount() {
-    postsActions.fetchPosts();
-  }
-
   navigationButtonPressed({buttonId}) {
     if (buttonId === 'addPost') {
       postsNavigation.showAddPostModal();
     }
+  }
+
+  componentDidMount(){
+    postsActions.fetchPosts();
   }
 
   pushViewPostScreen = post => {
@@ -77,12 +78,14 @@ class PostsList extends Component {
     </ListItem>
   );
 
+  postKeyExtractor =  item => `${item.id}-key`;
+
   render() {
     return (
       <FlatList
         data={this.props.posts}
         testID="posts-list"
-        keyExtractor={item => `{key-${item.id}`}
+        keyExtractor={this.postKeyExtractor}
         renderItem={this.renderItem}
       />
     );
@@ -97,13 +100,13 @@ function mapStateToProps() {
 
 export default connect(mapStateToProps)(PostsList);
 
-
 const styles = StyleSheet.create({
   image: {
     width: 54,
     height: 54,
     borderRadius: BorderRadiuses.br20,
     marginHorizontal: 14,
+    backgroundColor: Colors.purple70
   },
   border: {
     borderBottomWidth: StyleSheet.hairlineWidth,

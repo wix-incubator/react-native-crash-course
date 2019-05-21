@@ -27,7 +27,7 @@ In order to create the react native module project, use the install **react-nati
 here is how
 And then create your module:
 
-`react-native-create-library - — platforms ios,android NativeToastLibrary`
+`react-native-create-library -—platforms ios,android NativeToastLibrary`
 
 Your new module project should look like this
 

@@ -143,8 +143,6 @@ When you refresh the app, you should get the blue PostsList screen:
 
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/PostsList.png" align="center" >
 
-All actions described in this section are provided in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/2de9761877a3fa7ed6339daae7d370979da14017).
-
 # Pushing Your First Screen
 Now we want to enable the following behavior: when the user clicks on the text, the app pushes the ViewPost screen. Later on, it will be very easy to attach the same function to a list item instead of the text.
 

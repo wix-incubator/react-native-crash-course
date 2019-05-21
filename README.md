@@ -4,7 +4,7 @@ The React Native crash course by Wix is a self-learning course designed to help 
 you need to know before diving into writing production code in [React Native](https://facebook.github.io/react-native/).
 This course is part of the official onboarding plan for every new developer joining the Wix Mobile Guild.
 
-The Kickstart course is divided into 2 sections:
+The course is divided into 2 sections:
 
 ## 1. Learn the basics
 

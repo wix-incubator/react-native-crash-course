@@ -1,6 +1,8 @@
-# Learn React Native - The Mobile Kickstart Course by Wix
+# React Native Crash Course by Wix
 
-> :point_right: *FROM ROMAN: This is how I have formatted all my comments and notes here and below. Just search for the `:point_right:` emoji. These, of course, MUST be removed before merging any changes into the playground repo, let alone into anything more visible to the world.*
+The React Native crash course by Wix is a self-learning course designed to help you learn everything 
+you need to know before diving into writing production code in [React Native](https://facebook.github.io/react-native/).
+This course is part of the official onboarding plan for every new developer joining the Wix Mobile Guild.
 
 > :point_right: *I think it's important to mention the core technology in the title. We aren't just sharing this with potential / prospect / recent hire, but with anyone interested in React Native. *
 
@@ -29,6 +31,7 @@ This step-by-step guide will teach you about the best practices and open source 
 5. [Add **e2e tests**](/docs/App.e2e.md) (with Detox)
 6. [Add **unit tests**](/docs/App.tests.md) (with Jest)
 7. [Adding a **Native Module**](/docs/App.NativeModule.md)
+8. [Performance - Tools and Best Practice](/docs/App.performance.md)
 
 Here is how our app will look like:
 
@@ -39,9 +42,17 @@ Let's start. 🚀
 
 > Note: The most important thing about any course, is to keep it up to date. We encourage the old Scout's rule: "Leave the campground cleaner than you found it". If you find any issues or out of date content, please send us a pull request or open an issue we will take care of it. Thanks!
 
+We are always working on improving the course content and we would love to get your [feedback](https://docs.google.com/forms/d/e/1FAIpQLSfceLeyvKe2jkk0dkT6LdVE9CA5uq3J-Jt3sCkEhs07hQRVZQ/viewform?usp=sf_link).
+
 ## How To Run the App
 ```
 npm install
 npm run fake-server
 react-native run-ios / run-android
+```
+
+## How To Run the Tests
+```
+npm run start-e2e
+npm run test
 ```

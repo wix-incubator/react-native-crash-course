@@ -20,6 +20,7 @@ We will follow this workflow, step-by-step:
 4. [Add **e2e tests**](App.e2e.md) (with Detox)
 5. [Add **unit tests**](App.tests.md) (with Jest)
 6. [Adding a **Native Module**](App.NativeModule.md) 
+7. [Performance - Tools and Best Practice](App.performance.md)
 
 
 Each step is comprised of 2 parts:

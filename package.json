@@ -1,52 +1,42 @@
 {
-  "name": "wixMobileCrashCourse",
+  "name": "mobileCrashCourseTemp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "start-e2e": "RN_SOURCE_EXTENSIONS=e2e.js react-native start",
-    "run-ios": "react-native run-ios --simulator='iPhone 8'",
-    "run-android": "react-native run-android",
+    "start-e2e": "RN_SRC_EXT=e2e.js react-native start",
     "test": "jest && detox test",
-    "e2e": "detox test",
-    "watch": "jest --watch",
     "fake-server": "json-server --watch db.json",
+    "watch": "jest --watch",
+    "e2e": "detox test",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
   "dependencies": {
-    "lodash": "^4.17.11",
-    "react": "16.6.0-alpha.8af6728",
-    "react-native": "~0.57.0",
-    "react-native-navtigation": "^2.7.1",
-    "react-native-ui-lib": "^3.5.0",
+    "react": "16.8.3",
+    "react-native": "0.59.8",
+    "react-native-navigation": "^2.18.5",
+    "react-native-ui-lib": "^3.25.0",
     "remx": "^2.0.51"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "babel-core": "^7.0.0-bridge.0",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/runtime": "^7.2.0",
-    "babel-plugin-jest-hoist": "^23.2.0",
-    "metro-react-native-babel-preset": "^0.48.0",
-    "babel-eslint": "^8.0.0",
-    "babel-jest": "^23.6.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-react-native": "4.0.0",
-    "detox": "^9.1.2",
-    "eslint": "^4.0.0",
-    "eslint-config-wix": "^1.1.4",
-    "eslint-plugin-react-native": "^3.0.0",
-    "jest": "^23.6.0",
-    "mocha": "^5.2.0",
-    "react-test-renderer": "16.5.0",
-    "regenerator-runtime": "^0.13.1"
+    "@babel/core": "^7.4.4",
+    "@babel/runtime": "^7.4.4",
+    "babel-jest": "^24.8.0",
+    "detox": "^12.8.0",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.54.0",
+    "mocha": "^6.1.4",
+    "react-test-renderer": "16.8.3"
+  },
+  "jest": {
+    "preset": "react-native"
   },
   "detox": {
     "test-runner": "mocha",
     "configurations": {
       "ios.sim.debug": {
-        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/wixMobileCrashCourse.app",
-        "build": "xcodebuild -project ios/wixMobileCrashCourse.xcodeproj -scheme wixMobileCrashCourse -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/mobileCrashCourseTemp.app",
+        "build": "xcodebuild -project ios/mobileCrashCourseTemp.xcodeproj -scheme mobileCrashCourseTemp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 8"
       }

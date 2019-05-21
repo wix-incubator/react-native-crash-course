@@ -1,4 +1,4 @@
-package com.wixmobilecrashcourse;
+package com.mobilecrashcoursetemp;
 
 import com.reactnativenavigation.NavigationActivity;
 

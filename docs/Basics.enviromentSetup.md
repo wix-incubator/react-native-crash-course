@@ -111,19 +111,12 @@ For the purposes of this course we will talk about these two commons debuggers:
 * **[recommended]** [React native debugger](https://github.com/jhen0409/react-native-debugger) - Open source, cross-platform and a quite well maintained, it provides all the features that come with the Chrome dev tools and many more, like an ability to easily inspect network requests.
 * [Reactatron](https://github.com/infinitered/reactotron) - A cross-platform desktop app for inspecting your React JS and React Native projects.
 
-> _**Notice:** When we are running our module example project on simulator via command like ( npm run start-ios) you’ll see this as a result:
-`tail -F $HOME/Library/Developer/CoreSimulator/Devices/6137B0EF-8206-4DFD-B01D-26E1714C827B/data/tmp/one-app-engine.last_lau	nch_app_log.{out,err}`
-Copy this command to another terminal screen/tab and you’ll be able to see the iPhone simulator log._
-
-> :point_right: Should the above Notice be here?
-
 ## iOS / Android
 
 React native is a framework, built on top of the native environment. In order to run our application on a mobile device we need to have iOS and Android native environments.
 
 ### iOS
 Xcode is a must when you want to run an iOS application.
-Currently, we are running on Xcode version 9.4.1 (we will update to 10.1 very soon)
 Download and Install [Xcode](https://developer.apple.com/download/more/).
 
 ### Android

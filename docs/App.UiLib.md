@@ -111,7 +111,10 @@ All of the changes above can be found in this [commit](https://github.com/wix-pl
 
 ## 4. Make the “Delete” button special 
 
-The [Button](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/Button/) component is a good example of a simple component in the ui-lib. You can [see](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/Button/) that it wraps the react-native TouchableOpacity component and adds a bunch of props, which together comprise a default styling that you can easily play with. 
+The [Button](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/Button/) component is a good example of a simple component in the ui-lib. 
+You can [see](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/Button/) that it wraps the react-native TouchableOpacity component and adds a bunch of props, 
+which together comprise a default styling that you can easily play with.
+Lets' import our `Button` from the ui-lib instead of react-native and give it the following props: 
 
 ```js
 <Button
@@ -123,8 +126,7 @@ The [Button](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/
    onPress={this.onPostDeletePressed}
 />
 ```
-
-Here is how our button will look now:
+Try to use the `View` component and it's modifier to make the screen look like this:
 
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/deleteButton.png" align="center" height="600px">
 
@@ -156,9 +158,11 @@ Here is how our `TextField`s should look like now:
 
 ## 6. Style your Posts List
 
-Use the ui-lib's [ListItem](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/ListItem/) component. Update your `renderItem` function to give the list some basic styling:  
+Use the ui-lib's [ListItem](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/ListItem/) component. 
+Update your `renderItem` function to give the list some basic styling:  
 
 ```js
+import {Text, ListItem, Colors, BorderRadiuses, Image} from 'react-native-ui-lib';
 ...
 
 renderItem = ({item}) => (

@@ -72,7 +72,7 @@ Your End-to-End tests should test your app's main flows.
 
 A couple of suggestions while writing your tests:
 - A good test should be readable to everyone, not just for developers. Try to create a driver which will make your test look like a simple user flow.
-- Try splitting your tests into [Given-When-Then](https://solidsoft.wordpress.com/2017/05/16/importance-of-given-when-then-in-unit-tests-and-tdd/) sections.
+- Try splitting your driver into [Given-When-Then](https://solidsoft.wordpress.com/2017/05/16/importance-of-given-when-then-in-unit-tests-and-tdd/) sections.
 - You can use your mac's “Accessibility inspector” to [inspect your app `testID`s](https://www.youtube.com/watch?v=EkG5_kWkqwE&t=250s). At the top left corner choose the simulator as the source > click on the target icon > point out on any component to view its `testID`. 
 - Make sure that your hardware keyboard is disconnected from your simulator (cmd+shift+k) - this often fails tests because the simulator doesn’t open the simulator keyboard.
 
@@ -117,25 +117,32 @@ First thing's first: coffee. Next: for your app to use a *mock* server, you’ll
 
 In order to do it:
 
-Follow the instructions [here](https://github.com/wix/Detox/blob/master/docs/Guide.Mocking.md#configuration) to configure `Metro` by creating `rn-cli.config.js` to your root dir and setting resolver.sourceExts to prioritize any given source extension over the default one.
+Follow the instructions [here](https://github.com/wix/Detox/blob/master/docs/Guide.Mocking.md#configuration) 
 
-Here is how it looks in our project:
+Here is how your `metro.config.js` file should look like:
 
 ```js
 const defaultSourceExts = require('metro-config/src/defaults/defaults').sourceExts
+
 module.exports = {
-  resolver: { 
-    sourceExts: process.env.RN_SRC_EXT
-                ? process.env.RN_SRC_EXT.split(',').concat(defaultSourceExts)
-                : defaultSourceExts
-  }
+  resolver: {
+    sourceExts: process.env.RN_SRC_EXT ? process.env.RN_SRC_EXT.split(',').concat(defaultSourceExts) : defaultSourceExts
+  },
+  transformer: {
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: false,
+        inlineRequires: true,
+      },
+    }),
+  },
 };
 ```
 
 In `package.json` add an additional script:
 
 ```js
-"start-e2e": "RN_SRC_EXT=e2e.js react-native start",
+"start-e2e": "RN_SRC_EXT=e2e.js react-native start"
 ```  
 
 When you run `npm run start-e2e` it will override the default files with the ones with the E2E extension.
@@ -148,13 +155,13 @@ Currently, all of our Server calls are located in our `posts.actions.js` file. T
 
 So create an `api.js` file with all of your API calls.
 
-This is how our [`posts.actions.js`](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/src/posts/posts.actions.js) and [`api.js`](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/src/api.js) files should look like.
+This is how our [`posts.actions.js`](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/src/posts/posts.actions.js) and [`api.js`](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/src/posts/api.js) files should look like.
 
 ## 6. Override the API file
 
 Create a `api.e2e.js` file, so that whenever you run `npm run start-e2e` it will override the original `api.js` file. In your `api.e2e` file, mock all of your function to use a simple array with mock posts, instead of actually fetching/posting to the server. 
 
-In addition, add a `reset` function that will be used after every test to reset the data to the initial state. Your `api.e2e.js` file should look like [this](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/src/api.e2e.js).
+In addition, add a `reset` function that will be used after every test to reset the data to the initial state. Your `api.e2e.js` file should look like [this](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/src/posts/api.e2e.js).
 
 ## 7. Refactor your tests 
 Use the `reset` function that you just created after every test. 

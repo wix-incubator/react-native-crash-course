@@ -34,7 +34,7 @@ Remx takes the redux (flux) architecture and enforces it through a short, simple
 Go to your terminal and run: `npm install --save remx`
 
 ## 2. Create a Remx Store
-Create a `posts.store.js` file for your Remx store.
+Create a `posts.store.js` file under the `posts` folder for your Remx store.
 The first thing that we need to decide is how our state will be structured - for simplicity use the following structure, where posts are **structured in an array**:
 
 ```js
@@ -95,7 +95,7 @@ Wrapped getters and setters functions should be defined **inside the same store 
 
 For now, our getters and setters will be pretty dumb, they will only set the posts and get the posts. That's because we structured our app with arrays. Later, however, we will add much more complex logic inside them, such as parsing the data or manipulating multiple parts of our state. 
 
-Your final `storeTopics.js` file should look like this:  
+Your final `posts.store.js` file should look like this:  
 
 ```js
 import * as remx from 'remx';
@@ -145,13 +145,13 @@ const posts = [
     id: 1,
     title: 'Post 1',
     text: 'Post 1 text',
-    img: 'https://picsum.photos/200/200/?image=977'
+    img: 'http://picsum.photos/200/200/?image=977'
   },
   {
     id: 2,
     title: 'Post 2',
     text: 'Post 2 text',
-    img: 'https://picsum.photos/200/200/?image=1'
+    img: 'http://picsum.photos/200/200/?image=1'
   }
 ];
 
@@ -237,14 +237,14 @@ Create a `db.json` file on the root folder with some initial post data, for exam
       "title": "Post 1",
       "text": "Scientists have developed catalysts that can convert carbon dioxide – the main cause of global warming – into plastics, fabrics, resins and other products. The discovery, based on the chemistry of artificial photosynthesis, is detailed in the journal Energy & Environmental Science.",
       "author": "Post 1 text",
-      "img": "https://picsum.photos/200/200/?image=1"
+      "img": "http://picsum.photos/200/200/?image=1"
     },
     {
       "id": 2,
       "title": "Post 2",
       "text": "It is one of the blessings of old friends that you can afford to be stupid with them.",
       "author": "Post 2 text",
-      "img": "https://picsum.photos/200/200/?image=2"
+      "img": "http://picsum.photos/200/200/?image=2"
     }
   ]
 }
@@ -257,6 +257,10 @@ Run the fake server: `npm run fake-server`
 
 That's it, you now have your own REST API server - go to [http://localhost:3000/posts/1](http://localhost:3000/posts/1) to get your posts.
 
+> Bug alert: If you are having issues with fetching from localhost on Android please follow this issue or use iOS:
+  https://github.com/facebook/react-native/pull/23984
+  You can also try to run [adb reverse](http://blog.grio.com/2015/07/android-tip-adb-reverse.html)
+
 ## 8. Fetch Posts from the Server
 
 In your `fetchPosts` action, fetch the posts' data from our fake server (instead of mocking it).
@@ -267,7 +271,7 @@ As mentioned, actions can be asynchronous. Transform your `fetchPosts` action in
 import {postsStore} from './posts.store';
 
 export async function fetchPosts() {
-  const response = await fetch('https://localhost:3000/posts');
+  const response = await fetch('http://localhost:3000/posts');
   const posts = await response.json();
   postsStore.setPosts(posts);
 }

@@ -28,7 +28,7 @@ describe('posts actions', () => {
 
     mockFetchPosts = jest.fn().mockResolvedValue(mockPosts);
     mockAddPost = jest.fn().mockImplementation(post => Promise.resolve({...post, id: 'mock-id'}));
-    jest.mock('../api', () => ({
+    jest.mock('./api', () => ({
       fetchPosts: mockFetchPosts,
       addPost: mockAddPost,
       deletePost: jest.fn()

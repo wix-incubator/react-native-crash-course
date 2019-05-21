@@ -1,7 +1,6 @@
 import * as remx from 'remx';
 import filter from 'lodash/filter';
 
-
 const initialState = {
   posts: []
   // this is an example of how the state will look like
@@ -23,18 +22,13 @@ const initialState = {
 
 const state = remx.state(initialState);
 
-
 const getters = remx.getters({
-
   getPosts() {
     return state.posts;
   }
-
 });
 
-
 const setters = remx.setters({
-
   setPosts(posts) {
     state.posts = posts;
   },
@@ -46,7 +40,6 @@ const setters = remx.setters({
   deletePost(id) {
     state.posts = filter(state.posts, post => post.id !== id);
   }
-
 });
 
 export const postsStore = {

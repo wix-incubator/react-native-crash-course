@@ -1,5 +1,5 @@
 import {postsStore} from './posts.store';
-import * as ServerApi from '../api';
+import * as ServerApi from './api';
 
 export async function fetchPosts() {
   const posts = await ServerApi.fetchPosts();
@@ -15,4 +15,3 @@ export async function deletePost(id) {
   await ServerApi.deletePost(id);
   postsStore.deletePost(id);
 }
-

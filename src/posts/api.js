@@ -1,6 +1,8 @@
 const baseUrl = 'http://localhost:3000/posts';
 
 export async function fetchPosts() {
+  //If you are having issues with fetching from localhost on Android please follow this issue or use iOS:
+  //https://github.com/facebook/react-native/pull/23984
   const response = await fetch(baseUrl);
   const posts = await response.json();
   return posts;

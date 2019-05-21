@@ -118,7 +118,7 @@ Open the zip file — you should have 2 files (IOSNativeToast.h, IOSNativeTo
 
 Now back to XCode.
 
-Right Click RNNativeToastLibrary project file (with blue icon) choose **Add file to “RNNativeToastLibrary”**.
+Right Click RNNativeToastLibrary project file (with blue icon) choose **Add files to “RNNativeToastLibrary”**.
 
 In the popup window choose the 2 files and press the Add button, so now you can see the files in your project
 

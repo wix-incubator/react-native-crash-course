@@ -239,7 +239,7 @@ In the list you should see the `libRNNativeToastLibrary.a` file (5).
 
 * Create a screen
 
-Replace the contents of your `App.js` file with this and replace the line 
+Replace the contents of your `App.js` file with [this](https://github.com/roiberlin/native-toast-library/blob/master/RNNativeToastExample/App.js) and replace the line 
 `import RNNativeToastLibrary from ‘react-native-native-toast-library’;` with `import RNNativeToastLibrary from ‘react-native-native-toast-library-XXXX’;`, where XXXX is your unique part (see [here](#Upload-your-library-to-NPM)).
 
 As we will see in next step, your screen contains a button and a `textInput`.

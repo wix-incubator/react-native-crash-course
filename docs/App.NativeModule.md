@@ -74,8 +74,8 @@ Open `RNNativeToastLibrary.xcodeporj` in Xcode.
 You should have an error that Xcode doesn’t recognize `RCTBridgeModule.h` (if not, continue to the next step). In order to fix this issue, open the file `package.json` in the project directory and above the `peerDependencies` line add:
 
 ```
-“devDependencies”: {
-  “react-native”: “0.41.2”
+"devDependencies": {
+  "react-native": "0.41.2"
 },
 ```
 

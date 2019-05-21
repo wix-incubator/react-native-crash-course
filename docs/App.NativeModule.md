@@ -127,7 +127,7 @@ In the popup window choose the 2 files and press the Add button, so now you can 
 Open the RNNativeToastLibrary.m. and under the `import` add the `IOSNativeToast` property:
 
 ```
-#import “IOSNativeToast.h”
+#import "IOSNativeToast.h"
 @interface RNNativeToastLibrary()
 @property (nonatomic, retain) IOSNativeToast *toast;
 @end
@@ -189,7 +189,7 @@ Lastly, type `npm publish` to publish your code.
 
 Open the terminal in the project parent directory and type `react-native init RNNativeToastExample`.
 
-Open the `package.json` file and under `dependencies` add react-native-native-toast-library-XXXX”: “1.0.0”`
+Open the `package.json` file and under `dependencies` add "react-native-native-toast-library-XXXX": "1.0.0"`
 
 You should add a comma before the line to keep the JSON format of it.
 

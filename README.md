@@ -1,3 +1,5 @@
+<p align="center"><Img src="https://github.com/wix-playground/react-native-crash-course/blob/master/assets/PostsList.png" allign="center"></p>
+
 # React Native Crash Course by Wix
 
 The React Native crash course by Wix is a self-learning course designed to help you learn everything 

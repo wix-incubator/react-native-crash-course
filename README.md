@@ -1,4 +1,4 @@
-<p align="center"><Img src="https://github.com/wix-playground/react-native-crash-course/blob/master/assets/PostsList.png" allign="center"></p>
+<p align="center"><Img src="https://github.com/wix-playground/react-native-crash-course/blob/master/assets/banner.png" allign="center"></p>
 
 # React Native Crash Course by Wix
 

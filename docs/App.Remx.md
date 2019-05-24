@@ -21,7 +21,7 @@ When the Wix Mobile Team started to build the Wix App, they looked at all the we
 
 Remx takes the redux (flux) architecture and enforces it through a short, simple, clean, strict, and easy to learn API. Almost zero boilerplate! And we think that it's time for you to fall in love with Remx.
 
-> We are not going to go into the big argument about Redux Vs Mobx Vs other state management solutions. Some of our projects use Redux, some use Mobx, some are even using both. We recommend using our own open source in-house state management library called Remx.
+> We are not going to go into the big argument about Redux Vs Mobx Vs other state management solutions. Some of our projects use Redux, some use Mobx, some are even using both.
 
 ## Preliminaries
 * Have no idea what Flux is? Watch the following [video](https://www.youtube.com/watch?v=nYkdrAPrdcw#t=10m10s) (14 min)

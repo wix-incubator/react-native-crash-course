@@ -2,12 +2,12 @@
 
 - [x] **[Build Your First App](App.Intro.md) - intro**
 
-Every app starts with a navigation. In this section, we are going to build the skeleton of our app using [react-native-navigation](https://github.com/wix/react-native-navigation).
+Every app starts with navigation. In this section, we are going to build the skeleton of our app using [react-native-navigation](https://github.com/wix/react-native-navigation).
 
 ## About react-native-navigation
 [React Native Navigation (RNN)](https://github.com/wix/react-native-navigation) is an open source project created by the Wix mobile team. It is now one of the top open source project by Wix. As opposed to other popular JS navigation solutions for react-native, RNN is a 100% native navigation solution with a simple cross-platform JS API.
 
-This tutorial will help you learn RNN's basic functionality and feel more comfortable diving into the more complex features and API. You can view the full documentation [here](https://wix.github.io/react-native-navigation/#/).
+This tutorial will help you learn RNN's basic functionality and feel more comfortable diving into the more complex features and API. You can view full documentation [here](https://wix.github.io/react-native-navigation/#/).
 
 #### Useful links
 * React Native Navigation [docs](https://wix.github.io/react-native-navigation/#/docs/screen-api).

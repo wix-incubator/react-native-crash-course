@@ -25,7 +25,7 @@ We will follow this workflow, step-by-step:
 
 Each step comprises 2 parts:
 
-* **Preliminaries** - includes links to best resources to learn from. These are for your convenience, so feel free to skip what you are already familiar with.
+* **Prerequisites** - includes links to best resources to learn from. These are for your convenience, so feel free to skip what you are already familiar with.
 * **Hands-on** - work step by step on building the app, applying best practices in each step and exploring the most important features of the libraries we are using.
 
 > __**Note:**__ *Each step is heavily dependent on the previous one, so even if you choose to skip the more theoretical "Perliminaries" part, make sure to go through the hands-on sections.*
@@ -42,7 +42,7 @@ If you feel like you want to give your app your own twist, go for it! Check out 
 
 We will use our own simple local server which we will create (Just to make sure that we're not dependent on any external APIs and that we have a full REST API).
 
-## Preliminaries
+## Prerequisites
 Before you dive into this tutorial, you should feel comfortable with the basics of JS and React.
 
 We recommend going over the [Basics section](https://github.com/wix-playground/wix-mobile-crash-course#1-learn-the-basics) plan before you start. It will help you untangle the environment setup, learn or refresh your basic knowledge of JS, React, Node, Git, etc .

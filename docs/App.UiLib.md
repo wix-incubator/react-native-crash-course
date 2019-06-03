@@ -4,19 +4,20 @@
 - [x] [**Step #2**: App Logic and State Management (with Remx)](App.Remx.md)
 
 ## What we're going to do
-Our app works well now but let’s face it - only we think it's beautiful. In this step, we will make our app look stunning with [react-native-ui-lib](https://github.com/wix/react-native-ui-lib). 
+Though our app works well enough as is, let’s face it - only we think it's beautiful. In this step, we will make our app look stunning with [react-native-ui-lib](https://github.com/wix/react-native-ui-lib).
 
 To that end, we are going to use [react-native-ui-lib](https://github.com/wix/react-native-ui-lib)
 
 ## About react-native-ui-lib
-[react-native-ui-lib](https://github.com/wix/react-native-ui-lib) is Wix's open source UI toolset & components library for React Native. It is fully maintained by the react-native-ui-lib team at Wix. 
+[react-native-ui-lib](https://github.com/wix/react-native-ui-lib) is Wix's open source UI toolset & components library for React Native. It is fully maintained by the react-native-ui-lib team at Wix.
 
-It was designed to enable developers to build and customize their own visual language so it is not specific in any way to Wix. The Wix mobile app, for example, is using a private UI library, wix-react-native-ui-lib, as a wrapper around react-native-ui-lib. Most of the components come directly from react-native-ui-lib, and are customized to Wix's mobile app's purpose and visual language.
+It was designed to enable developers to build and customize their own visual language so it is not specific in any way to Wix. The Wix mobile app, for example, is using a private UI library, wix-react-native-ui-lib, as a wrapper around react-native-ui-lib. Most of the components come directly from react-native-ui-lib and are customized to fit the purpose and visual language of the Wix mobile app.
 
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/ui-lib%20screens%20(1).png" align="center" height="600px">
 
-## Preliminaries
-1. Follow [these steps](https://github.com/wix/react-native-ui-lib/wiki/SETUP) to run the **ui-lib demo project** and play with it for a bit. Go over the **Presets**, check out the **components and inputs screen**, as well as the **lists** and view the **Apple music example**. 
+## Prerequisites
+1. Follow [these steps](https://github.com/wix/react-native-ui-lib/wiki/SETUP) to run the **ui-lib demo project** and play with it for a bit. Go over **Presets**, check out **components and inputs screen**, as well as **lists** and view the **Apple music example**.
+
 1. Read this article about **layout modifiers**: [Easy Layouting with React Native](https://medium.com/the-react-native-log/easy-layouting-with-react-native-b96c4c6fae7) (10 min)
 
 ### Useful links
@@ -26,18 +27,17 @@ It was designed to enable developers to build and customize their own visual lan
 
 ## 1. Install react-native-ui-lib
 
-Go to your terminal and run: `npm install --save react-native-ui-lib`
+In the terminal run: `npm install --save react-native-ui-lib`
 
-## 2. Change to wrapped components 
-react-native-ui-lib is a wrapper around react-native components 
-(i.e., it takes a normal react-native component and adds it additional capabilities and styling). 
-As a starting point, change all of your `View` and `Text` imports from **react-native** to **react-native-ui-lib**.
+## 2. Change to wrapped components
+react-native-ui-lib is a wrapper around react-native components (i.e., it takes a normal react-native component and adds to it additional capabilities and styling).
+TO start things off, change all of your `View` and `Text` imports from **react-native** to **react-native-ui-lib**.
 
 All of the changes above can be found in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/0695bd62bef51709ec9775fb6f4a0630ad82e5e2).
 
-# Centralizing Your Components' Style  
+# Centralizing the Style of Your Components
 
-Currently, our app is styling each component *separately*. For example, our style object of the title in the `ViewPost` screen can look something like this:
+Currently, our app is styling each component *separately*. For example, the style object of a title in the `ViewPost` screen can look something like this:
 
 ```js
 title: {
@@ -50,15 +50,15 @@ title: {
   }
 ```
 
-This is very bad. 
+That's a rather bad way to do it.
 
-> Why? We have lots of duplicated code located all around the app, and we don’t have any control over the app's style as a whole. Consider a large app with many developers and designers, where each of them can potentially use any style they want for each component, manually! That's too messy. Every little change, like in the size of all of our app's titles, will require getting into each screen. Creating a visual language includes having strict rules (or "presets") of styling, which determine for example the color and typography for ALL components of a certain type. 
+> Why? We have lots of duplicate code located all around and we don’t have any control over the style of the app as a whole. Consider working on large app with many developers and designers involved, where each of them can potentially use any style they want for any component! That's way too messy. Every little change, like in the size of all the titles, will require making changes to each screen. Creating a unified visual language includes having strict rules (or "presets") of styling, which determine, for example, the color and typography for ALL components of a certain type.
 
 Luckily, the ui-lib already comes with a set of predefined constants and presets, which define [colors](https://github.com/wix/react-native-ui-lib/blob/dec607df9c94fd37e3dc6f01b1db6847d24f1155/src/style/colorsPalette.js), [typography](https://github.com/wix/react-native-ui-lib/blob/dec607df9c/src/style/typography.js), [shadows](https://github.com/wix/react-native-ui-lib/blob/dec607df9c/src/style/shadows.js) and more. You can easily use these presets anywhere in your code. It's also very easy to [define your own presets](https://github.com/wix/react-native-ui-lib/wiki/STYLE).
 
-## 3. Start using the ui-lib's Presets 
-There are 2 ways to use predefined presets from the ui-lib and refactor your app to use them.
-**Import the presets and spread them in the style object:**
+## 3. Start using the ui-lib's Presets
+There are two ways to use predefined presets from the ui-lib and refactor your app to use them.
+**Import presets and use those in the style object:**
 
 ```js
 import {Colors, Typography} from 'react-native-ui-lib';
@@ -72,9 +72,9 @@ title: {
 ```
 
 **OR Use the ui-lib [modifiers](https://github.com/wix/react-native-ui-lib/wiki/MODIFIERS).**
-> As stated in the preliminaries, modifiers can be used for layout, but they can also be used for styling. They're quick, readable and require less code. You can check out in the documentation which modifiers can be used on each component. 
+> As we mentioned in prerequisites, modifiers can be used for layout, but they can also be used for styling. They're quick, readable and require less code.You will find more on using modifiers on components in the docs.
 
-For example, this is how your `ViewPost` screen can look like (we removed the styles object completely):
+For example, this is how your `ViewPost` screen can look like (we removed the style object completely):
 
 ```js
 import {Button} from 'react-native';
@@ -107,14 +107,12 @@ export default ViewPost;
 
 All of the changes above can be found in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/13d14804630120e38a1d04725cf3959c8ccc1206).
 
-# Playing with the Defaults 
+# Playing with the Defaults
 
-## 4. Make the “Delete” button special 
+## 4. Make the “Delete” button special
 
-The [Button](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/Button/) component is a good example of a simple component in the ui-lib. 
-You can [see](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/Button/) that it wraps the react-native TouchableOpacity component and adds a bunch of props, 
-which together comprise a default styling that you can easily play with.
-Lets' import our `Button` from the ui-lib instead of react-native and give it the following props: 
+The [Button](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/Button/) component is a good example of a simple component in the ui-lib.
+You can [see](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/Button/) that it wraps the react-native `TouchableOpacity` component and adds a bunch of props, which together comprise a default styling that you can easily play with. Let's import our `Button` from the ui-lib instead of react-native and give it the following props:
 
 ```js
 <Button
@@ -126,14 +124,13 @@ Lets' import our `Button` from the ui-lib instead of react-native and give it th
    onPress={this.onPostDeletePressed}
 />
 ```
-Try to use the `View` component and it's modifier to make the screen look like this:
+Now try to use the `View` component and it's modifier to make the screen look something like this:
 
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/deleteButton.png" align="center" height="600px">
 
 ## 5. Make your Text Inputs float and open
 
-Import the ui-lib's [`TextField`](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/TextField/) component.
-Use it to get a floating placeholder for the title and to open a modal for writing the post's text. 
+Import the ui-lib's [`TextField`](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/TextField/) component. Use it to get a "floating" placeholder text for the title and to open a modal which will be used to write in the actual text of the blog post.
 
 ```js
  <TextField
@@ -153,13 +150,12 @@ Use it to get a floating placeholder for the title and to open a modal for writi
 />
 ```
 
-Here is how our `TextField`s should look like now:  
+Here is how our `TextField` components should look like now:
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/textInputs.gif" align="center" height="600px">
 
 ## 6. Style your Posts List
 
-Use the ui-lib's [ListItem](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/ListItem/) component. 
-Update your `renderItem` function to give the list some basic styling:  
+Use the ui-lib's [ListItem](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/ListItem/) component. Update your `renderItem` function to give the list some basic styling:
 
 ```js
 import {Text, ListItem, Colors, BorderRadiuses, Image} from 'react-native-ui-lib';
@@ -222,13 +218,13 @@ const styles = StyleSheet.create({
 });
 ```
 
-The [ListItem](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/ListItem/) component is very flexible and was designed to support various styles, this is why the `renderItem` function seems a bit long. You can move it into a separated component.
+The [ListItem](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/ListItem/) component is very flexible and was designed to support various styles, this is why the `renderItem` function seems a bit long. You can move it into a separated component, if you like.
 
-As mentioned, the wix-react-native-ui-lib uses `ListItem` from the ui-lib and applies styling relevant only for the Wix App. So its API will look something like this:
+As mentioned above, the wix-react-native-ui-lib uses `ListItem` from the ui-lib and applies styling relevant only for the Wix App. So its API will look something like this:
 ```js
-<WixListItem 
-  title={post.title} 
-  subtitle={post.text} 
+<WixListItem
+  title={post.title}
+  subtitle={post.text}
   thumbnail={{uri: post.img}}
 />
 ```
@@ -237,8 +233,8 @@ All of the changes above can be found in this [commit](https://github.com/wix-pl
 
 ## Quick Recap
 Up until now:
-- You refactored your app's components to have a **consistent style**.
-- You got familiar with a few **react-native-ui-lib components, presets, and modifyers**, and can now go ahead and explore it further to give the app your own look.
+- You refactored the components of your app to have a **consistent style**.
+- You got familiar with a few **react-native-ui-lib components, presets, and modifiers**. You can now go ahead and explore those further to give the app your own look and feel.
 
 This is how our app looks like now:
 
@@ -246,16 +242,6 @@ This is how our app looks like now:
 
 # What’s Next
 
-We built an entire app without any Tests!!! Don’t tell Uncle Bob and let’s add some tests ASAP.  
+We built an entire app without any Tests! :scream:  Don’t tell Uncle Bob and let’s add some tests ASAP.
 
 - [**Step #4**: Add E2E Tests (with Detox)](App.e2e.md)
-
-
-
-
-
-
-
-
-
-

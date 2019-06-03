@@ -4,22 +4,22 @@
 
 ## What we're going to do
 
-In this section we will enable adding, displaying, and deleting a post with [Remx](https://github.com/wix/remx) - Wix's open source state management library, though you can use any state management solution you'd like (Redux, Mobx, or anything else).
+In this section we will enable adding, displaying, and deleting posts with [Remx](https://github.com/wix/remx) - Wix's open source state management library (though you could also use any other state management solution out there like Redux, Mobx, etc.).
 
 To that end, in this step we are going to:
 
 * Create a Remx store to hold and manage all of our posts' data.
 * Write actions to hold our business logic and invoke the store's getters and setters according to our needs.
-* Connect our `PostList` screen component to actions on the data from the store.
+* Connect the `PostList` screen component to actions, which will be used to modify data in the store.
 
 ## About Remx
 Remx is a state management library.
 
-When the Wix Mobile Team started to build the Wix App, they took a look at all of the well-known and battle-tested choices - Redux, Mobx, Local component state, and others. They felt that a large-scale project that lots of developers from different teams will work on, needs a combination that will take only the pros from each of these methods. And So Remx was born.
+When the Wix Mobile Team started to build the Wix App, they looked at all the well-known and battle-tested options - Redux, Mobx, Local component state, and others. They felt that a large-scale project which involved work by a lot of developers from different teams needs a combination that will take only the pros from each of existing solutions. And so Remx was born.
 
-Remx takes the redux (flux) architecture and enforces it through a short, simple, clean, strict, and easy to learn API. Almost zero boilerplate! And we think that it's time for you to fall in love with Remx. 
+Remx takes the redux (flux) architecture and enforces it through a short, simple, clean, strict, and easy to learn API. Almost zero boilerplate! And we think that it's time for you to fall in love with Remx.
 
-> We are not going to go into the big argument about Redux Vs Mobx Vs other state management solutions. Some of our projects use Redux, some use Mobx, some are even using both. We recommend using our own open source in-house state management library called Remx.
+> We are not going to go into the big argument about Redux Vs Mobx Vs other state management solutions. Some of our projects use Redux, some use Mobx, some are even using both.
 
 ## Preliminaries
 * Have no idea what Flux is? Watch the following [video](https://www.youtube.com/watch?v=nYkdrAPrdcw#t=10m10s) (14 min)
@@ -34,8 +34,7 @@ Remx takes the redux (flux) architecture and enforces it through a short, simple
 Go to your terminal and run: `npm install --save remx`
 
 ## 2. Create a Remx Store
-Create a `posts.store.js` file under the `posts` folder for your Remx store.
-The first thing that we need to decide is how our state will be structured - for simplicity use the following structure, where posts are **structured in an array**:
+Create a `posts.store.js` file in the `posts` folder of your Remx store. The first thing that we need to decide is how the state will be structured - for simplicity, let's use the following structure, where posts are **structured as an array**:
 
 ```js
 {
@@ -56,8 +55,8 @@ The first thing that we need to decide is how our state will be structured - for
 }
 ```
 
-> There are many tips for structuring your app state. You can read the following post: [Avoiding Accidental Complexity When Structuring Your App State](https://hackernoon.com/avoiding-accidental-complexity-when-structuring-your-app-state-6e6d22ad5e2a) by Tal Kol.  
-Following the tips in this article will probably lead you **not to use arrays** in a real project - indeed, it's not the smartest choice. We're doing it here just to keep our example as simple as possible, and to avoid the need to parse our data.
+> There are many tips for structuring your app state. You can read the following post: [Avoiding Accidental Complexity When Structuring Your App State](https://hackernoon.com/avoiding-accidental-complexity-when-structuring-your-app-state-6e6d22ad5e2a) by Tal Kol.
+Following the tips in this article will probably lead you to a conclusion to **not use arrays** in a real projects - indeed, it's not the smartest choice. We're doing it here just to keep our example as simple as possible, and to avoid the need to parse our data.
 
 Remx API is super slim and includes only 4 functions, we will use 3 of them now to hold and manage our posts' data in our `posts.store.js` file: state, getters, and setters.
 
@@ -65,10 +64,9 @@ Remx API is super slim and includes only 4 functions, we will use 3 of them now 
 
 We will define our state using `remx.state(initialState)`.
 
-* The `state` function takes a plain object and makes it observable (i.e., an object we're following its every change).
-Any change to the state will trigger a re-render of any connected react component that should be effected from the change. So for example if you have a state with two props, A and B, and you have a connected component that is using only prop A, only changes to prop A will trigger a re-render of the component.
-* The state should be defined **inside** the store, and should not be exported. 
-* All interactions with the state should be done through **exported** getters and setters. 
+* The `state` function takes a plain object and makes it observable (i.e., an object for which we will be following its every change). Any change to the state will trigger a re-render of any connected react components effected by the change. So for example if you have a state with two props, A and B, and you have a connected component that is using only prop A, only changes to prop A will trigger a re-render of the said component.
+* The state should be defined **inside** the store, and should not be exported.
+* All interactions with the state should be done through **exported** getters and setters.
 
 Here's what your `posts.store.js` file should look like:
 
@@ -80,22 +78,22 @@ const initialState = {
 const state = remx.state(initialState);
 ```
 
-## 4. Add Getters and Setters 
+## 4. Add Getters and Setters
 
-To **return** parts of the state, we will use `remx.getters(...)`. 
+To **return** parts of the state, we will use `remx.getters(...)`.
 
 To **change** parts of the state, we will use `remx.setters(...)`. So:
-  
-* All functions that will **return** parts of the state should be wrapped within the **getters** function. 
+
+* All functions that will **return** parts of the state should be wrapped within the **getters** function.
 * All functions that will **change** parts of the state should be wrapped within the **setters** function
 
-Wrapped getters and setters functions should be defined **inside the same store file** and **should be exported**.   
+Wrapped getters and setters functions should be defined **inside the same store file** and **should be exported**.
 
->Remx has an automatic caching mechanism for `getters` for preventing unnecessary renders.
+> Remx has an automatic caching mechanism for `getters` to prevent unnecessary renders.
 
-For now, our getters and setters will be pretty dumb, they will only set the posts and get the posts. That's because we structured our app with arrays. Later, however, we will add much more complex logic inside them, such as parsing the data or manipulating multiple parts of our state. 
+For now, our getters and setters will be pretty "dumb" - they will only set the posts and get the posts. That's because we structured our app with arrays. Later, however, we will add some much more complex logic within them, such as parsing data or manipulating multiple parts of the state.
 
-Your final `posts.store.js` file should look like this:  
+Your final `posts.store.js` file should look like this:
 
 ```js
 import * as remx from 'remx';
@@ -125,14 +123,14 @@ export const postsStore = {
 ```
 
 # Writing your first action
-Actions are where we put our imperative business logic, and so we call them by simply invoking them (with arguments if needed). Actions can be asynchronous, and shouldn't return anything (to enforce uni-directional data flow). 
+Actions are where we put our imperative business logic, we call them by simply invoking them (with arguments if needed). Actions can be asynchronous, and shouldn't return anything (to enforce [unidirectional data flow](https://flaviocopes.com/react-unidirectional-data-flow/)).
 
 Create a `posts.actions.js` file next to the `posts.store.js` file.
 
-> We don't need any dispatching function because our stores are just plain old JS objects (that we tested separately). So although not a part of the API (there's really nothing special about dispatch anyway), we encourage the separation of actions and stores for low coupling, and to put action files next to the same use-case store files, for high cohesion.
+> We don't need any dispatching function because our stores are just plain old JS objects (which we tested separately). So although not a part of the API (there's really nothing special about dispatch anyway), we encourage the separation of actions and stores for low coupling, and also to put action files next to the same use case store files, for high cohesion.
 
-## 5. Add the `fetchPosts` Action 
-The first action will fetch our posts from somewhere and update the posts store state with the setter that you just created. For now, we will “fake” the data that we will later receive from the server.  
+## 5. Add the `fetchPosts` Action
+The first action will fetch our posts and update the posts store state with the setter you just created. For now, we will “fake” the data which we will later receive from the server.
 
 Your action should look like this:
 
@@ -160,19 +158,17 @@ export function fetchPosts() {
 }
 ```
 
-# Displaying posts' data 
+# Displaying posts' data
 
 ## 6. Connect the PostsList screen to display posts from the store
-`remx.connect(mapStateToProps)(MyComponent)` connects a react component to the state. This function can optionally take a `mapStateToProps` function, for mapping the state into props.  
+
+`remx.connect(mapStateToProps)(MyComponent)` connects a react component to the state. This function can optionally take a `mapStateToProps` function, for mapping the state into props.
 
 > If you are used to redux you can keep working with `mapStateToProps` but it’s important to understand that you can also just import the store and call the getters straight from your component.
 
-In `componentDidMount`, use the `fetchPosts` action that you just created.  
-Create a `mapStateToProps` function that will use the getter that we created to get the posts. (You can also avoid using `mapStateToProps` and just call the getter when you need it.  
-Connect your component to the `mapStateToProps` function.  
-In the render function, add another Text component to display our posts as raw data (don’t worry we will convert it to a list really soon).
+In `componentDidMount`, use the `fetchPosts` action that you just created. Create a `mapStateToProps` function that will use the getter that we created to get the posts. You can also avoid using `mapStateToProps` and just call the getter when you need it. Connect your component to the `mapStateToProps` function. In the render function, add another Text component to display our posts as raw data (don’t worry, we will convert it to a list really soon).
 
-Here is what your `PostList.js` should look:
+Here is what your `PostList.js` should look like:
 
 ```js
 ...
@@ -222,12 +218,12 @@ All of the changes above can be found in this [commit](https://github.com/wix-pl
 
 ## 7. Create Your Own Local Server in 30 sec
 
-This will give you a REST API you can use. It will take only 30 sec using [Json-server](https://github.com/typicode/json-server).
+This will provide you with a REST API you can use. It will take only 30 sec using [Json-server](https://github.com/typicode/json-server).
 
-To install JSON Server run:  
+To install JSON Server run:
 `npm install -g json-server`
 
-Create a `db.json` file on the root folder with some initial post data, for example:
+Create a `db.json` file in the project root folder with some initial post data, for example:
 
 ```js
 {
@@ -250,16 +246,16 @@ Create a `db.json` file on the root folder with some initial post data, for exam
 }
 ```
 
-Add to your package json a script that will run your JSON server:  
+Let's also add add a script that will run your JSON server to your package json:
 `"fake-server": "json-server --watch db.json"`
 
-Run the fake server: `npm run fake-server`
+Now let's run the fake server: `npm run fake-server`
 
 That's it, you now have your own REST API server - go to [http://localhost:3000/posts/1](http://localhost:3000/posts/1) to get your posts.
 
-> Bug alert: If you are having issues with fetching from localhost on Android please follow this issue or use iOS:
+> Bug alert: If you are having issues with fetching from localhost on Android, please follow this issue or use iOS:
   https://github.com/facebook/react-native/pull/23984
-  You can also try to run [adb reverse](http://blog.grio.com/2015/07/android-tip-adb-reverse.html)
+> You can also try to run [adb reverse](http://blog.grio.com/2015/07/android-tip-adb-reverse.html)
 
 ## 8. Fetch Posts from the Server
 
@@ -276,26 +272,26 @@ export async function fetchPosts() {
   postsStore.setPosts(posts);
 }
 ```
-Upon refreshing the app, it should display the posts from your server.
+
+Now when you refresh the app, it should display the posts from your server.
 
 ## 9. Add a Remx Logger
 
-Remx has an API for adding a logger, to enable us to log all getter/setter, `mapStateToProps` and component render calls. 
+Remx has an API for adding a logger to enable us to log all getter/setter, `mapStateToProps` and component render calls.
 
-Just add the following lines to the `index.js` file:  
+Just add the following lines to the `index.js` file:
 `import {registerLoggerForDebug} from 'remx'`
 `registerLoggerForDebug(console.log); `
 
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/remx-logger.png" align="center">
-  
 
-Adding the logger, we can see the **full data flow** that we currently have in our app:  
+Adding the logger will allow you to see the **full data flow** that we currently have in our app:
 `mapStateToProps` with 0 posts > `PostsList` gets rendered > `setPosts` setters is called setting the posts from the server > `mapStateToProps` with the new posts > `PostsList` gets rendered again.
 
 That’s it, our Remx store and our own server are set, so we can continue working on our app logic (adding and deleting posts).
 
 # We are almost done
-We'll now add the remaining actions, starting with 'addPost'.
+We'll now add the remaining actions, starting with `addPost`.
 
 ## 10. Add a Post
 
@@ -307,8 +303,7 @@ addPost(post) {
 }
 ```
 
-> Normally, a Javascript array's contents is modified using mutative functions like push, unshift, and splice. 
-In our case, react-native FlatList(Which we are going to use) is a pure component so we can’t mutate the state directly. Here is a good link to learn more about [Immutable Update Patterns](https://redux.js.org/recipes/structuringreducers/immutableupdatepatterns). Another option will be to use [FlatList](https://facebook.github.io/react-native/docs/flatlist#extradata) extraData prop.
+> Normally, the contents of a Javascript array  is modified using mutative functions like push, unshift, and splice. In our case, react-native `FlatList` (Which we are going to use) is a pure component, so we can’t mutate the state directly. Here is a good link to learn more about [Immutable Update Patterns](https://redux.js.org/recipes/structuringreducers/immutableupdatepatterns). Another option will be to use [FlatList](https://facebook.github.io/react-native/docs/flatlist#extradata) extraData prop.
 
 Add your new action in `posts.actions.js`:
 
@@ -327,13 +322,13 @@ export async function addPost(post) {
 }
 ```
 
-Now, we will use the `addPost` action to save new posts.
+Now, we will use the `addPost` action to save new posts. We will:
 
-* We will add a `TextInput` in the `AddPost` screen.
-* We will use the component state to save the values of our text inputs.
-* We will use those values as our post data.
+* Add a `TextInput` in the `AddPost` screen.
+* Use the component state to save the value of the text input.
+* Use those saved values as our post data.
 
-Here is what your `AddPost.js` should look:
+Here is what your `AddPost.js` should look like:
 
 ```js
 import * as postsActions from '../posts.actions';
@@ -341,7 +336,7 @@ import * as postsActions from '../posts.actions';
 class AddPost extends Component {
 
   ...
-  
+
   constructor(props) {
     super(props);
     Navigation.events().bindComponent(this);
@@ -402,16 +397,15 @@ class AddPost extends Component {
 export default AddPost;
 ```
 
-Now, you should be able to add a new post.
-Your new post will be visible in the `PostsList` screen.
+Now you should be able to add a new post. Your new post will be visible in the `PostsList` screen.
 
 All actions described in this section are provided in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/d88307d9b0eb8084957e8c571e8d3427e60853a5).
-            
+
 ## 11. Displaying a Post on the `ViewPost` screen
 
-It’s time to spend some time on our posts list and ViewPost screen. 
+It’s time to spend some time on our posts list and ViewPost screens.
 
-Use react-native [FlatList](https://facebook.github.io/react-native/docs/flatlist) to create a list of your posts, and pass the post to the ViewPost screen.
+Use react-native [FlatList](https://facebook.github.io/react-native/docs/flatlist) to create a list of your posts and pass the post to the ViewPost screen.
 
 This is how your `PostsList.js` file should look like
 ```js
@@ -466,24 +460,22 @@ class PostsList extends Component {
 ...
 ```
 
-We are now passing the post as a prop to the `ViewPost` screen.
-Go ahead and render the post on the ViewPost screen.
-
+We are now passing the post as a prop to the `ViewPost` screen. Go ahead and render the post on the ViewPost screen.
 
 All actions described in this section are provided in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/1cfffd6be2cb7255d6bb2d86f1b342cf47bdf46a?diff=unified).
 
 ## 12. Delete a Post
-When clicking on the `Delete` button on the `ViewPost` scrren, we will need to delete the post from the server and then delete it from our state.   
-Again, start with your store and add a `deletePost` setter in the store:
+Clicking on the `Delete` button on the `ViewPost` screen must tell our app to delete the post from the server and then delete it from our state. Again, start with your store and add a `deletePost` setter in the store:
 
 ```js
 deletePost(id) {
     state.posts = filter(state.posts, post => post.id !== id);
 }
 ```
+
 > We are using a lodash filter function that does not mutate the state and returns a new array.
 
-Add the `deletePost` action in your `posts.actions.js`file:
+Add the `deletePost` action in your `posts.actions.js` file:
 
 ```js
 export async function deletePost(id) {
@@ -502,27 +494,19 @@ All actions described in this section are provided in this [commit](https://gith
 
 So here is what we did so far:
 
-* Created a Remx store and connected it to our `PostList` screen
+* Created a Remx store and connected it to our `PostList` screen.
 * Created a fake server in 30 sec.
 * Learned how to work with Remx and async actions.
-* Started to implement our app features. Each feature started with creating the setter in the store > implementing the action > using it in the component.
+* Started to implement our app features. For each feature we created the setter in the store > implemented the action > used it in the component.
 
 ## Feel like you're up for a challenge?
-Try implementing the following feature: from the `PostView` screen add an **Edit button** which will open a modal, in which you will be able to edit posts. 
+Try implementing the following feature: from the `PostView` screen add the **Edit button** which will open a modal, in which you will be able to edit posts.
 Think about the following questions before you start:
 1. Should the `EditPost` screen be a pushed screen or a modal?
-2. When you update the post, would the `PostList` screen be re-rendered and updated? Why? 
+2. When you update the post, would the `PostList` screen need to be re-rendered and updated? Why?
 3. Would the `ViewPost` screen be re-rendered and updated? Why? What do we need to do to make it work?
 
 -----
 
 ## What’s Next
 * [Step #3: Style the app (with react native ui lib)](App.UiLib.md)
-
-
-
-
-
-
-
-

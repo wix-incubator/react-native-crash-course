@@ -8,9 +8,7 @@ First of all — user expectations. Here are some interesting numbers:
 * More than half of users blame the app for being slow, not their device.
 * Four out of five users will attempt to use a slow app only 3 times or less before removing it.
 
-Furthermore, mobile devices are used more than desktop machines. It’s a matter of access and it depends on the time of day and other factors, but the tendency clearly is for people to use their mobile phones more.
-
-> :point_right: I suggest maybe adding some reference links above to prove the point you are making (this is just a suggestion, of course).
+Furthermore, mobile devices are used more than desktop machines. It’s a matter of access and it depends on the time of day and other factors, but [the tendency clearly is for people to use their mobile phones more](https://techjury.net/stats-about/mobile-vs-desktop-usage/).
 
 ## 1. Improve the initial start-up time.
 "Lazy require" should help you with the start time of your app. Instead of importing dependencies at the top of the file, require those only when you actually need them.

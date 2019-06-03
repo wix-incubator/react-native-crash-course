@@ -15,8 +15,6 @@ It was designed to enable developers to build and customize their own visual lan
 
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/ui-lib%20screens%20(1).png" align="center" height="600px">
 
-> :point_right: Just a note to make sure the screenshot above is up to date with the current (most recent) look of the Wix app.
-
 ## Prerequisites
 1. Follow [these steps](https://github.com/wix/react-native-ui-lib/wiki/SETUP) to run the **ui-lib demo project** and play with it for a bit. Go over **Presets**, check out **components and inputs screen**, as well as **lists** and view the **Apple music example**.
 

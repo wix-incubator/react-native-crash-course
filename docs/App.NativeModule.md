@@ -1,7 +1,3 @@
-> :point_right: I'm not sure this file is linked to / referenced anywhere in the tutorial, except for the intro section. I left a note in `App.tests.md` about linking from that file here.
-
-> :point_right: In some parts of this file Toast is capitalized, in some it is not. I am not sure which is the correct way to do it, but there is most certainly only one. This I am leaving to the file author / owner to pick one correct spelling.
-
 # Creating a Native Module in React Native
 ## What’s a Native Module?
 A native module is a set of javascript functions that are implemented natively for each platform (in our case that's iOS and Android). It's used in cases where native capabilities are needed - when react native doesn't have a corresponding module yet or when native performance is better.
@@ -58,8 +54,6 @@ Open up the Android folder using Android Studio.
 
 First, run the build process using the Android Studio suggestions (in my case it was changing in the `build.gradle` file’s classpath value to **‘com.android.tools.build:gradle:2.3.2’**, buildToolsVersion to **‘25.0.0’**).
 
-> :point_right: I don't understand the paragraph above, the part in parentheses. Could someone who has worked with native Android development look at it and let me know if it makes sense?
-
 Make sure to change the package name in order to prevent any naming conflicts with other native libraries:
 
 * Under the java directory rename the `com.reactlibrary` directory to `com.reactlibrarynativetoast`.
@@ -83,8 +77,6 @@ public void show(String text) {
 There isn't a Toast object in iOS, but there is the `UIAlertController`, which can have similar functionality (using the `actionSheet` style and dismissing it after a certain time).
 
 In order to show the UIAlertController we need to get the top most UIViewController of the app. We can get it by creating a new UIWindow with an invisible UIViewController.
-
-> :point_right: In the paragraph above, is `UIViewController` a function, an object, a layer, something else? Asking because saying "top most UIViewController of the app" makes little sence and has no context for me. I lack native iOS dev knowledge to be able to properly edit the paragraph above in it's current state...
 
 Open `RNNativeToastLibrary.xcodeporj` in Xcode.
 

@@ -125,8 +125,6 @@ export const postsStore = {
 # Writing your first action
 Actions are where we put our imperative business logic, we call them by simply invoking them (with arguments if needed). Actions can be asynchronous, and shouldn't return anything (to enforce [unidirectional data flow](https://flaviocopes.com/react-unidirectional-data-flow/)).
 
-> :point_right: I added a link above explaining what unidirectional data flow is, since some might not be aware of this this concept and might be interested in further reading (like me). I grabbed an article I thought was short and to the point, but please feel free to link something else above instead.
-
 Create a `posts.actions.js` file next to the `posts.store.js` file.
 
 > We don't need any dispatching function because our stores are just plain old JS objects (which we tested separately). So although not a part of the API (there's really nothing special about dispatch anyway), we encourage the separation of actions and stores for low coupling, and also to put action files next to the same use case store files, for high cohesion.

@@ -136,8 +136,4 @@ We hope that you are starting to get the feeling of why tests are good for you a
 -----
 
 ## What’s Next
-* [Performance - Tools and Best Practices](App.performance.md)
-
-> :point_right: Link above was set to WIP. Was I correct in fixing it to point to the `App.preformande.md` file or is this section indeed still a WIP?
-
-> :point_right: But more importantly, should this actually link to [Adding a Native Module](App.NativeModule.md) instead?
+* [Adding a Native Module](App.NativeModule.md)

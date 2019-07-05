@@ -26,18 +26,16 @@ It was designed to enable developers to build and customize their own visual lan
 # Getting Started
 
 ## 1. Install react-native-ui-lib
-
 In the terminal run: `npm install --save react-native-ui-lib`
 
 ## 2. Change to wrapped components
-react-native-ui-lib is a wrapper around react-native components (i.e., it takes a normal react-native component and adds to it additional capabilities and styling).
-TO start things off, change all of your `View` and `Text` imports from **react-native** to **react-native-ui-lib**.
-
-All of the changes above can be found in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/0695bd62bef51709ec9775fb6f4a0630ad82e5e2).
+`react-native-ui-lib` provide some wrappers around react-native components (i.e., it takes a normal react-native component and adds to it additional capabilities and styling).
+To start things off, change all of your `View` and `Text` imports from **react-native** to **react-native-ui-lib**. <br>
+While this is not mandatory, it will give you tools to layout and style your screen easilty with [modifiers](https://github.com/wix/react-native-ui-lib/wiki/MODIFIERS)
 
 # Centralizing the Style of Your Components
 
-Currently, our app is styling each component *separately*. For example, the style object of a title in the `ViewPost` screen can look something like this:
+Currently, our app is styling each component *separately*. For example, the style object of a title can look something like this:
 
 ```js
 title: {
@@ -54,7 +52,7 @@ That's a rather bad way to do it.
 
 > Why? We have lots of duplicate code located all around and we don’t have any control over the style of the app as a whole. Consider working on large app with many developers and designers involved, where each of them can potentially use any style they want for any component! That's way too messy. Every little change, like in the size of all the titles, will require making changes to each screen. Creating a unified visual language includes having strict rules (or "presets") of styling, which determine, for example, the color and typography for ALL components of a certain type.
 
-Luckily, the ui-lib already comes with a set of predefined constants and presets, which define [colors](https://github.com/wix/react-native-ui-lib/blob/dec607df9c94fd37e3dc6f01b1db6847d24f1155/src/style/colorsPalette.js), [typography](https://github.com/wix/react-native-ui-lib/blob/dec607df9c/src/style/typography.js), [shadows](https://github.com/wix/react-native-ui-lib/blob/dec607df9c/src/style/shadows.js) and more. You can easily use these presets anywhere in your code. It's also very easy to [define your own presets](https://github.com/wix/react-native-ui-lib/wiki/STYLE).
+Luckily, the ui-lib already comes with a set of predefined constants and presets, which define colors, typography, shadows and more. You can easily use these presets anywhere in your code. It's also very easy to [define your own presets](https://github.com/wix/react-native-ui-lib/wiki/STYLE).
 
 ## 3. Start using the ui-lib's Presets
 There are two ways to use predefined presets from the ui-lib and refactor your app to use them.

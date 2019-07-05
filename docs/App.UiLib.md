@@ -13,8 +13,6 @@ To that end, we are going to use [react-native-ui-lib](https://github.com/wix/re
 
 It was designed to enable developers to build and customize their own visual language so it is not specific in any way to Wix. The Wix mobile app, for example, is using a private UI library, wix-react-native-ui-lib, as a wrapper around react-native-ui-lib. Most of the components come directly from react-native-ui-lib and are customized to fit the purpose and visual language of the Wix mobile app.
 
-Please read more in our uilib's [Wiki Page](https://github.com/wix-private/wix-react-native-ui-lib/wiki) (see table of content)
-
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/ui-lib%20screens%20(1).png" align="center" height="600px">
 
 ## Prerequisites
@@ -28,8 +26,7 @@ Please read more in our uilib's [Wiki Page](https://github.com/wix-private/wix-r
 # Getting Started
 
 ## 1. Install react-native-ui-lib
-[Read here.](https://github.com/wix-private/wix-react-native-ui-lib/wiki/INSTALLATION-&-USAGE)
-
+In the terminal run: `npm install --save react-native-ui-lib`
 
 ## 2. Change to wrapped components
 `react-native-ui-lib` provide some wrappers around react-native components (i.e., it takes a normal react-native component and adds to it additional capabilities and styling).
@@ -56,8 +53,6 @@ That's a rather bad way to do it.
 > Why? We have lots of duplicate code located all around and we don’t have any control over the style of the app as a whole. Consider working on large app with many developers and designers involved, where each of them can potentially use any style they want for any component! That's way too messy. Every little change, like in the size of all the titles, will require making changes to each screen. Creating a unified visual language includes having strict rules (or "presets") of styling, which determine, for example, the color and typography for ALL components of a certain type.
 
 Luckily, the ui-lib already comes with a set of predefined constants and presets, which define colors, typography, shadows and more. You can easily use these presets anywhere in your code. It's also very easy to [define your own presets](https://github.com/wix/react-native-ui-lib/wiki/STYLE).
-
-Read about the preset and how to use there [here.](https://github.com/wix-private/wix-react-native-ui-lib/wiki/The-Basics)
 
 ## 3. Start using the ui-lib's Presets
 There are two ways to use predefined presets from the ui-lib and refactor your app to use them.

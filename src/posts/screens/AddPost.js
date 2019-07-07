@@ -8,23 +8,25 @@ import * as Presenter from './AddPost.presenter';
 class AddPost extends Component {
 
   static propTypes = {
-    componentId: PropTypes.string
+    componentId: PropTypes.string,
+    postToUpdate: PropTypes.object
   };
 
   constructor(props) {
     super(props);
     Navigation.events().bindComponent(this);
+    const {postToUpdate} = this.props;
     this.state =  {
-      title: '',
-      text: ''
+      title: postToUpdate && postToUpdate.title,
+      text: postToUpdate && postToUpdate.text
     }
   }
 
-  static options() {
+  static options(props) {
     return {
       topBar: {
         title: {
-          text: 'Add Post'
+          text: props.postToUpdate ? 'Edit Post' : 'Add Post'
         },
         rightButtons: [{
           id: 'saveBtn',
@@ -61,10 +63,12 @@ class AddPost extends Component {
   };
 
   onSavePressed = () => {
+    const {componentId, postToUpdate} = this.props;
     Presenter.onSavePressed({
-      componentId: this.props.componentId,
+      componentId: componentId,
       title: this.state.title,
-      text: this.state.text
+      text: this.state.text,
+      postToUpdate
     });
   };
 
@@ -74,18 +78,20 @@ class AddPost extends Component {
         <Text  text40 green10 marginB-12>AddPost Screen</Text>
         <TextField
           testID="add-title-input"
+          value={this.state.title}
           text70
           containerStyle={{marginBottom: 12}}
           floatingPlaceholder
-          placeholder="Add a Catchy Title"
+          placeholder="Post Title"
           onChangeText={this.onChangeTitle}
           floatOnFocus
         />
         <TextField
           testID="add-text-input"
+          value={this.state.text}
           text70
           floatingPlaceholder
-          placeholder="This is the beginning of a great post"
+          placeholder="Post text"
           onChangeText={this.onChangeText}
           expandable
         />

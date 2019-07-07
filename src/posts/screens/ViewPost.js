@@ -1,16 +1,50 @@
 import React, {Component} from 'react';
-import {View, Text, Button} from 'react-native-ui-lib';
+import {View, Text, Button, LoaderScreen} from 'react-native-ui-lib';
 import PropTypes from 'prop-types';
 import {Navigation} from 'react-native-navigation';
+import {connect} from 'remx';
 
 import * as postsActions from '../posts.actions';
+import {postsStore} from '../posts.store';
+import * as postsNavigation from '../posts.navigation';
 
 class ViewPost extends Component {
 
   static propTypes = {
     componentId: PropTypes.string,
-    post: PropTypes.object
+    post: PropTypes.object,
+    postId: PropTypes.number
   };
+
+  constructor(props) {
+    super(props);
+
+    Navigation.events().bindComponent(this);
+  }
+
+  static options() {
+    return {
+      topBar: {
+        rightButtons: [
+          {
+            id: 'editPost',
+            testID: 'edit-post-btn',
+            text: 'Edit'
+          }
+        ]
+      }
+    };
+  }
+
+  navigationButtonPressed({buttonId}) {
+    if (buttonId === 'editPost') {
+      this.onEditPostPress();
+    }
+  }
+
+  onEditPostPress = () => {
+    postsNavigation.showAddPostModal(this.props.post);
+  }
 
   onPostDeletePressed = async () => {
     Navigation.pop(this.props.componentId);
@@ -18,6 +52,9 @@ class ViewPost extends Component {
   }
 
   render() {
+    if(!this.props.post){
+      return <LoaderScreen/>
+    }
     const {title, text} = this.props.post;
 
     return (
@@ -40,4 +77,10 @@ class ViewPost extends Component {
   }
 }
 
-export default ViewPost;
+function mapStateToProps(props) {
+  return {
+    post: postsStore.getPost(props.postId)
+  };
+}
+
+export default connect(mapStateToProps)(ViewPost);

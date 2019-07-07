@@ -11,6 +11,11 @@ export async function addPost(post) {
   postsStore.addPost(postToAdd);
 }
 
+export async function updatePost(post) {
+  postsStore.updatePost(post);
+  await ServerApi.updatePost(post);
+}
+
 export async function deletePost(id) {
   await ServerApi.deletePost(id);
   postsStore.deletePost(id);

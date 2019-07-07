@@ -505,6 +505,9 @@ Think about the following questions before you start:
 1. Should the `EditPost` screen be a pushed screen or a modal?
 2. When you update the post, would the `PostList` screen need to be re-rendered and updated? Why?
 3. Would the `ViewPost` screen be re-rendered and updated? Why? What do we need to do to make it work?
+4. Do you need to create a new `EditPost` screen or can we use the `AddPost` screen?
+
+You can check out the repo if you need a hint.
 
 -----
 

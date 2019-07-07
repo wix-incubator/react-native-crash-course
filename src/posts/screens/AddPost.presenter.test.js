@@ -58,4 +58,26 @@ describe('AddPost presenter', () => {
     });
   });
 
+  it('should call update post action when clicking on save if given post to update', () => {
+    const postToUpdate = {
+      id: 1,
+      title: 'old-title',
+      text: 'old-text',
+      img: 'old-image'
+    }
+    Presenter.onSavePressed({
+      componentId: mockComponentId,
+      title: mockTitle,
+      text: mockText,
+      postToUpdate
+    });
+
+    expect(postsActions.updatePost).toHaveBeenCalledWith({
+      id: 1,
+      title: mockTitle,
+      text: mockText,
+      img: 'old-image'
+    });
+  });
+
 });

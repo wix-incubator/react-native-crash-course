@@ -1,3 +1,5 @@
+import * as ServerApi from './api';
+
 describe('posts actions', () => {
 
   let postsActions, mockStore, mockFetchPosts, mockAddPost;
@@ -31,7 +33,8 @@ describe('posts actions', () => {
     jest.mock('./api', () => ({
       fetchPosts: mockFetchPosts,
       addPost: mockAddPost,
-      deletePost: jest.fn()
+      deletePost: jest.fn(),
+      updatePost: jest.fn()
     }));
 
     postsActions = require('./posts.actions');
@@ -46,6 +49,14 @@ describe('posts actions', () => {
     await postsActions.addPost(mockPost);
     expect(mockStore.addPost).toHaveBeenCalledWith({...mockPost, id: 'mock-id'});
   });
+
+  it('should update a post', async () => {
+    const serverUpdatePost = require('./api').updatePost;
+    await postsActions.updatePost(mockPost);
+    expect(mockStore.updatePost).toHaveBeenCalledWith(mockPost);
+    expect(serverUpdatePost).toHaveBeenCalledWith(mockPost);
+  });
+
 
   it('should delete a post', async () => {
     await postsActions.deletePost('mock-id');

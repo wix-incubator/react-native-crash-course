@@ -45,4 +45,16 @@ describe('Example', () => {
     await expect(driver.get.post(2)).toBeNotVisible();
   });
 
+  it('should update a post', async () => {
+    const postId = 1;
+
+    await driver.when.pressOnPost(postId);
+    await driver.when.pressOnEditPostBtn();
+    await driver.when.typeTitle('-updated');
+    await driver.when.pressOnSave();
+
+    await expect(driver.get.postTitle()).toHaveText('Post 1-updated');
+    await expect(driver.get.postText()).toHaveText('post 1 text');
+  });
+
 });

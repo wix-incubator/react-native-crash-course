@@ -34,11 +34,25 @@ async function deletePost(id) {
   return Promise.resolve();
 }
 
+async function updatePost(post) {
+  mockPostsFromServer = mockPostsFromServer.map(item => {
+    if (item.id !== post.id) {
+      return item
+    }
+      return {
+        ...item,
+        ...post
+      }
+  });
+  return Promise.resolve();
+}
+
 module.exports = {
   reset,
   fetchPosts,
   addPost,
-  deletePost
+  deletePost,
+  updatePost
 };
 
 

@@ -49,7 +49,7 @@ class PostsList extends Component {
   pushViewPostScreen = post => {
     postsNavigation.pushViewPostScreen({
       componentId: this.props.componentId,
-      post
+      postId: post.id
     });
   };
 

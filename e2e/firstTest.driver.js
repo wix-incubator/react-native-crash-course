@@ -1,6 +1,7 @@
 const when = {
   pressOnPost: id => get.post(id).tap(),
   pressOnAddPostBtn: () => element(by.id('add-post-btn')).tap(),
+  pressOnEditPostBtn: () => element(by.id('edit-post-btn')).tap(),
   typeTitle: title => get.titleInput().typeText(title),
   pressOnSave: () => element(by.id('save-post-btn')).tap(),
   scrollToBottom: () => get.postsList().scrollTo('bottom'),

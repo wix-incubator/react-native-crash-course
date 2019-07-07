@@ -1,11 +1,11 @@
 import {Navigation} from 'react-native-navigation';
 
-export function pushViewPostScreen({componentId, post}) {
+export function pushViewPostScreen({componentId, postId}) {
   Navigation.push(componentId, {
     component: {
       name: 'blog.ViewPost',
       passProps: {
-        post
+        postId
       },
       options: {
         topBar: {
@@ -18,12 +18,15 @@ export function pushViewPostScreen({componentId, post}) {
   });
 }
 
-export function showAddPostModal() {
+export function showAddPostModal(postToUpdate) {
   Navigation.showModal({
     stack: {
       children: [{
         component: {
           name: 'blog.AddPost',
+          passProps: {
+            postToUpdate
+          }
         }
       }]
     }

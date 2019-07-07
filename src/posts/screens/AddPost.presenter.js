@@ -14,12 +14,17 @@ export function onChangeTitle({componentId, title}) {
   });
 }
 
-export function onSavePressed({componentId, title, text}) {
+export function onSavePressed({componentId, title, text, postToUpdate}) {
   Navigation.dismissModal(componentId);
-  const randomImageNumber = Math.floor((Math.random() * 500) + 1);
-  postsActions.addPost({
-    title,
-    text,
-    img: `https://picsum.photos/200/200/?image=${randomImageNumber}`,
-  });
+  if (postToUpdate) {
+    const post = {...postToUpdate, title, text};
+    postsActions.updatePost(post);
+  } else {
+    const randomImageNumber = Math.floor((Math.random() * 500) + 1);
+    postsActions.addPost({
+      title,
+      text,
+      img: `https://picsum.photos/200/200/?image=${randomImageNumber}`,
+    });
+  }
 }

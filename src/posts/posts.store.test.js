@@ -43,6 +43,12 @@ describe('posts store', () => {
     expect(postsStore.getPosts()).toEqual([...mockPosts, mockPost]);
   });
 
+  it('should get a post', () => {
+    postsStore.setPosts(mockPosts);
+
+    expect(postsStore.getPost(1)).toEqual(mockPosts[0]);
+  });
+
   it('should delete a post', () => {
     postsStore.setPosts(mockPosts);
     postsStore.addPost(mockPost);
@@ -50,5 +56,16 @@ describe('posts store', () => {
     postsStore.deletePost(mockPost.id);
 
     expect(postsStore.getPosts()).toEqual(mockPosts);
+  });
+
+  it('should update a post', () => {
+    const updatedPost = {
+      id: 1,
+      title: 'new-title',
+      text: 'new-text'
+    };
+    postsStore.setPosts(mockPosts);
+    postsStore.updatePost(updatedPost);
+    expect(postsStore.getPost(1)).toEqual({...mockPosts[0], ...updatedPost});
   });
 });

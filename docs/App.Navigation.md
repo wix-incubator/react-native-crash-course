@@ -150,7 +150,7 @@ Now we want to enable the following behavior: when a user clicks on the text, th
 
 ### 5. Push a Screen into the Navigation Stack
 
-To push a new screen into this screen’s navigation stack, we will use [Navigation.push](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=pushcomponentid-layout). This method expects to receive the current `componentId` which can be found in `props.componentID`.
+To push a new screen into this screen’s navigation stack, we will use [Navigation.push](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=pushcomponentid-layout). This method expects to receive the current `componentId` which can be found in `props.componentId`.
 
 So in `PostsList.js` create a `pushViewPostScreen` function and attach it to the `onPress` event of the Text item.
 

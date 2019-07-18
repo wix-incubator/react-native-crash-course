@@ -61,11 +61,10 @@ Feel like you want to take it slow? Go through each of the following sections, l
 
 ## Async code
 #### Learn
+* [Video- async / await in JavaScript - What, Why and How - Fun Fun Function](https://www.youtube.com/watch?v=568g8hxJJp4&index=4&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
 * [Timers](https://medium.freecodecamp.org/javascript-timers-everything-you-need-to-know-5f31eaa37162)
-* [Callbacks](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch2.md)
 * [Promises](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch3.md)
 * [Async Await](https://hackernoon.com/an-ode-to-async-await-7da2dd3c2056)
-* [Video- async / await in JavaScript - What, Why and How - Fun Fun Function](https://www.youtube.com/watch?v=568g8hxJJp4&index=4&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
 #### Practice
 * Complete the following katas from the following [list](https://www.codewars.com/collections/async-and-promises)
 

@@ -47,8 +47,12 @@ open ~/.zshrc
 ```
 alias openzshrc="open -a /Applications/Visual\ Studio\ Code.app ~/.zshrc"
 ```
+3. Apply changes via:
 
-3. Type `openzshrc`  in your terminal and check that it worked ;)
+```
+source ~/.zshrc
+```
+4. Type `openzshrc`  in your terminal and check that it worked ;)
 
 > **Notice**: This example alias will work on a Mac with the MS Visual Studio IDE installed; running `openzshrc` should have opened the Visual Studio for you. More on IDEs below.
 

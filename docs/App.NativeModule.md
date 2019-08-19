@@ -30,7 +30,7 @@ In the terminal, navigate to the folder where you want your project to live and 
 
 After that also create the module:
 
-`react-native-create-library - — platforms ios,android NativeToastLibrary`
+`react-native-create-library -—platforms ios,android NativeToastLibrary`
 
 Your new module project structure should look like this:
 

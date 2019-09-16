@@ -42,13 +42,13 @@ Create a `posts.store.js` file in the `posts` folder of your Remx store. The fir
     {
       "id": 1,
       "title": "Post 1",
-      "author": "Post 1 text",
+      "text": "Post 1 text",
       "img": "https://picsum.photos/200/200/?image=1"
     },
     {
       "id": 2,
       "title": "Post 2",
-      "author": "Post 2 text",
+      "text": "Post 2 text",
       "img": "https://picsum.photos/200/200/?image=2"
     }
   ]

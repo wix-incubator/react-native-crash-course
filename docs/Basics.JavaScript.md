@@ -35,7 +35,7 @@ Feel like you want to take it slow? Go through each of the following sections, l
 
 ## Basics
 #### Learn
-* [Into JavaScript](https://github.com/getify/You-Dont-Know-JS/blob/master/up%20%26%20going/ch2.md)
+* [Into JavaScript](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/up%20%26%20going/ch2.md)
 * [A Simple, Comprehensive Overview of Javascript](https://betterexplained.com/articles/the-single-page-javascript-overview/)
 #### Practice
 * Complete at least 10 katas from the following [list](https://www.codewars.com/kata/search/javascript?q=&r%5B%5D=-8&tags=Fundamentals&beta=false&order_by=popularity+desc)
@@ -43,10 +43,10 @@ Feel like you want to take it slow? Go through each of the following sections, l
 ## Functions
 #### Learn
 * [MDN - Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
-* [What is scope](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch1.md)
-* [Function and Block scopes](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md)
-* [Hoisting](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch4.md)
-* [Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md)
+* [What is scope](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/scope%20%26%20closures/ch1.md)
+* [Function and Block scopes](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/scope%20%26%20closures/ch3.md)
+* [Hoisting](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/scope%20%26%20closures/ch4.md)
+* [Closures](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/scope%20%26%20closures/ch5.md)
 * [Functional programming in JavaScript](https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84) (High-order functions, Map, Reduce, Closures)
 #### Practice
 * Complete at least 5 katas from the following [list](https://www.codewars.com/kata/search/javascript?beta=false&order_by=popularity+desc&q=&tags=Functions%2CFunctional+Programming%2CHigher-order+Functions)
@@ -54,8 +54,8 @@ Feel like you want to take it slow? Go through each of the following sections, l
 ## Object construction
 #### Learn
 * [Videos](https://www.youtube.com/playlist?list=PL0zVEGEvSaeHBZFy6Q8731rcwk0Gtuxub)
-* [What is this?](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch1.md)
-* [Object.create](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch5.md )
+* [What is this?](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20%26%20object%20prototypes/ch1.md)
+* [Object.create](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20%26%20object%20prototypes/ch5.md )
 #### Practice
 * Complete at least 5 katas from the following [list](https://www.codewars.com/kata/search/javascript?beta=false&order_by=popularity+desc&q=&tags=Objects%2CObject-oriented+Programming%2CClasses)
 
@@ -63,7 +63,7 @@ Feel like you want to take it slow? Go through each of the following sections, l
 #### Learn
 * [Video- async / await in JavaScript - What, Why and How - Fun Fun Function](https://www.youtube.com/watch?v=568g8hxJJp4&index=4&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
 * [Timers](https://medium.freecodecamp.org/javascript-timers-everything-you-need-to-know-5f31eaa37162)
-* [Promises](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch3.md)
+* [Promises](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/ch3.md)
 * [Async Await](https://hackernoon.com/an-ode-to-async-await-7da2dd3c2056)
 #### Practice
 * Complete the following katas from the following [list](https://www.codewars.com/collections/async-and-promises)
@@ -71,7 +71,7 @@ Feel like you want to take it slow? Go through each of the following sections, l
 ## ES6 syntax
 #### Learn
 * [Learn ES6 - EggHead](https://egghead.io/courses/learn-es6-ecmascript-2015)
-* [Overview](https://github.com/getify/You-Dont-Know-JS/blob/master/es6%20%26%20beyond/ch2.md)
+* [Overview](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/es6%20%26%20beyond/ch2.md)
 * [var, let and const - What, why and how - ES6 JavaScript Features](https://www.youtube.com/watch?v=sjyJBL5fkp8&index=5&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
 * [Arrow functions in JavaScript - What, Why and How - FunFunFunction](https://www.youtube.com/watch?v=6sQDTgOqh-I&index=7&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
 * [Destructuring: What, Why and How - Part 1 of ES6 JavaScript Features](https://www.youtube.com/watch?v=PB_d3uBkQPs&index=8&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)

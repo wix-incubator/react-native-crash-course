@@ -30,7 +30,7 @@ In the terminal, navigate to the folder where you want your project to live and 
 
 After that also create the module:
 
-`react-native-create-library - — platforms ios,android NativeToastLibrary`
+`react-native-create-library --platforms ios,android NativeToastLibrary`
 
 Your new module project structure should look like this:
 
@@ -71,6 +71,14 @@ public void show(String text) {
 ```
 
 `@ReactMethod` marks this method as public for react native so it can be used in the JS project.
+
+Depending on your version of React Native you might also need to add the following imports to `RNNativeToastLibraryModule`:
+```
+import android.content.Context;
+import android.widget.Toast;
+
+import com.facebook.react.bridge.ReactMethod;
+```
 
 ###### Setup Toast in iOS
 

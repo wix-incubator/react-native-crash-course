@@ -47,6 +47,8 @@ As `react-native-navigation` is a native navigation library, so integrating it i
 
 Make sure your app is still running in both simulators and that you are not getting any red screens.
 
+:exclamation: If you're running React Native 0.60+ make sure you install React Native Navigation v3.0.0 or later.
+
 # Adding the Screens
 ### 3. Create and Register Screens
 
@@ -294,7 +296,7 @@ class AddPost extends Component {
         }],
         leftButtons: [{
           id: 'cancelBtn',
-          icon: require('../../icons/x.icon.png')
+          icon: require('../../icons/x.png')
         }]
       }
     };

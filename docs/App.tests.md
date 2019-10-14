@@ -125,6 +125,13 @@ A couple of hints:
 * Use jest.mock to mock `posts.actions`
 * If you are having trouble, you can take a look at the final tests [here](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/src/posts/screens/AddPost.presenter.test.js)
 
+:exclamation: If you're having trouble testing TopBar buttons it's possible that Jest is caching React Native Navigation module, so you should reset your module imports after each test:
+```
+afterEach(() => {
+  jest.resetModules();
+});
+```
+
 ## Quick Recap
 
 Up until now:

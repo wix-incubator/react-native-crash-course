@@ -469,7 +469,7 @@ Clicking on the `Delete` button on the `ViewPost` screen must tell our app to de
 
 ```js
 deletePost(id) {
-    state.posts = filter(state.posts, post => post.id !== id);
+    state.posts = state.posts.filter(post => post.id !== id);
 }
 ```
 

@@ -207,7 +207,7 @@ Lastly, type `npm publish` to publish your code.
 
 ###### Create an application to display a Toast when a button is clicked / tapped
 
-In the terminal, navigate to the project parent directory and run `react-native init RNNativeToastExample`.
+In the terminal, navigate to the project parent directory and run `react-native init RNNativeToastExample --version 0.59.1`.
 
 Open the `package.json` file and under `dependencies` add `react-native-native-toast-library-XXXX”: “1.0.0”`
 
@@ -234,9 +234,7 @@ project(‘:react-native-native-toast-library-XXXX’).projectDir = new File(roo
 
 In `build.gradle (Module: app)` you should see:
 
-`compile project(‘:react-native-native-toast-library’)`
-
-You can change `compile` to `implementation` (`compile` is the old syntax).
+implementation project(':react-native-native-toast-library-XXXX')
 
 Open the `MainApplication` (app > java > com.rnnativetoastexample). Under the `getPackages` method you should see:
 

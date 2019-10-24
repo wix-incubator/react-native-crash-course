@@ -81,6 +81,13 @@ public void show(String text) {
 }
 ```
 
+Depending on your version of React Native you might also need to add the following imports to `RNNativeToastLibraryModule` (or use auto-import suggestions when typing):
+```
+import android.content.Context;
+import android.widget.Toast;
+import com.facebook.react.bridge.ReactMethod;
+```
+
 `@ReactMethod` marks this method as public for react native so it can be used in the JS project.
 
 #### Setup Toast in iOS

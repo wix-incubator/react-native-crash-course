@@ -129,31 +129,7 @@ After this your build should succeed.
 
 ##### Project Setup
 
-1. Add a React Native iOS *Project*
-
-Back to Xcode. Usually you would create a native module inside an example project, which in tern would contain the react native library. But since we don’t have the gradle build tool here, like we do in Android, we need to add an RN iOS Project and library.
-
-Open the **RNNativeToastLibrary (1)** and select the **Build Phases (2)** tab. Click **Link Binary with Libraries (3)** and then click on the plus button **(4)**.
-
-<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png" align="center"></p>
-
-In the popup window, click the "Add Other..." button, and choose node_modules > react-native > React > React.xcodeproj:
-
-<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleReactFiles.png" align="center"></p>
-
-2. Add a React Native iOS *Library*
-
-Open the **RNNativeToastLibrary (1)** project  (with the blue icon) and select the **Build Phases (2)** tab. Click **Link Binary with Libraries (3)** and then click on the plus button **(4)**
-
-<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png" align="center"></p>
-
-In the popup window choose **libReact.a** from ‘React’ target — as shown here:
-
-<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLib.png" align="center"></p>
-
-Build your project (Command + B). You should see that RCTBridgeModule.h is recognized.
-
-3. Copy a ready-made iOS module to your project
+1. Copy a ready-made iOS module to your project
 
 Download the iOS files from [here](https://github.com/roiberlin/native-toast-library/raw/master/resorces/RNNativeLibrary-IOSToastFiles.zip)
 

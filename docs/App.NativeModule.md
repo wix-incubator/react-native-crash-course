@@ -30,7 +30,7 @@ In the terminal, navigate to the folder where you want your project to live and 
 
 After that also create the module:
 
-`react-native-create-library -—platforms ios,android NativeToastLibrary`
+`react-native-create-library --platforms ios,android NativeToastLibrary`
 
 Your new module project structure should look like this:
 
@@ -46,7 +46,7 @@ Because we are not using Windows:
 
 Some setup is required before we can start using native modules. Usually, outside of this tutorial, such setup would not be required — the native module should include any files it uses. But since we’re doing it all ourselves here, we’ll do the set up as well, so our functions will be completed automatically when we code.
 
-###### Setup Toast in Android
+#### Setup Toast in Android
 
 In order to display a Toast in Android, we will use the **Android Toast object**. To get the context we will use the `getReactApplicationContext` function.
 
@@ -83,13 +83,14 @@ public void show(String text) {
 
 `@ReactMethod` marks this method as public for react native so it can be used in the JS project.
 
-###### Setup Toast in iOS
+#### Setup Toast in iOS
 
+##### Basic Setup
 There isn't a Toast object in iOS, but there is the `UIAlertController`, which can have similar functionality (using the `actionSheet` style and dismissing it after a certain time).
 
 In order to show the UIAlertController we need to get the top most UIViewController of the app. We can get it by creating a new UIWindow with an invisible UIViewController.
 
-Open `RNNativeToastLibrary.xcodeporj` in Xcode.
+Open `RNNativeToastLibrary.xcodeproj` in Xcode.
 
 You should get an error saying that Xcode couldn't recognize `RCTBridgeModule.h` (if not, continue to the next step). In order to fix this issue, open the `package.json` file (from the project directory), find the `peerDependencies` line and right above it add the following:
 
@@ -105,7 +106,47 @@ Next, in the terminal, navigate into the project folder and run **`npm install`*
 
 Now when listing the contents of the project directory, you should see the `node_modules` folder added.
 
-1. Copy a ready-made iOS module to your project
+Move to the next step is project builds successfully.
+
+Otherwise take the following steps:
+  - Disable parallel build
+    - Xcode menu -> Product -> Scheme -> Manage Schemes
+    - Double click on application row
+    - Build Tab -> uncheck checkbox Parallelize Build
+  - Add React as a dependency
+    - In Xcode, in Project Navigator (left pane), right click on your project (top) -> Add Files to {project-name}
+    - Add node_modules/react-native/React/React.xcodeproj
+    - Your Target -> Build Phases Tab -> Target Dependencies -> + -> Add React
+
+After this your build should succeed.
+
+##### Project Setup
+
+1. Add a React Native iOS *Project*
+
+Back to Xcode. Usually you would create a native module inside an example project, which in tern would contain the react native library. But since we don’t have the gradle build tool here, like we do in Android, we need to add an RN iOS Project and library.
+
+Open the **RNNativeToastLibrary (1)** and select the **Build Phases (2)** tab. Click **Link Binary with Libraries (3)** and then click on the plus button **(4)**.
+
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png" align="center"></p>
+
+In the popup window, click the "Add Other..." button, and choose node_modules > react-native > React > React.xcodeproj:
+
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleReactFiles.png" align="center"></p>
+
+2. Add a React Native iOS *Library*
+
+Open the **RNNativeToastLibrary (1)** project  (with the blue icon) and select the **Build Phases (2)** tab. Click **Link Binary with Libraries (3)** and then click on the plus button **(4)**
+
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLibrary.png" align="center"></p>
+
+In the popup window choose **libReact.a** from ‘React’ target — as shown here:
+
+<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleAddReactLib.png" align="center"></p>
+
+Build your project (Command + B). You should see that RCTBridgeModule.h is recognized.
+
+3. Copy a ready-made iOS module to your project
 
 Download the iOS files from [here](https://github.com/roiberlin/native-toast-library/raw/master/resorces/RNNativeLibrary-IOSToastFiles.zip)
 
@@ -234,7 +275,7 @@ In the list you should see the `libRNNativeToastLibrary.a` file (5).
 
 ###### Create a screen
 
-Replace the contents of your `App.js` file with [this](https://github.com/roiberlin/native-toast-library/blob/master/RNNativeToastExample/App.js) and replace the line 
+Replace the contents of your `App.js` file with [this](https://github.com/roiberlin/native-toast-library/blob/master/RNNativeToastExample/App.js) and replace the line
 `import RNNativeToastLibrary from ‘react-native-native-toast-library’;` with `import RNNativeToastLibrary from ‘react-native-native-toast-library-XXXX’;`, where XXXX is your unique part (see [here](#Upload-your-library-to-NPM)).
 
 As seen in the next step, your screen contains a button and a `textInput` field. When the button is pressed your Toast is displayed with the contents of `textInput`.

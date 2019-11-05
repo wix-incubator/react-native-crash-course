@@ -45,7 +45,7 @@ In addition, we started working with a new utility library called “[Kompot](ht
 1. Read the Jest docs about [using Matchers](https://jestjs.io/docs/en/using-matchers), [testing asynchronous code](https://jestjs.io/docs/en/asynchronous), and [mock functions](https://jestjs.io/docs/en/mock-functions)
 
 ### Useful Links
-* Bookmark Jest's API reference for [Expect](https://jestjs.io/docs/en/expect), [Mock Functions](https://jestjs.io/docs/en/expect), and [The Jest Object](https://jestjs.io/docs/en/expect)
+* Bookmark Jest's API reference for [Expect](https://jestjs.io/docs/en/expect), [Mock Functions](https://jestjs.io/docs/en/mock-function-api), and [The Jest Object](https://jestjs.io/docs/en/jest-object)
 
 
 # Getting Started

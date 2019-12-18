@@ -30,7 +30,7 @@ In the terminal, navigate to the folder where you want your project to live and 
 
 After that also create the module:
 
-`react-native-create-library -—platforms ios,android NativeToastLibrary`
+`react-native-create-library --platforms ios,android NativeToastLibrary`
 
 Your new module project structure should look like this:
 
@@ -46,7 +46,7 @@ Because we are not using Windows:
 
 Some setup is required before we can start using native modules. Usually, outside of this tutorial, such setup would not be required — the native module should include any files it uses. But since we’re doing it all ourselves here, we’ll do the set up as well, so our functions will be completed automatically when we code.
 
-###### Setup Toast in Android
+#### Setup Toast in Android
 
 In order to display a Toast in Android, we will use the **Android Toast object**. To get the context we will use the `getReactApplicationContext` function.
 
@@ -81,15 +81,23 @@ public void show(String text) {
 }
 ```
 
+Depending on your version of React Native you might also need to add the following imports to `RNNativeToastLibraryModule` (or use auto-import suggestions when typing):
+```
+import android.content.Context;
+import android.widget.Toast;
+import com.facebook.react.bridge.ReactMethod;
+```
+
 `@ReactMethod` marks this method as public for react native so it can be used in the JS project.
 
-###### Setup Toast in iOS
+#### Setup Toast in iOS
 
+##### Basic Setup
 There isn't a Toast object in iOS, but there is the `UIAlertController`, which can have similar functionality (using the `actionSheet` style and dismissing it after a certain time).
 
 In order to show the UIAlertController we need to get the top most UIViewController of the app. We can get it by creating a new UIWindow with an invisible UIViewController.
 
-Open `RNNativeToastLibrary.xcodeporj` in Xcode.
+Open `RNNativeToastLibrary.xcodeproj` in Xcode.
 
 You should get an error saying that Xcode couldn't recognize `RCTBridgeModule.h` (if not, continue to the next step). In order to fix this issue, open the `package.json` file (from the project directory), find the `peerDependencies` line and right above it add the following:
 
@@ -104,6 +112,22 @@ The version of react-native should match the one set for the `peerDependencies`.
 Next, in the terminal, navigate into the project folder and run **`npm install`**.
 
 Now when listing the contents of the project directory, you should see the `node_modules` folder added.
+
+Move to the next step is project builds successfully.
+
+Otherwise take the following steps:
+  - Disable parallel build
+    - Xcode menu -> Product -> Scheme -> Manage Schemes
+    - Double click on application row
+    - Build Tab -> uncheck checkbox Parallelize Build
+  - Add React as a dependency
+    - In Xcode, in Project Navigator (left pane), right click on your project (top) -> Add Files to {project-name}
+    - Add node_modules/react-native/React/React.xcodeproj
+    - Your Target -> Build Phases Tab -> Target Dependencies -> + -> Add React
+
+After this your build should succeed.
+
+##### Project Setup
 
 1. Copy a ready-made iOS module to your project
 
@@ -183,7 +207,7 @@ Lastly, type `npm publish` to publish your code.
 
 ###### Create an application to display a Toast when a button is clicked / tapped
 
-In the terminal, navigate to the project parent directory and run `react-native init RNNativeToastExample`.
+In the terminal, navigate to the project parent directory and run `react-native init RNNativeToastExample --version 0.59.1`.
 
 Open the `package.json` file and under `dependencies` add `react-native-native-toast-library-XXXX”: “1.0.0”`
 
@@ -210,9 +234,7 @@ project(‘:react-native-native-toast-library-XXXX’).projectDir = new File(roo
 
 In `build.gradle (Module: app)` you should see:
 
-`compile project(‘:react-native-native-toast-library’)`
-
-You can change `compile` to `implementation` (`compile` is the old syntax).
+implementation project(':react-native-native-toast-library-XXXX')
 
 Open the `MainApplication` (app > java > com.rnnativetoastexample). Under the `getPackages` method you should see:
 
@@ -234,7 +256,7 @@ In the list you should see the `libRNNativeToastLibrary.a` file (5).
 
 ###### Create a screen
 
-Replace the contents of your `App.js` file with [this](https://github.com/roiberlin/native-toast-library/blob/master/RNNativeToastExample/App.js) and replace the line 
+Replace the contents of your `App.js` file with [this](https://github.com/roiberlin/native-toast-library/blob/master/RNNativeToastExample/App.js) and replace the line
 `import RNNativeToastLibrary from ‘react-native-native-toast-library’;` with `import RNNativeToastLibrary from ‘react-native-native-toast-library-XXXX’;`, where XXXX is your unique part (see [here](#Upload-your-library-to-NPM)).
 
 As seen in the next step, your screen contains a button and a `textInput` field. When the button is pressed your Toast is displayed with the contents of `textInput`.

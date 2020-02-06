@@ -31,7 +31,7 @@ describe('Example', () => {
     await driver.when.typeTitle(newPost.title);
     await driver.when.pressOnSave();
     await driver.when.scrollToBottom();
-    await driver.when.pressOnPost(3);
+    await driver.when.pressOnPost(9);
 
     await expect(driver.get.postTitle()).toHaveText(newPost.title);
   });

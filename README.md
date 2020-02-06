@@ -48,7 +48,9 @@ npm install
 npm run fake-server
 react-native run-ios / run-android
 ```
-
+* prerequisites: 
+    * npm `json-server` package
+    * ios simulator - Hardware -> Keyboard -> Toggle Software Keyboard
 ## How To Run the Tests
 ```
 npm run start-e2e

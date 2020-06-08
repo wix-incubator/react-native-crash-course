@@ -29,6 +29,7 @@
     "babel-jest": "^24.9.0",
     "detox": "^16.7.1",
     "jest": "^24.9.0",
+    "json-server": "^0.16.1",
     "metro-react-native-babel-preset": "^0.58.0",
     "mocha": "^6.1.4",
     "react-test-renderer": "16.11.0"

@@ -12,21 +12,21 @@
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
   "dependencies": {
-    "react": "16.8.3",
-    "react-native": "0.59.8",
-    "react-native-navigation": "^2.18.5",
-    "react-native-ui-lib": "^3.25.0",
+    "react": "16.11.0",
+    "react-native": "0.62.2",
+    "react-native-navigation": "^6.7.1",
+    "react-native-ui-lib": "^5.8.1",
     "remx": "^2.0.51"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/runtime": "^7.4.4",
-    "babel-jest": "^24.8.0",
-    "detox": "^12.8.0",
-    "jest": "^24.8.0",
-    "metro-react-native-babel-preset": "^0.54.0",
+    "@babel/core": "^7.10.2",
+    "@babel/runtime": "^7.10.2",
+    "babel-jest": "^24.9.0",
+    "detox": "^16.7.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.58.0",
     "mocha": "^6.1.4",
-    "react-test-renderer": "16.8.3"
+    "react-test-renderer": "16.11.0"
   },
   "jest": {
     "preset": "react-native"

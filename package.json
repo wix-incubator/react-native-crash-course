@@ -12,9 +12,14 @@
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
   "dependencies": {
+    "@react-native-community/blur": "^3.6.0",
+    "@react-native-community/datetimepicker": "^2.4.0",
+    "@react-native-community/netinfo": "^5.9.2",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-gesture-handler": "^1.6.1",
     "react-native-navigation": "^6.7.1",
+    "react-native-reanimated": "^1.9.0",
     "react-native-ui-lib": "^5.8.1",
     "remx": "^2.0.51"
   },

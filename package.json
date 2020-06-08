@@ -8,7 +8,7 @@
     "test": "jest && detox test",
     "fake-server": "json-server --watch db.json",
     "watch": "jest --watch",
-    "e2e": "detox test",
+    "e2e": "detox build -c ios.sim.debug && detox test",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
   "dependencies": {

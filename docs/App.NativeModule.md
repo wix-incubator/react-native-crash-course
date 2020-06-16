@@ -146,7 +146,7 @@ Open the zip file — you should have 2 files (IOSNativeToast.h and IOSNativ
 
 Now back to XCode.
 
-Right click the RNNativeToastLibrary project (with blue icon) and choose **Add file to “{project-name}”**.
+Right click the MyToast project (with blue icon) and choose **Add file to “MyToast”**.
 
 In the popup window choose the 2 files you just extracted form the zip archive and press the "Add" button - you should now be able to see the files in your project
 

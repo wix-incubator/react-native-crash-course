@@ -146,13 +146,13 @@ Open the zip file — you should have 2 files (IOSNativeToast.h and IOSNativ
 
 Now back to XCode.
 
-Right click the RNNativeToastLibrary project (with blue icon) and choose **Add file to “RNNativeToastLibrary”**.
+Right click the RNNativeToastLibrary project (with blue icon) and choose **Add file to “{project-name}”**.
 
 In the popup window choose the 2 files you just extracted form the zip archive and press the "Add" button - you should now be able to see the files in your project
 
 2. iOS Toast module implementation
 
-Open the RNNativeToastLibrary.m and under `import` add the `IOSNativeToast` property:
+Open the `MyToast.m` and under `import` add the `IOSNativeToast` property:
 
 ```objective-c
 #import “IOSNativeToast.h”
@@ -175,7 +175,7 @@ Next, initialize the property within the object initialization — add this 
 
 Because we override the init method, we also need to implement the `requireMainQueueSetup` (if we want it to run on main thread).
 
-Add this function inside the `@implementation RNNativeToastLibrary` block:
+Add this function inside the `@implementation MyToast` block:
 
 ```objective-c
 + (BOOL)requiresMainQueueSetup

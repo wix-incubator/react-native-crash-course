@@ -42,8 +42,13 @@ You should then see your new app running within your simulators:
 
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/react%20native%20init.png" align="center" width="80%" >
 
-### 2. Install react-native-navigation
+### 2. Install react-native-navigation and prop-types
 As `react-native-navigation` is a native navigation library, so integrating it into your app will require editing native files. Follow the installation guides in the [documentation here](https://wix.github.io/react-native-navigation/#/).
+
+`prop-types` documents the intended types of properties passed to components. React will check props passed to your components against those definitions, and warn in development if they don’t match. We'll use it to make sure a `componentId` is passed to our screens and see more use cases.
+
+Install `prop-types`:
+`npm install --save prop-types`
 
 Make sure your app is still running in both simulators and that you are not getting any red screens.
 

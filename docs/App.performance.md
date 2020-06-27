@@ -55,7 +55,7 @@ Same goes for Style References. If you use objects / arrays for styling, they wi
 
 * As Facebook suggests, start with [systrace for Android UI profiling](https://facebook.github.io/react-native/docs/performance#profiling-android-ui-performance-with-systrace). Measure and save current performance. Try implementing shouldComponentUpdate and other suggestions to see the impact on performance those changes will have.
 
-* Use [why-did-you-update](https://github.com/maicki/why-did-you-update) to identify wasteful renders and [React Profiler](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) to measure which changes will have most impact.
+* Use [why-did-you-render](https://github.com/welldone-software/why-did-you-render) to identify wasteful renders and [React Profiler](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) to measure which changes will have most impact.
 
 > Note that the practices above will have more impact as your app grows, initial changes for a small app will not be that significant. Thus, if you want to be able find bottlenecks more easily, try stressing the app with more views and/or data. For example, if you have a list of contacts, try giving it hundreds of items to render.
 

@@ -41,6 +41,10 @@ Your new module project structure should look like this:
 
 As you can see it contains folders for Android and iOS.
 
+Before setup install dependencies:
+
+`cd react-native-my-toast && npm install`
+
 ### Set up native files
 
 Some setup is required before we can start using native modules. Usually, outside of this tutorial, such setup would not be required — the native module should include any files it uses. But since we’re doing it all ourselves here, we’ll do the set up as well, so our functions will be completed automatically when we code.

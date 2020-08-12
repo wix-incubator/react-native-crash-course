@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-Every screen component in your app must be registered with a unique name before you are able to use it. So create a `src/screens.js` file and [register the new screens](https://wix.github.io/react-native-navigation/#/docs/Usage?id=registercomponentscreenid-generator) you have just created.
+Every screen component in your app must be registered with a unique name before you are able to use it. So create a `src/screens.js` file and [register the new screens](https://wix.github.io/react-native-navigation/api/component#registercomponent) you have just created.
 
 Here is what your `screens.js` file should look like. (This file is also [available](https://github.com/wix-playground/wix-mobile-crash-course/blob/master/src/screens.js) in this repository):
 

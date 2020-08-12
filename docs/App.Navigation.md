@@ -40,7 +40,9 @@ react-native run-android
 ```
 You should then see your new app running within your simulators:
 
-<img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/react%20native%20init.png" align="center" width="80%" >
+| iOS                                       | Android                                           |
+|-------------------------------------------|---------------------------------------------------|
+| ![ios](/assets/react-native-init-ios.png) | ![android](/assets/react-native-init-android.gif) |
 
 ### 2. Install react-native-navigation
 As `react-native-navigation` is a native navigation library, so integrating it into your app will require editing native files. Follow the installation guides in the [documentation here](https://wix.github.io/react-native-navigation/#/).

@@ -30,13 +30,13 @@ Here's the outline of what we are going to build in this section:
 You can follow the react-native [getting started guide](https://facebook.github.io/react-native/docs/getting-started)(Choose "React Native CLI Quickstart" and not "Expo Quickstart") to make sure you have all dependencies installed. If this is not the first time you are creating a react-native project just open the terminal and run:
 
 ```sh
-react-native init wixMobileCrashCourse
+npx react-native init wixMobileCrashCourse
 cd wixMobileCrashCourse
 ```
 To run the project you will need to do:
 ```sh
-react-native run-ios
-react-native run-android
+npx react-native run-ios
+npx react-native run-android
 ```
 You should then see your new app running within your simulators:
 

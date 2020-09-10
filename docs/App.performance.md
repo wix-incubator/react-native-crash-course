@@ -94,7 +94,7 @@ A small yet significant **opt-in** performance boost when it comes to React Nati
 Performance profiling, visual CPU & Memory usage, User interface FPS, Disk activity, Network activity, [Developer Events](https://github.com/wix/DetoxInstruments/blob/master/Documentation/DeveloperAPIReferenceEventsJS.md), React Native profiling, JavaScript thread CPU load, Bridge call counters, data counters, data collection, Async storage & data metrics
 * [Developer Events](https://github.com/wix/DetoxInstruments/blob/master/Documentation/DeveloperAPIReferenceEventsJS.md)
 and [require.Systrace](https://facebook.github.io/react-native/docs/performance#investigating-the-loaded-modules) can be used as accurate measurements, as shown in [react-native-js-profiler](https://github.com/wix-incubator/react-native-js-profiler/blob/master/src/JSPerfProfiler.js#L77-L99).
-* [systrace for Android UI profiling](https://facebook.github.io/react-native/docs/performance#profiling-android-ui-performance-with-systrace). Measure and save current performance. Try implementing shouldComponentUpdate and other suggestions to see the performance impact.
+* [systrace for Android UI profiling](https://facebook.github.io/react-native/docs/performance#profiling-android-ui-performance-with-systrace). Measure and save current performance.
 
 
 \* Note that the practices above will have more impact as your app grows. For a small app these might be less significant or noticeable. Thus, if you want to be able find bottlenecks more easily, try stressing the app with more views and/or data. For example, if you have a list of contacts, try giving it hundreds of items to render putting strain on the bridge. Or simply creating a for loop which console.logs all the time</br>

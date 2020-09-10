@@ -97,7 +97,7 @@ and [require.Systrace](https://facebook.github.io/react-native/docs/performance#
 * [systrace for Android UI profiling](https://facebook.github.io/react-native/docs/performance#profiling-android-ui-performance-with-systrace). Measure and save current performance.
 
 
-\* Note that the practices above will have more impact as your app grows. For a small app these might be less significant or noticeable. Thus, if you want to be able find bottlenecks more easily, try stressing the app with more views and/or data. For example, if you have a list of contacts, try giving it hundreds of items to render putting strain on the bridge. Or simply creating a for loop which console.logs all the time.</br>
+\* Note that the practices above will have more impact as your app grows. For a small app these might be less significant or noticeable. Thus, if you want to be able find bottlenecks more easily, try stressing the app with more views and/or data. For example, if you have a list of contacts, try giving it hundreds of items to render putting strain on the bridge. Or simply creating a for loop which calls `console.log` continuously.</br>
 That being said, sticking to best practices will help avoid the point where rendering and performance issues occur which require monitoring and performance tools to fix. To paraphrase A.Einstein: A wise person avoids problems the a clever man solves :).
 
 ## 3. Network related improvements

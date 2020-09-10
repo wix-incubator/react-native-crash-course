@@ -40,7 +40,7 @@ Supplies the duration of:</br>
   * Native module initializations - First screen drawing.
   * The application's time to interaction.
 
-## 2. Improved rendering and performance
+## 2. Improved rendering performance and best practices
 Here are some rendering solutions and rules of thumb aimed to increase user interaction by lowering the time to interactive:
 
 ### Making Data Immutable

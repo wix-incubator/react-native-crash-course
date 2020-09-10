@@ -79,7 +79,7 @@ It should be a store-agnostic mechanism, and should work with others, though it 
 
 ### Prefer Native libraries over JS
 If possible, prefer libraries with Native implementation over JS implementation:</br>
-This serves two main purposes; The delivery of a native experience for the users, and reducing the traffic over the bridge which leaves more  resources for JS based computation.
+This reduces the traffic over the bridge which leaves more resources for JS based computation.
 
 ### [useNativeDriver](https://reactnative.dev/blog/2017/02/14/using-native-driver-for-animated)
 A small yet significant **opt-in** performance boost when it comes to React Native Animated component. It sends everything about the animation to native before it has even started and allows native code to perform the animation on the UI thread without having to go through the bridge on every frame.
@@ -90,8 +90,8 @@ A small yet significant **opt-in** performance boost when it comes to React Nati
 * [react-devtools](https://www.npmjs.com/package/react-devtools): Great for easy info logging, spotting performance bottlenecks, visual "Flamegraph" analyzing tool, helpful for catching timing issues and rendering bottleneck. 
 * Similarly, [React Profiler](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html), provides some of the debugging features similar to react-devtools, but built in to react-native via the developer menu.
 * Also from the React Native developer menu - **performance monitor** is a great tool to inspect the fps of the Ui and the JS threads and make sure there are not dips caused by bottlenecks in either thread.
-* [Detox Instruments](https://github.com/wix/DetoxInstruments): offers: </br>
-Performance profiling, visual CPU & Memory usage, User interface FPS, Disk activity, Network activity, [Developer Events](https://github.com/wix/DetoxInstruments/blob/master/Documentation/DeveloperAPIReferenceEventsJS.md), React Native profiling, JavaScript thread CPU load, Bridge call counters, data counters, data collection, Async storage & data metrics
+* [Detox Instruments](https://github.com/wix/DetoxInstruments):</br>
+ Offers performance profiling, visual CPU & Memory usage, User interface FPS, Disk activity, Network activity, [Developer Events](https://github.com/wix/DetoxInstruments/blob/master/Documentation/DeveloperAPIReferenceEventsJS.md), React Native profiling, JavaScript thread CPU load, Bridge call counters, data counters, data collection, Async storage & data metrics
 * [Developer Events](https://github.com/wix/DetoxInstruments/blob/master/Documentation/DeveloperAPIReferenceEventsJS.md)
 and [require.Systrace](https://facebook.github.io/react-native/docs/performance#investigating-the-loaded-modules) can be used as accurate measurements, as shown in [react-native-js-profiler](https://github.com/wix-incubator/react-native-js-profiler/blob/master/src/JSPerfProfiler.js#L77-L99).
 * [systrace for Android UI profiling](https://facebook.github.io/react-native/docs/performance#profiling-android-ui-performance-with-systrace). Measure and save current performance.

@@ -129,10 +129,10 @@ Consider this approach to increase performance:</br>
 
 ### Related Tools:
 * [react-native-debugger](https://github.com/jhen0409/react-native-debugger): identifies network calls and measure what would be the impact of combining or parallelizing existing network requests.
-* [DetoxInstruments](https://github.com/wix/DetoxInstruments): to measure the impact of making your images smaller.
+* [Detox Instruments](https://github.com/wix/DetoxInstruments): to measure the impact of making your images smaller.
 * Use [Image callbacks](https://facebook.github.io/react-native/docs/image#onloadend) to attach [Developer Events](https://github.com/wix/DetoxInstruments/blob/master/Documentation/DeveloperAPIReferenceEventsJS.md).
 
 ## Additional sources
 * [Two mistakes in React.js we keep doing over and over again - Yaroslav Serhieiev](https://medium.com/wix-engineering/two-mistakes-in-react-js-we-keep-doing-over-and-over-again-b1aea20fb3f0)
 * [Performance in the React Native docs](https://reactnative.dev/docs/performance)
-* [React Native EU 2020 talks](https://www.youtube.com/watch?v=DduUntL2Sv4): 2 Performance talks start at the 2:29.56 time marker (the second is of our own Omri Bruchim).
+* [React Native EU 2020](https://www.youtube.com/watch?v=DduUntL2Sv4): 2 Performance talks start at the 2:29.56 time marker (the second is of our own Omri Bruchim).

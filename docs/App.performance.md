@@ -116,16 +116,16 @@ If you’re in charge of data and if it’s accessible via a single server, just
 Depending on the request frequency, polling may have a significant impact on your battery life.
 More frequent polling leads to bigger impact because it requests and runs the code in specific time intervals even though there’s nothing new to receive. On the other hand, WebSockets only run code when there is something new to process - this is a common pattern for chat implementations. In short, use WebSockets whenever you have to send requests to your servers every few seconds or minutes to get updates.
 
-### Images - Use small resources & caching
-By ‘resources’ we mean mainly images. If you’re showing a small thumbnail of a photo,
-loading a 4Mb image is a huge overkill.
-Having a 100x100 px image for a view of 100x100 [dips](https://en.wikipedia.org/wiki/Device-independent_pixel) is usually enough even for [retina](https://en.wikipedia.org/wiki/Retina_display) screens. Image compression quality and format also affect performance. The smaller the image is in size, the faster it’s processed. Also, if your responses are large and you’re not using the data you download, you should optimize those resources as well. Another helpful Image processing tip is using React Native's image [queryCache](https://reactnative.dev/docs/image.html#querycache) to intelligently reload Image based on the result of this cache interrogation method.
-
 ### Move heavy computations to the backend
 Map and reduce functions are fine in most cases, unless you’re doing it for thousands of items. Under extreme data loads, avoid interacting with them on the device and move it to back-end.
 
 ### Use device storage & cached data
 Use local storage to cache data, so once users turn on the app, it will load from there. Get updates only when needed. This will also help with the offline mode.
+
+### Images - Use small resources & caching
+By ‘resources’ we mean mainly images. If you’re showing a small thumbnail of a photo,
+loading a 4Mb image is a huge overkill.
+Having a 100x100 px image for a view of 100x100 [dips](https://en.wikipedia.org/wiki/Device-independent_pixel) is usually enough even for [retina](https://en.wikipedia.org/wiki/Retina_display) screens. Image compression quality and format also affect performance. The smaller the image is in size, the faster it’s processed. Also, if your responses are large and you’re not using the data you download, you should optimize those resources as well. Another helpful Image processing tip is using React Native's image [queryCache](https://reactnative.dev/docs/image.html#querycache) to intelligently reload Image based on the result of this cache interrogation method.
 
 ### Related Tools:
 * [react-native-debugger](https://github.com/jhen0409/react-native-debugger): identifies network calls and measure what would be the impact of combining or parallelizing existing network requests.

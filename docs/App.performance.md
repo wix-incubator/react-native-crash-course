@@ -5,7 +5,7 @@ Positive user experience is one of the main factors fuelling the return engageme
 The perception of what is a "performant app" is mainly based on the user's general sense of the app's responsiveness. 
 In other words, the amount of time passed from the user's performed action, to the time it takes the app to respond and carry out the action which allows further engagement (also known as TTI - time to interactive).
 
-Here are some interesting facts and numbers regarding user's expectations when it comes to performance:
+Here are some interesting facts and numbers regarding user expectations when it comes to performance:
 * Four out of five users will attempt to use a slow app only 3 times or less before removing it.
 * Half of users expect the app to load in 2 seconds or less.
 * More than half of users blame the app for being slow, not their device or internet quality.

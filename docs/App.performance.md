@@ -84,6 +84,13 @@ This reduces the traffic over the bridge which leaves more resources for JS base
 ### [useNativeDriver](https://reactnative.dev/blog/2017/02/14/using-native-driver-for-animated)
 A small yet significant **opt-in** performance boost when it comes to React Native Animated component. It sends everything about the animation to native before it has even started and allows native code to perform the animation on the UI thread without having to go through the bridge on every frame.
 
+### Lists (FlatList) optimizations
+Lists have a known pain point when it comes to performance when large data loads are concerned.
+Consider this approach to increase performance:</br>
+* Get a small amount of initial data and keep requesting more items once a user reaches the end [onEndReached](https://reactnative.dev/docs/flatlist.html#onendreached) of the set threshold - [onEndReachedThreshold](https://reactnative.dev/docs/flatlist.html#onendreachedthreshold) of the visible list.
+* [initialNumToRender](https://reactnative.dev/docs/flatlist.html#initialnumtorender)
+* [getItemLayout](https://reactnative.dev/docs/flatlist.html#getitemlayout)
+
 ### Related Tools:
 * [Flipper](https://fbflipper.com/): A platform for debugging React Native apps, allowing you to visualize and inspect your app. Main features: Device logs, crash reporter inspecting, network requests inspecting, inspecting device preferences, inspecting cached images. Another big advantage is the ability to use integrated plugins like: [flipper-plugin-react-native-performance](https://www.npmjs.com/package/flipper-plugin-react-native-performance).
 * [why-did-you-render](https://github.com/welldone-software/why-did-you-render): helps identifying wasteful unnecessary renders.
@@ -119,13 +126,6 @@ Map and reduce functions are fine in most cases, unless you’re doing it for th
 
 ### Use device storage & cached data
 Use local storage to cache data, so once users turn on the app, it will load from there. Get updates only when needed. This will also help with the offline mode.
-
-### Lists (FlatList) optimizations
-Lists have a known pain point when it comes to performance when large data loads are concerned.
-Consider this approach to increase performance:</br>
-* Get a small amount of initial data and keep requesting more items once a user reaches the end [onEndReached](https://reactnative.dev/docs/flatlist.html#onendreached) of the set threshold - [onEndReachedThreshold](https://reactnative.dev/docs/flatlist.html#onendreachedthreshold) of the visible list.
-* [initialNumToRender](https://reactnative.dev/docs/flatlist.html#initialnumtorender)
-* [getItemLayout](https://reactnative.dev/docs/flatlist.html#getitemlayout)
 
 ### Related Tools:
 * [react-native-debugger](https://github.com/jhen0409/react-native-debugger): identifies network calls and measure what would be the impact of combining or parallelizing existing network requests.

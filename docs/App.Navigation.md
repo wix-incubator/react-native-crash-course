@@ -105,9 +105,9 @@ Here is what your `screens.js` file should look like. (This file is also [availa
 
 ### 4. Initialize the App Layout
 
-From your `index.js` file, call `registerScreens` and [initialize the app layout](https://wix.github.io/react-native-navigation/#/docs/Usage?id=registerapplaunchedlistenercallback) that you want via the `setRoot` command - pick the **simplest layout**, which would be the one based on a single stack (a stack supports child layouts of any kind; it can be initialized with more than one screen, in which case the last screen will be presented at the top of the stack) with a single component - our PostsList screen.
+From your `index.js` file, call `registerScreens` and [initialize the app layout](https://wix.github.io/react-native-navigation/docs/app-launch) that you want via the `setRoot` command - pick the **simplest layout**, which would be the one based on a single stack (a stack supports child layouts of any kind; it can be initialized with more than one screen, in which case the last screen will be presented at the top of the stack) with a single component - our PostsList screen.
 
-> The possibilities of the layout API are almost endless and you can create almost any arbitrary native layout. You can check out all of the [layout types here](https://wix.github.io/react-native-navigation/#/docs/layout-types).
+> The possibilities of the layout API are almost endless and you can create almost any arbitrary native layout. You can check out all of the [layout types here](https://wix.github.io/react-native-navigation/docs/stack).
 
 Here is what your `index.js` should look like:
 
@@ -141,7 +141,7 @@ Navigation.events().registerAppLaunchedListener(() => {
 });
 ```
 
-> You have just set the root using a single stack with the PostsList component AND the Top Bar title provided in the Options object; You can check the complete Options object format [here](https://wix.github.io/react-native-navigation/#/docs/styling?id=options-object-format).
+> You have just set the root using a single stack with the PostsList component AND the Top Bar title provided in the Options object; You can check the complete Options object format [here](https://wix.github.io/react-native-navigation/docs/style-options).
 
 When you refresh the app, you should get the blue PostsList screen:
 
@@ -154,7 +154,7 @@ Now we want to enable the following behavior: when a user clicks on the text, th
 
 ### 5. Push a Screen into the Navigation Stack
 
-To push a new screen into this screen’s navigation stack, we will use [Navigation.push](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=pushcomponentid-layout). This method expects to receive the current `componentId` which can be found in `props.componentId`.
+To push a new screen into this screen’s navigation stack, we will use [Navigation.push](https://wix.github.io/react-native-navigation/docs/basic-navigation#navigating-in-a-stack). This method expects to receive the current `componentId` which can be found in `props.componentId`.
 
 So in `PostsList.js` create a `pushViewPostScreen` function and attach it to the `onPress` event of the Text item.
 
@@ -203,7 +203,7 @@ class PostsList extends Component {
 ```
 > Several things in the code above that we didn't cover are:
 > - **passProps** - you can pass props to screen which we are pushing.
-> - **options** - you can style the appearance of the navigator and its behavior by passing any options via the [Options](https://wix.github.io/react-native-navigation/#/docs/styling?id=styling-options) object. This object can be declared in two different ways:
+> - **options** - you can style the appearance of the navigator and its behavior by passing any options via the [Options](https://wix.github.io/react-native-navigation/docs/style-options) object. This object can be declared in two different ways:
  1. You can declare the object dynamically when adding a screen to the layout hierarchy, as we did in the code above.
  2. You can also define the object by setting static `options()` on the screen component. This declaration is static and should be done for every screen. In the next section, we will explore this option.
 
@@ -218,10 +218,10 @@ On the PostsLists screen, we want to have an “Add” button that opens the Add
 
 ### 6. Add the “Add” Button (to PostList Screen)
 
-Declare the button in the PostsList screen [statically](https://wix.github.io/react-native-navigation/#/docs/topBar-buttons?id=declaring-buttons-statically). Top bar buttons have [multiple options for](https://wix.github.io/react-native-navigation/#/docs/topBar-buttons?id=button-options) customization, but for the purposes of this course we will declare a very simple button with a title and an id.
+Declare the button in the PostsList screen [statically](https://wix.github.io/react-native-navigation/docs/style-options#static-options). Top bar buttons have [multiple options for](https://wix.github.io/react-native-navigation/docs/stack#topbar-buttons) customization, but for the purposes of this course we will declare a very simple button with a title and an id.
 
-We want the component to [handle the button click](https://wix.github.io/react-native-navigation/#/docs/topBar-buttons?id=handling-button-press-events), so you will need to do 2 things:
-* Add `events().bindComponent(this)` to the constructor.
+We want the component to [handle the button click](https://wix.github.io/react-native-navigation/api/events/#navigationbuttonpressed-event), so you will need to do 2 things:
+* Add `Navigation.events().bindComponent(this)` to the constructor.
 * When the top bar button press event is triggered, the app need to call the `navigationButtonPressed` - implement that and `alert` or `console.log` the pressed button id.
 
 Here is how your `postList.js` file will look like:
@@ -260,13 +260,13 @@ class PostsList extends Component {
 
 Now you have an "Add" button and whenever you press it, you should get an alert (or a log message) with the `buttonId` (in our example it is `addPost`).
 
-Next, instead of the just displaying the `buttonId` as an alert or message, let's actually write a handle for the press event and show the AddPost screen as a [modal](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/modality/) with [Navigation.showModal](https://wix.github.io/react-native-navigation/#/docs/screen-api).
+Next, instead of the just displaying the `buttonId` as an alert or message, let's actually write a handle for the press event and show the AddPost screen as a [modal](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/modality/) with [Navigation.showModal](https://wix.github.io/react-native-navigation/api/modal#showmodal).
 
 All the steps from this section can be viewed in this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/5165ad5ee81e55577120e2ceb5007d4ed52dd0d0).
 
 ### 7. Add “Cancel” and “Save” Buttons (to AddPost Screen)
 
-Flowing the same logic we used to add the **Add** Button, now add the **Cancel** and **Save** buttons to the Top bar of the AddPost screen. Whenever the **Cancel** button is clicked, use [Navigation.dismissModal](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=dismissmodalcomponentid) to dismiss the modal and go back to the PostsList screen.
+Flowing the same logic we used to add the **Add** Button, now add the **Cancel** and **Save** buttons to the Top bar of the AddPost screen. Whenever the **Cancel** button is clicked, use [Navigation.dismissModal](https://wix.github.io/react-native-navigation/api/modal#dismissmodal) to dismiss the modal and go back to the PostsList screen.
 
 :exclamation: Left buttons on Android only support icons, so we will add an "X" icon which you can download from the assets folder.
 
@@ -394,9 +394,9 @@ You can check this [commit](https://github.com/wix-playground/wix-mobile-crash-c
 # We're Almost Done
 The app navigation backbone is almost ready and we will leave the rest to you.
 
-### 9. Implement the remaining buttons' press events:
+### 9. Implement the remaining buttons press events:
 * **Save** - Dismiss the modal when clicking on the `Save` button in the same way the Cancel button does (won't actually do any saving for now).
-* **Delete** - In The `ViewPost` screen, add the `Delete` button. Use [Navigation.pop](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=popcomponentid) to pop the ViewPost screen from the stack and reveal the PostsList screen underneath (again, not actually deleting anything just yet).
+* **Delete** - In The `ViewPost` screen, add the `Delete` button. Use [Navigation.pop](https://wix.github.io/react-native-navigation/api/stack#pop) to pop the ViewPost screen from the stack and reveal the PostsList screen underneath (again, not actually deleting anything just yet).
 
 You can check out these commits if you need a hint: [Save Button](https://github.com/wix-playground/wix-mobile-crash-course/commit/3fb02f426f362328d6f78351ac5dbfa893b32ba4), [Delete Button](https://github.com/wix-playground/wix-mobile-crash-course/commit/e71e54325b05adf52cfb8c812d8a914654264e1c).
 
@@ -408,12 +408,12 @@ Your app should now look something like this:
 By this point you have:
 
 * Became familiar with a part of [react-native-navigation](https://github.com/wix/react-native-navigation/) API.
-* [Registered](https://wix.github.io/react-native-navigation/#/docs/Usage?id=registercomponentscreenid-generator) some screens.
-* [Initialised the app layout](https://wix.github.io/react-native-navigation/#/docs/Usage?id=registerapplaunchedlistenercallback) via the setRoot command
-* Pushed screens using [Navigation.push](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=pushcomponentid-layout)
-* Learned how to set the [Top Bar buttons](https://wix.github.io/react-native-navigation/#/docs/topBar-buttons) and how to handle [navigation press events](https://wix.github.io/react-native-navigation/#/docs/events?id=onnavigationbuttonpressed)
-* Learned how to work with [Modals](https://wix.github.io/react-native-navigation/#/docs/screen-api?id=showmodallayout-), and
-* Learned how to [style the navigator](https://wix.github.io/react-native-navigation/#/docs/styling) using the Options object and how to dynamically merge options.
+* [Registered](https://wix.github.io/react-native-navigation/api/component#registercomponent) some screens.
+* [Initialised the app layout](https://wix.github.io/react-native-navigation/docs/basic-navigation#creating-a-stack) via the setRoot command
+* Pushed screens using [Navigation.push](https://wix.github.io/react-native-navigation/api/stack#push)
+* Learned how to set the [Top Bar buttons](https://wix.github.io/react-native-navigation/docs/stack#topbar-buttons) and how to handle [navigation press events](https://wix.github.io/react-native-navigation/api/events#navigationbuttonpressed-event)
+* Learned how to work with [Modals](https://wix.github.io/react-native-navigation/docs/modal), and
+* Learned how to [style the navigator](https://wix.github.io/react-native-navigation/docs/style-options) using the Options object and how to dynamically merge options.
 
 You can view the full project in [this repository](
 https://github.com/wix-playground/wix-mobile-crash-course).

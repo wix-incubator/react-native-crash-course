@@ -3,7 +3,8 @@
 A native module is a set of javascript functions that are implemented natively for each platform (in our case that's iOS and Android). It's used in cases where native capabilities are needed - when react native doesn't have a corresponding module yet or when native performance is better.
 
 > NOTE: There's also a thing called Native UI Component out there, that creates a native view that can be used inside the jsx. In a native module (the thing we will work on now) we are only able to create functions which can only be called from the React Native application.
-
+> 
+> **Important**: This docs can have some outdated info. If there are any troubles, you try another way and switch to [official docs](https://reactnative.dev/docs/native-modules-setup)
 ## What we’re going to do
 
 We will work step-by-step to create a simple app that will show pop-up messages, or "toasts". You will:
@@ -16,7 +17,7 @@ We will work step-by-step to create a simple app that will show pop-up messages,
 
 In Android, we will use the native Android toast command; in iOS - the native `UIAlertController` command.
 
-You can view the final code [here](https://github.com/Dor256/NativeModules/tree/master/react-native-my-toast).
+You can view the final code [here](https://github.com/roiberlin/native-toast-library).
 
 # Getting Started
 
@@ -144,7 +145,7 @@ After this your build should succeed.
 
 1. Copy a ready-made iOS module to your project
 
-Download the iOS files from [here](https://github.com/Dor256/NativeModules/blob/master/react-native-my-toast/resources/RNNativeLibrary-IOSToastFiles.zip?raw=true)
+Download the iOS files from [here](https://github.com/roiberlin/native-toast-library/raw/master/resorces/RNNativeLibrary-IOSToastFiles.zip)
 
 Open the zip file — you should have 2 files (IOSNativeToast.h and IOSNativeToast.m) there. Copy those files into your iOS directory.
 
@@ -206,7 +207,7 @@ RCT_EXPORT_METHOD(show:(NSString *)text)
 }
 ```
 
-Your new MyToast.m file should look like [this](https://github.com/Dor256/NativeModules/blob/master/react-native-my-toast/ios/MyToast.m).
+Your new MyToast.m file should look like [this](https://github.com/roiberlin/native-toast-library/blob/master/ios/RNNativeToastLibrary.m).
 
 #### (Optional) Add Type Definitions
 
@@ -228,7 +229,13 @@ declare module 'react-native-my-toast' {
 }
 ```
 
-# Upload your library to NPM
+# Add your library as dependency
+
+There are two ways of adding a dependency:
+* (faster) Using local packages of publishing: `npm install <folder>` from [npm](https://docs.npmjs.com/cli/v6/commands/npm-install#synopsis)
+- [Optional Upload your library to NPM](#optional-upload-your-library-to-npm)
+  
+# Optional Upload your library to NPM
 
 Change the library name to something unique.
 Open the `package.json` file and under `name` — change `react-native-my-toast` to `react-native-XXXX`, where XXXX is your unique part.
@@ -293,7 +300,7 @@ You can now navigate back and run your app with `react-native run-ios`.
 
 ###### Create a screen
 
-Replace the contents of your `App.js` file with [this](https://github.com/Dor256/NativeModules/blob/master/toastExample/App.js) and replace the line
+Replace the contents of your `App.js` file with [this](https://github.com/roiberlin/native-toast-library/blob/master/RNNativeToastExample/App.js) and replace the line
 `import MyToast from ‘react-native-my-toast’;` with `import YourModuleName from ‘react-native-XXXX’;`, where XXXX is your unique part (see [here](#Upload-your-library-to-NPM)).
 
 As seen in the next step, your screen contains a button and a `textInput` field. When the button is pressed your Toast is displayed with the contents of `textInput`.

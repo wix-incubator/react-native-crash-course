@@ -10,18 +10,18 @@ A native module is a set of javascript functions that are implemented natively f
 We will work step-by-step to create a simple app that will show pop-up messages, or "toasts". You will:
 * Create a module with a single function `show(title:)`, to display a “native toast” in Android and iOS. Here’s what a “native toast” looks like:
 
-<p align="center"><Img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeToastGif.gif" allign="center"></p>
+![toast demo](/assets/toast-demo.gif)
 
 * Wrap that module up in a library and add it to npm.
 * Create an example application to call this library and display a Toast when a button is clicked / tapped.
 
 In Android, we will use the native Android toast command; in iOS - the native `UIAlertController` command.
 
-You can view the final code [here](https://github.com/roiberlin/native-toast-library).
+You can view the final code [here](https://github.com/shahardavid/react-native-my-toast).
 
 # Getting Started
 
-### Create the module project
+## Create the module project
 
 Similarly to how a react native project is created, there's also a handy command to create a react native module, called **create-react-native-module**.
 
@@ -38,7 +38,7 @@ After that also create the module:
 
 Your new module project structure should look like this:
 
-<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleFolder.png" align="center"></p>
+![project structure](/assets/nativeModuleFolder.png)
 
 As you can see it contains folders for Android and iOS.
 
@@ -46,11 +46,11 @@ Before setup install dependencies:
 
 `cd react-native-my-toast && npm install`
 
-### Set up native files
+## Set up native files
 
 Some setup is required before we can start using native modules. Usually, outside of this tutorial, such setup would not be required — the native module should include any files it uses. But since we’re doing it all ourselves here, we’ll do the set up as well, so our functions will be completed automatically when we code.
 
-#### Setup Toast in Android
+### Setup Toast in Android
 
 In order to display a Toast in Android, we will use the **Android Toast object**. To get the context we will use the `getReactApplicationContext` function.
 
@@ -96,12 +96,12 @@ import com.facebook.react.bridge.ReactMethod;
 
 `@ReactMethod` marks this method as public for react native so it can be used in the JS project.
 
-#### Setup Toast in iOS
+### Setup Toast in iOS
 
-##### Basic Setup
 There isn't a Toast object in iOS, but there is the `UIAlertController`, which can have similar functionality (using the `actionSheet` style and dismissing it after a certain time).
 
 In order to show the UIAlertController we need to get the top most UIViewController of the app. We can get it by creating a new UIWindow with an invisible UIViewController.
+#### Basic Setup
 
 Open `MyToast.xcodeproj` in Xcode.
 
@@ -141,23 +141,22 @@ Otherwise take the following steps:
 
 After this your build should succeed.
 
-##### Project Setup
+#### Project Setup
 
-1. Copy a ready-made iOS module to your project
+Copy a ready-made iOS module to your project:
+1. Copy `IOSNativeToast.h` and `IOSNativeToast.m` files from [here](https://github.com/shahardavid/react-native-my-toast/tree/master/ios) into your iOS directory.
+2. Back to XCode.
+3. Right click the MyToast project (with blue icon) and choose **Add file to “MyToast”**.
+In the popup window choose the 2 files you just downloaded and press the "Add" button - you should now be able to see the files in your project
 
-Download the iOS files from [here](https://github.com/roiberlin/native-toast-library/raw/master/resorces/RNNativeLibrary-IOSToastFiles.zip)
+iOS Toast module implementation:
 
-Open the zip file — you should have 2 files (IOSNativeToast.h and IOSNativeToast.m) there. Copy those files into your iOS directory.
+Open the `MyToast.m` and under 
+```objective-c
+#import "MyToast.h"
+```
 
-Now back to XCode.
-
-Right click the MyToast project (with blue icon) and choose **Add file to “MyToast”**.
-
-In the popup window choose the 2 files you just extracted form the zip archive and press the "Add" button - you should now be able to see the files in your project
-
-2. iOS Toast module implementation
-
-Open the `MyToast.m` and under `import` add the `IOSNativeToast` property:
+add the `IOSNativeToast` property:
 
 ```objective-c
 #import “IOSNativeToast.h”
@@ -189,7 +188,7 @@ Add this function inside the `@implementation MyToast` block:
 }
 ```
 
-In order to notify the main thread about actions that are processed in our JS thread we will need to add the following code:
+In order to notify the main thread about actions that are processed in our JS thread we will need to add the following code inside the `@implementation MyToast` block:
 
 ```objective-c
 - (dispatch_queue_t)methodQueue
@@ -207,7 +206,7 @@ RCT_EXPORT_METHOD(show:(NSString *)text)
 }
 ```
 
-Your new MyToast.m file should look like [this](https://github.com/roiberlin/native-toast-library/blob/master/ios/RNNativeToastLibrary.m).
+Your new MyToast.m file should look like [this](https://github.com/shahardavid/react-native-my-toast/blob/master/ios/MyToast.m).
 
 #### (Optional) Add Type Definitions
 
@@ -253,61 +252,46 @@ Open the terminal, go into the project directory and run `npm adduser` - then ad
 Lastly, type `npm publish` to publish your code.
 
 # Using Toast
+Let's create an application to display a Toast when a button is pressed
+## Create Example Project
 
-###### Create an application to display a Toast when a button is clicked / tapped
-
-Make sure you have the `react-native-cli` installed by running `npm list -g --depth 0`. You should see a tree of packages and one of them is `react-native-cli@2.0.1`. If you can't find it, run `npm install -g react-native-cli`.
-
-In the terminal, navigate to the project parent directory and run `react-native init MyToastExample --version 0.60.0`.
-Open the `package.json` file and under `dependencies` add `react-native-XXXX”: “1.0.0”`
-
-XXXX is your unique part (see [here](#Upload-your-library-to-NPM)), and “1.0.0” is the version of your library (this is the default version, so if you change it, just put your own version number instead).
-
-In terminal, from within the `MyToastExample` project folder and `npm install`.
-
-###### Link your application to the native library
-
-Becuase we installed `react-native 0.60.0` there is no need to link our native module as `react-native` has a new `auto link` feature which will do it for us once we run the project and we can skip to `Create a screen` below. 
-
-If however you are using and older version of `react-native` you will need to link the native modules for each platform with the link command.
-
-In terminal, make sure you are inside the `MyToastExample` project folder and run `react-native link react-native-XXX` (XXXX is your unique part — see [here](#Upload-your-library-to-NPM)).
-
-###### Check Android linking
-
-Open the `RNNativeToastExample` Android project in Android Studio and then open `settings.gradle`.
-
-You should see:
-
-```
-include ‘:react-native-XXXX’
-project(‘:react-native-XXXX’).projectDir = new File(rootProject.projectDir, ‘../node_modules/react-native-XXXX/android’)
+```sh
+npx react-native init MyToastExample
+cd MyToastExample
 ```
 
-In `build.gradle (Module: app)` you should see:
+## Add your new module 
+Add your new toast module package to your project
 
-`implementation project(':react-native-XXXX')` under `dependencies`
+```sh
+npm install -S react-native-XXXX
+```
 
-Open the `MainApplication` (app > java > com.rnnativetoastexample). Look for your package's `import` statement at the top:
+XXXX is your unique part (see [here](#Upload-your-library-to-NPM))
 
-`import com.reactlibrarynativetoast.MyToastPackage`
-
-###### Check iOS linking
+### iOS install
 
 Open the terminal in your example project's root folder and navigate to the `ios` folder with `cd ios`. After that run `pod install` - this should link your library to `ios` make sure that `CocoaPods` detected your file by looking at the terminal log which should indicate `Installing react-native-my-toast (1.0.0)`. 
 
 You can now navigate back and run your app with `react-native run-ios`.
 
-###### Create a screen
+In terminal, from within the `MyToastExample` project folder and `npm install`.
+## Create a screen
 
-Replace the contents of your `App.js` file with [this](https://github.com/roiberlin/native-toast-library/blob/master/RNNativeToastExample/App.js) and replace the line
-`import MyToast from ‘react-native-my-toast’;` with `import YourModuleName from ‘react-native-XXXX’;`, where XXXX is your unique part (see [here](#Upload-your-library-to-NPM)).
+Replace the contents of your `App.js` file with [this](https://raw.githubusercontent.com/shahardavid/react-native-my-toast/master/example/App.js)
 
-As seen in the next step, your screen contains a button and a `textInput` field. When the button is pressed your Toast is displayed with the contents of `textInput`.
+Replace the line
+```js
+import MyToast from 'react-native-my-toast-module';
+```
+with 
+```js
+import MyToast from 'react-native-XXXX';
+```
+where XXXX is your unique part (see [here](#Upload-your-library-to-NPM)).
 
-# Almost done
-
-###### Run the app
+As seen in the next step, your screen contains a button and a `TextInput` field. When the button is pressed your Toast is displayed with the contents of `TextInput`.
+## Run the app
 
 The last step is to run `MyToastExample` on both platforms and display the Toast
 
@@ -316,14 +300,13 @@ Let’s do that now.
 Open the terminal, navigate to the `MyToastExample` project folder and run `react-native run-android` to display the android app, and then `react-native run-ios` to display the iOS app.
 
 This is what you should see:
-
-<p align="center"><img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/nativeModuleToastDone.png" align="center"></p>
+| iOS                                       | Android                                           |
+|-------------------------------------------|---------------------------------------------------|
+| ![ios](/assets/ios-toast-example.png) | ![android](/assets/android-toast-example.png) |
 
 # Optional
 
-If you would like to remove your library from the npm repository, you have 72 hours to do so.
-
-In terminal run `npm unpublish react-native-XXXX` (where XXXX is your unique part — see [here](#Upload-your-library-to-NPM)).
+If you would like to remove your library from the npm repository, in terminal run `npm unpublish react-native-XXXX` (where XXXX is your unique part — see [here](#Upload-your-library-to-NPM)).
 
 ## What’s Next
 * [Performance - Tools and Best Practices](App.performance.md)

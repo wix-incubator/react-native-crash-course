@@ -3,7 +3,8 @@
 A native module is a set of javascript functions that are implemented natively for each platform (in our case that's iOS and Android). It's used in cases where native capabilities are needed - when react native doesn't have a corresponding module yet or when native performance is better.
 
 > NOTE: There's also a thing called Native UI Component out there, that creates a native view that can be used inside the jsx. In a native module (the thing we will work on now) we are only able to create functions which can only be called from the React Native application.
-
+> 
+> **Important**: This docs can have some outdated info. If there are any troubles, you try another way and switch to [official docs](https://reactnative.dev/docs/native-modules-setup)
 ## What we’re going to do
 
 We will work step-by-step to create a simple app that will show pop-up messages, or "toasts". You will:
@@ -227,7 +228,13 @@ declare module 'react-native-my-toast' {
 }
 ```
 
-# Upload your library to NPM
+# Add your library as dependency
+
+There are two ways of adding a dependency:
+* (faster) Using local packages of publishing: `npm install <folder>` from [npm](https://docs.npmjs.com/cli/v6/commands/npm-install#synopsis)
+- [Optional Upload your library to NPM](#optional-upload-your-library-to-npm)
+  
+# Optional Upload your library to NPM
 
 Change the library name to something unique.
 Open the `package.json` file and under `name` — change `react-native-my-toast` to `react-native-XXXX`, where XXXX is your unique part.

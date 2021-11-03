@@ -29,7 +29,8 @@ This step-by-step guide will teach you about the best practices and open source 
 5. [Add **e2e tests**](/docs/App.e2e.md) (with Detox)
 6. [Add **unit tests**](/docs/App.tests.md) (with Jest)
 7. [Adding a **Native Module**](/docs/App.NativeModule.md)
-8. [Performance - Tools and Best Practice](/docs/App.performance.md)
+8. [Using shono](/docs/App.shono.md)  
+9. [Performance - Tools and Best Practice](/docs/App.performance.md)
 
 Here is how our app will look like:
 

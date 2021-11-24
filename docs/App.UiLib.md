@@ -21,7 +21,7 @@ It was designed to enable developers to build and customize their own visual lan
 1. Read this article about **layout modifiers**: [Easy Layouting with React Native](https://medium.com/the-react-native-log/easy-layouting-with-react-native-b96c4c6fae7) (10 min)
 
 ### Useful links
-* Make sure to save [react-native-ui-lib docs](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/) in your bookmarks.
+* Make sure to save [react-native-ui-lib docs](https://wix.github.io/react-native-ui-lib/getting-started/setup) in your bookmarks.
 
 # Getting Started
 
@@ -31,7 +31,7 @@ In the terminal run: `npm install --save react-native-ui-lib`
 ## 2. Change to wrapped components
 `react-native-ui-lib` provide some wrappers around react-native components (i.e., it takes a normal react-native component and adds to it additional capabilities and styling).
 To start things off, change all of your `View` and `Text` imports from **react-native** to **react-native-ui-lib**. <br>
-While this is not mandatory, it will give you tools to layout and style your screen easilty with [modifiers](https://github.com/wix/react-native-ui-lib/wiki/MODIFIERS)
+While this is not mandatory, it will give you tools to layout and style your screen easilty with [modifiers](https://github.com/wix/react-native-ui-lib/blob/master/docs/foundation/modifiers.md)
 
 # Centralizing the Style of Your Components
 
@@ -52,7 +52,7 @@ That's a rather bad way to do it.
 
 > Why? We have lots of duplicate code located all around and we don’t have any control over the style of the app as a whole. Consider working on large app with many developers and designers involved, where each of them can potentially use any style they want for any component! That's way too messy. Every little change, like in the size of all the titles, will require making changes to each screen. Creating a unified visual language includes having strict rules (or "presets") of styling, which determine, for example, the color and typography for ALL components of a certain type.
 
-Luckily, the ui-lib already comes with a set of predefined constants and presets, which define colors, typography, shadows and more. You can easily use these presets anywhere in your code. It's also very easy to [define your own presets](https://github.com/wix/react-native-ui-lib/wiki/STYLE).
+Luckily, the ui-lib already comes with a set of predefined constants and presets, which define colors, typography, shadows and more. You can easily use these presets anywhere in your code. It's also very easy to [define your own presets](https://github.com/wix/react-native-ui-lib/blob/master/docs/foundation/style.md).
 
 ## 3. Start using the ui-lib's Presets
 There are two ways to use predefined presets from the ui-lib and refactor your app to use them.
@@ -69,7 +69,7 @@ title: {
   },
 ```
 
-**OR Use the ui-lib [modifiers](https://github.com/wix/react-native-ui-lib/wiki/MODIFIERS).**
+**OR Use the ui-lib [modifiers](https://github.com/wix/react-native-ui-lib/blob/master/docs/foundation/modifiers.md).**
 > As we mentioned in prerequisites, modifiers can be used for layout, but they can also be used for styling. They're quick, readable and require less code.You will find more on using modifiers on components in the docs.
 
 For example, this is how your `ViewPost` screen can look like (we removed the style object completely):
@@ -109,8 +109,8 @@ All of the changes above can be found in this [commit](https://github.com/wix-pl
 
 ## 4. Make the “Delete” button special
 
-The [Button](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/Button/) component is a good example of a simple component in the ui-lib.
-You can [see](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/Button/) that it wraps the react-native `TouchableOpacity` component and adds a bunch of props, which together comprise a default styling that you can easily play with. Let's import our `Button` from the ui-lib instead of react-native and give it the following props:
+The [Button](https://wix.github.io/react-native-ui-lib/docs/Button/) component is a good example of a simple component in the ui-lib.
+You can [see](https://wix.github.io/react-native-ui-lib/docs/Button/) that it wraps the react-native `TouchableOpacity` component and adds a bunch of props, which together comprise a default styling that you can easily play with. Let's import our `Button` from the ui-lib instead of react-native and give it the following props:
 
 ```js
 <Button
@@ -128,7 +128,7 @@ Now try to use the `View` component and it's modifier to make the screen look so
 
 ## 5. Make your Text Inputs float and open
 
-Import the ui-lib's [`TextField`](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/TextField/) component. Use it to get a "floating" placeholder text for the title and to open a modal which will be used to write in the actual text of the blog post.
+Import the ui-lib's [`TextField`](https://wix.github.io/react-native-ui-lib/docs/TextField/) component. Use it to get a "floating" placeholder text for the title and to open a modal which will be used to write in the actual text of the blog post.
 
 ```js
  <TextField
@@ -153,7 +153,7 @@ Here is how our `TextField` components should look like now:
 
 ## 6. Style your Posts List
 
-Use the ui-lib's [ListItem](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/ListItem/) component. Update your `renderItem` function to give the list some basic styling:
+Use the ui-lib's [ListItem](https://wix.github.io/react-native-ui-lib/docs/ListItem/) component. Update your `renderItem` function to give the list some basic styling:
 
 ```js
 import {Text, ListItem, Colors, BorderRadiuses, Image} from 'react-native-ui-lib';
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-The [ListItem](https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/docs/ListItem/) component is very flexible and was designed to support various styles, this is why the `renderItem` function seems a bit long. You can move it into a separated component, if you like.
+The [ListItem](https://wix.github.io/react-native-ui-lib/docs/ListItem/) component is very flexible and was designed to support various styles, this is why the `renderItem` function seems a bit long. You can move it into a separated component, if you like.
 
 As mentioned above, the wix-react-native-ui-lib uses `ListItem` from the ui-lib and applies styling relevant only for the Wix App. So its API will look something like this:
 ```js

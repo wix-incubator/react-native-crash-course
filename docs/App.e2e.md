@@ -20,11 +20,11 @@ The most complicated thing about automated testing of mobile apps is the tip of 
 ## Prerequisites
 
 - Watch this video: [Gray Box End to End Testing Framework For Mobile Apps - Rotem Mizrachi](https://youtu.be/kPXbCQpoBAA) (57 min)
-- Detox uses **Matchers** to find UI elements in your app, **Actions** to emulate user interaction with elements, and **Expectations** to verify values in those elements. Read the following section from the Detox docs: [Matchers](https://github.com/wix/Detox/blob/master/docs/APIRef.Matchers.md), [Actions](https://github.com/wix/Detox/blob/master/docs/APIRef.ActionsOnElement.md), [Expectations](https://github.com/wix/Detox/blob/master/docs/APIRef.Expect.md). (15 min)
+- Detox uses **Matchers** to find UI elements in your app, **Actions** to emulate user interaction with elements, and **Expectations** to verify values in those elements. Read the following section from the Detox docs: [Matchers](https://wix.github.io/Detox/docs/api/matchers), [Actions](https://wix.github.io/Detox/docs/api/actions-on-element), [Expectations](https://wix.github.io/Detox/docs/api/expect). (15 min)
 - Read through the following tutorial: [How to Test your React Native App Like a Real User by Elad Bogomolny](https://medium.com/@bogomolnyelad/how-to-test-your-react-native-app-like-a-real-user-ecfc72e9b6bc).
 
 ### Useful Links
-* [Detox Documentation](https://github.com/wix/detox/blob/master/docs/README.md)
+* [Detox Documentation](https://wix.github.io/Detox/)
 
 # Getting Started
 

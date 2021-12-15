@@ -30,8 +30,8 @@ The most complicated thing about automated testing of mobile apps is the tip of 
 
 ## 1. Install Detox
 
-Follow the [Detox Getting Started guide](https://github.com/wix/Detox/blob/master/docs/Introduction.GettingStarted.md) and add Detox to your project. We recommend using Jest (not Mocha) as your test runner for Detox.
-Make sure that are are using a [supported React Native version](https://github.com/wix/Detox/#react-native).
+Follow the [Detox Getting Started guide](https://wix.github.io/Detox/docs/introduction/getting-started) and add Detox to your project. We recommend using Jest (not Mocha) as your test runner for Detox.
+Make sure that are are using a [supported React Native version](https://github.com/wix/Detox/#supported-versions).
 
 By the time you wrap up with the above guide you should have run your first 3 failing tests. Congrats!
 

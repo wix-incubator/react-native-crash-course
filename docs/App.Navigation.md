@@ -268,7 +268,7 @@ All the steps from this section can be viewed in this [commit](https://github.co
 
 Flowing the same logic we used to add the **Add** Button, now add the **Cancel** and **Save** buttons to the Top bar of the AddPost screen. Whenever the **Cancel** button is clicked, use [Navigation.dismissModal](https://wix.github.io/react-native-navigation/api/modal#dismissmodal) to dismiss the modal and go back to the PostsList screen.
 
-:exclamation: Left buttons on Android only support icons, so we will add an "X" icon which you can download from the assets folder.
+:exclamation: Left buttons on Android only support icons, so we will add an "X" icon which you can download from the [`/src/icons`](../src/icons) folder.
 
 ```js
 ...

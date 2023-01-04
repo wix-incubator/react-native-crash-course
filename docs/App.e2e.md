@@ -116,7 +116,7 @@ First things first: grab some coffee :coffee:. <br />Next: for your app to use a
 
 In order to do it:
 
-Follow the instructions [here](https://github.com/wix/Detox/blob/master/docs/Guide.Mocking.md#configuration)
+Follow the instructions [here](https://wix.github.io/Detox/docs/guide/mocking).
 
 Here is how your `metro.config.js` file should look like:
 

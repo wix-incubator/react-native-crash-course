@@ -15,8 +15,7 @@ Find a convenient JS interpreter so you can run stuff and see what you’re gett
 
 Here are a couple of recommendations:
 * [CodePen(supports ES7)](https://codepen.io/)
-* [es6Console](https://es6console.com/)
-* [es6fiddle](http://www.es6fiddle.net/)
+* [jsfiddle](https://jsfiddle.net/ )
 * [JSPlaygrounds](https://stephengrider.github.io/JSPlaygrounds/)
 * Or you can just use the browser DevTools (Chrome or Firefox, for instance)
 
@@ -49,7 +48,7 @@ Feel like you want to take it slow? Go through each of the following sections, l
 * [Closures](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/scope%20%26%20closures/ch5.md)
 * [Functional programming in JavaScript](https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84) (High-order functions, Map, Reduce, Closures)
 #### Practice
-* Complete at least 5 katas from the following [list](https://www.codewars.com/kata/search/javascript?beta=false&order_by=popularity+desc&q=&tags=Functions%2CFunctional+Programming%2CHigher-order+Functions)
+* Complete at least 5 katas from the following [list](https://www.codewars.com/kata/search/javascript?q=&tags=Functional%20Programming&beta=false&order_by=popularity%20desc)
 
 ## Object construction
 #### Learn
@@ -57,7 +56,7 @@ Feel like you want to take it slow? Go through each of the following sections, l
 * [What is this?](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20%26%20object%20prototypes/ch1.md)
 * [Object.create](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20%26%20object%20prototypes/ch5.md )
 #### Practice
-* Complete at least 5 katas from the following [list](https://www.codewars.com/kata/search/javascript?beta=false&order_by=popularity+desc&q=&tags=Objects%2CObject-oriented+Programming%2CClasses)
+* Complete at least 5 katas from the following [list](https://www.codewars.com/kata/search/javascript?q=&tags=Object-oriented%20Programming&beta=false&order_by=popularity%20desc)
 
 ## Async code
 #### Learn
@@ -81,6 +80,6 @@ Feel like you want to take it slow? Go through each of the following sections, l
 * Solve [ES6 Quiz](http://perfectionkills.com/javascript-quiz-es6/)
 
 ## Links you should probably bookmark
-* [MDN JS docs](https://developer.mozilla.org/bm/docs/Web/JavaScript)
+* [MDN JS docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [You Don’t Know JS book](https://github.com/getify/You-Dont-Know-JS)
 * [Fun Fun Function channel on YouTube (@mpj)](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)

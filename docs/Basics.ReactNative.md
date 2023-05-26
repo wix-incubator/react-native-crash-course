@@ -2,14 +2,14 @@
 
 ## React
 * [Why and What](https://reactjs.org/blog/2013/06/05/why-react.html)
-* [Main Concepts](https://reactjs.org/docs/hello-world.html)
-* [Tutorial](https://reactjs.org/tutorial/tutorial.html#before-we-start-the-tutorial)
+* [Main Concepts](https://react.dev/learn)
+* [Tutorial](https://react.dev/learn/tutorial-tic-tac-toe#before-we-start-the-tutorial)
 
 ## Advanced React
 * [Higher Order component](https://reactjs.org/docs/higher-order-components.html)
 * [Virtual Dom](https://reactjs.org/docs/faq-internals.html#what-is-the-virtual-dom)
-* [Reconciliation](https://reactjs.org/docs/reconciliation.html)
-* [Hooks - new](https://reactjs.org/docs/hooks-intro.html)
+* [Reconciliation](https://react.dev/learn/preserving-and-resetting-state)
+* [Hooks - new](https://react.dev/reference/react)
 * [Quiz](https://goo.gl/forms/patln8QNQAXrpzh93)
 
 ## React Native

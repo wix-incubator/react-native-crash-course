@@ -21,7 +21,7 @@ It was designed to enable developers to build and customize their own visual lan
 1. Read this article about **layout modifiers**: [Easy Layouting with React Native](https://medium.com/the-react-native-log/easy-layouting-with-react-native-b96c4c6fae7) (10 min)
 
 ### Useful links
-* Make sure to save [react-native-ui-lib docs](https://wix.github.io/react-native-ui-lib/getting-started/setup) in your bookmarks.
+* Make sure to save [react-native-ui-lib docs](https://wix.github.io/react-native-ui-lib/docs/getting-started/setup) in your bookmarks.
 
 # Getting Started
 

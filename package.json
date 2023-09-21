@@ -16,7 +16,7 @@
     "react-native": "0.59.8",
     "react-native-navigation": "^2.18.5",
     "react-native-ui-lib": "^3.25.0",
-    "remx": "^2.0.51"
+    "remx": "^4.0.106"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",

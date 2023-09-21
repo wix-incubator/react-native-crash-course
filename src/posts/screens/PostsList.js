@@ -1,65 +1,43 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import {StyleSheet, FlatList, Image} from 'react-native';
-import {Text, ListItem, Colors, BorderRadiuses,View} from 'react-native-ui-lib';
+import {Text, ListItem, Colors, BorderRadiuses} from 'react-native-ui-lib';
 import {Navigation} from 'react-native-navigation';
-import {connect} from 'remx';
+import {useConnect} from 'remx';
 import * as postsNavigation from '../posts.navigation';
 
 import * as postsActions from '../posts.actions';
 import {postsStore} from '../posts.store';
 
-class PostsList extends Component {
+const PostsList = (props) => {
+  const posts = useConnect(postsStore.getPosts);
 
-  static propTypes = {
-    componentId: PropTypes.string,
-    posts: PropTypes.array
-  };
-
-  constructor(props) {
-    super(props);
-
-    Navigation.events().bindComponent(this);
-  }
-
-  static options() {
-    return {
-      topBar: {
-        rightButtons: [
-          {
-            id: 'addPost',
-            testID: 'add-post-btn',
-            text: 'Add'
-          }
-        ]
-      }
-    };
-  }
-
-  navigationButtonPressed({buttonId}) {
-    if (buttonId === 'addPost') {
-      postsNavigation.showAddPostModal();
-    }
-  }
-
-  componentDidMount(){
-    postsActions.fetchPosts();
-  }
-
-  pushViewPostScreen = post => {
+  const pushViewPostScreen = post => {
     postsNavigation.pushViewPostScreen({
-      componentId: this.props.componentId,
+      componentId: props.componentId,
       postId: post.id
     });
   };
 
-  renderItem = ({item}) => (
+  useEffect(() => {
+    postsActions.fetchPosts();
+    const subscription = Navigation.events().registerNavigationButtonPressedListener(
+      ({buttonId}) => {
+        if (buttonId === 'addPost') {
+          postsNavigation.showAddPostModal();
+        }
+      },
+    );
+    return () => subscription.remove();
+  }, []);
+  
+
+  const renderItem = ({item}) => (
     <ListItem
       testID={`postItem-${item.id}`}
       activeBackgroundColor={Colors.purple70}
       activeOpacity={0.1}
       height={77.5}
-      onPress={() => this.pushViewPostScreen(item)}
+      onPress={() => pushViewPostScreen(item)}
     >
       <ListItem.Part left>
         <Image
@@ -78,27 +56,29 @@ class PostsList extends Component {
     </ListItem>
   );
 
-  postKeyExtractor =  item => `${item.id}-key`;
+  const postKeyExtractor =  item => `${item.id}-key`;
 
-  render() {
-    return (
-      <FlatList
-        data={this.props.posts}
-        testID="posts-list"
-        keyExtractor={this.postKeyExtractor}
-        renderItem={this.renderItem}
-      />
-    );
+  return (
+    <FlatList
+      data={posts}
+      testID="posts-list"
+      keyExtractor={postKeyExtractor}
+      renderItem={renderItem}
+    />
+  );
+}
+
+PostsList.options = {
+  topBar: {
+    rightButtons: [
+      {
+        id: 'addPost',
+        testID: 'add-post-btn',
+        text: 'Add'
+      }
+    ]
   }
-}
-
-function mapStateToProps() {
-  return {
-    posts: postsStore.getPosts()
-  };
-}
-
-export default connect(mapStateToProps)(PostsList);
+};
 
 const styles = StyleSheet.create({
   image: {
@@ -113,3 +93,5 @@ const styles = StyleSheet.create({
     borderColor: Colors.dark60,
   }
 });
+
+export default PostsList;

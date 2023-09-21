@@ -5,31 +5,28 @@ import {Navigation} from 'react-native-navigation';
 import * as Presenter from './AddPost.presenter';
 
 const AddPost = (props)=> {
-  const {postToUpdate} = props;
+  const {componentId, postToUpdate} = props;
   
-  const [state, setState] =  useState({
-    title: postToUpdate && postToUpdate.title,
-    text: postToUpdate && postToUpdate.text
-  });
+  const [title, setTitle] =  useState(postToUpdate?.title);
+  const [text, setText] =  useState(postToUpdate?.text);
 
   const onChangeTitle = title => {
-    setState({title});
+    setTitle(title);
     Presenter.onChangeTitle({
-      componentId: props.componentId,
+      componentId,
       title
     });
   };
 
   const onChangeText = text => {
-    setState({text})
+    setText(text)
   };
 
   const onSavePressed = () => {
-    const {componentId, postToUpdate} = props;
     Presenter.onSavePressed({
       componentId: componentId,
-      title: state.title,
-      text: state.text,
+      title,
+      text,
       postToUpdate
     });
   };
@@ -38,7 +35,7 @@ const AddPost = (props)=> {
     const subscription = Navigation.events().registerNavigationButtonPressedListener(
       ({buttonId}) => {
         if (buttonId === 'cancelBtn') {
-          Navigation.dismissModal(props.componentId);
+          Navigation.dismissModal(componentId);
         } else if (buttonId === 'saveBtn') {
           onSavePressed();
         }
@@ -48,22 +45,22 @@ const AddPost = (props)=> {
   }, []);
   
   useEffect(() => {
-    Navigation.mergeOptions(props.componentId,
+    Navigation.mergeOptions(componentId,
       {
         topBar: {
           title: {
-            text: props.postToUpdate ? 'Edit Post' : 'Add Post'
+            text: postToUpdate ? 'Edit Post' : 'Add Post'
           },
         }
       });
-  }, [props.postToUpdate]);
+  }, [postToUpdate]);
 
   return (
     <View flex padding-24>
       <Text  text40 green10 marginB-12>AddPost Screen</Text>
       <TextField
         testID="add-title-input"
-        value={state.title}
+        value={title}
         text70
         containerStyle={{marginBottom: 12}}
         floatingPlaceholder
@@ -73,7 +70,7 @@ const AddPost = (props)=> {
       />
       <TextField
         testID="add-text-input"
-        value={state.text}
+        value={text}
         text70
         floatingPlaceholder
         placeholder="Post text"

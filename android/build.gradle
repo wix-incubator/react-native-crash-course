@@ -2,50 +2,22 @@
 
 buildscript {
     ext {
-        buildToolsVersion = "27.0.3"
-        minSdkVersion = 19
-        compileSdkVersion = 28
-        targetSdkVersion = 28
-        supportLibVersion = "28.0.0"
+        RNNKotlinVersion = "1.7.10"
+        buildToolsVersion = "33.0.0"
+        minSdkVersion = 21
+        compileSdkVersion = 33
+        targetSdkVersion = 33
+
+        // We use NDK 23 which has both M1 support and is the side-by-side NDK version from AGP.
+        ndkVersion = "23.1.7779620"
     }
     repositories {
         google()
-        mavenLocal()
         mavenCentral()
-        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$RNNKotlinVersion"
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin")
     }
 }
-
-allprojects {
-    repositories {
-        mavenLocal()
-        google()
-        jcenter()
-        maven {
-            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-            url "$rootDir/../node_modules/react-native/android"
-        }
-        maven { url 'https://jitpack.io' }
-    }
-}
-
-subprojects { subproject ->
-        afterEvaluate {
-                if ((subproject.plugins.hasPlugin('android') || subproject.plugins.hasPlugin('android-library'))) {
-                        android {
-                                variantFilter { variant ->
-                                        def names = variant.flavors*.name
-                                        if (names.contains("reactNative51") || names.contains("reactNative55")) {
-                                                setIgnore(true)
-                                            }
-                                    }
-                            }
-                    }
-            }
-    }

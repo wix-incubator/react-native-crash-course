@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, FlatList, Image} from 'react-native';
 import {Text, ListItem, Colors, BorderRadiuses} from 'react-native-ui-lib';
 import {Navigation} from 'react-native-navigation';

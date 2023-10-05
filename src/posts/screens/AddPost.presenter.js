@@ -1,14 +1,14 @@
 import {Navigation} from 'react-native-navigation';
 import * as postsActions from '../posts.actions';
 
-export function onChangeTitle({componentId, title}) {
+export function onChange({componentId, title, text}) {
   Navigation.mergeOptions(componentId, {
     topBar: {
       rightButtons: [{
         id: 'saveBtn',
         testID: 'save-post-btn',
         text: 'Save',
-        enabled: !!title
+        enabled: !!title && !!text
       }]
     }
   });

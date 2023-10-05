@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {View, Text, TextField} from 'react-native-ui-lib';
 import {Navigation} from 'react-native-navigation';
 
@@ -12,19 +12,25 @@ const AddPost = (props)=> {
 
   const onChangeTitle = title => {
     setTitle(title);
-    Presenter.onChangeTitle({
-      componentId,
-      title
-    });
+    onChange();
   };
 
   const onChangeText = text => {
-    setText(text)
+    setText(text);
+    onChange();
   };
 
+  const onChange = useCallback(() => {
+    Presenter.onChange({
+      componentId,
+      title,
+      text
+    });
+  }, [title, text]);
+  
   const onSavePressed = () => {
     Presenter.onSavePressed({
-      componentId: componentId,
+      componentId,
       title,
       text,
       postToUpdate
@@ -37,24 +43,18 @@ const AddPost = (props)=> {
         if (buttonId === 'cancelBtn') {
           Navigation.dismissModal(componentId);
         } else if (buttonId === 'saveBtn') {
-          onSavePressed();
+          onSavePressed({
+            componentId,
+            title,
+            text,
+            postToUpdate
+          });
         }
       },
     );
     return () => subscription.remove();
-  }, []);
+  }, [componentId, title, text, postToUpdate]);
   
-  useEffect(() => {
-    Navigation.mergeOptions(componentId,
-      {
-        topBar: {
-          title: {
-            text: postToUpdate ? 'Edit Post' : 'Add Post'
-          },
-        }
-      });
-  }, [postToUpdate]);
-
   return (
     <View flex padding-24>
       <Text  text40 green10 marginB-12>AddPost Screen</Text>
@@ -75,15 +75,18 @@ const AddPost = (props)=> {
         floatingPlaceholder
         placeholder="Post text"
         onChangeText={onChangeText}
-        expandable
+        multiline
       />
     </View>
   );
 
 }
 
-AddPost.options = {
+AddPost.options = ({postToUpdate}) => ({
   topBar: {
+    title: {
+      text: postToUpdate ? 'Edit Post' : 'Add Post'
+    },
     rightButtons: [{
       id: 'saveBtn',
       testID: 'save-post-btn',
@@ -95,6 +98,6 @@ AddPost.options = {
       icon: require('../../icons/x.png')
     }]
   }
-};
+});
 
 export default AddPost;

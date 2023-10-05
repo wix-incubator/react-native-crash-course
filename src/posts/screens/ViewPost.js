@@ -34,7 +34,7 @@ const ViewPost = (props) => {
   if(!post){
     return <LoaderScreen/>
   }
-  
+
   const {title, text} = post;
 
   return (
@@ -56,7 +56,7 @@ const ViewPost = (props) => {
   );
 }
 
-ViewPost.options= {
+ViewPost.options = {
   topBar: {
     rightButtons: [
       {

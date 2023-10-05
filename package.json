@@ -3,43 +3,43 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "start-e2e": "RN_SRC_EXT=e2e.js react-native start",
-    "test": "jest && detox test",
-    "fake-server": "json-server --watch db.json",
-    "watch": "jest --watch",
-    "e2e": "detox test",
-    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "lint": "eslint .",
+    "start": "react-native start",
+    "test": "jest",
+    "fake-server": "json-server --watch db.json"
   },
   "dependencies": {
-    "react": "16.8.3",
-    "react-native": "0.59.8",
-    "react-native-navigation": "^2.18.5",
-    "react-native-ui-lib": "^3.25.0",
-    "remx": "^4.0.106"
+    "react": "18.2.0",
+    "react-native": "0.72.5",
+    "react-native-gesture-handler": "^2.13.1",
+    "react-native-navigation": "^7.37.0",
+    "react-native-reanimated": "^3.5.4",
+    "react-native-ui-lib": "^7.8.0",
+    "remx": "^4.0.108-rc.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/runtime": "^7.4.4",
-    "babel-jest": "^24.8.0",
-    "detox": "^12.8.0",
-    "jest": "^24.8.0",
-    "metro-react-native-babel-preset": "^0.54.0",
-    "mocha": "^6.1.4",
-    "react-test-renderer": "16.8.3"
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native/eslint-config": "^0.72.2",
+    "@react-native/metro-config": "^0.72.11",
+    "@tsconfig/react-native": "^3.0.0",
+    "@types/react": "^18.0.24",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^29.2.1",
+    "detox": "^20.13.0",
+    "eslint": "^8.19.0",
+    "jest": "^29.2.1",
+    "json-server": "^0.17.4",
+    "metro-react-native-babel-preset": "0.76.8",
+    "mocha": "^10.2.0",
+    "prettier": "^2.4.1",
+    "react-test-renderer": "18.2.0",
+    "typescript": "4.8.4"
   },
-  "jest": {
-    "preset": "react-native"
-  },
-  "detox": {
-    "test-runner": "mocha",
-    "configurations": {
-      "ios.sim.debug": {
-        "binaryPath": "ios/build/mobileCrashCourseTemp/Build/Products/Debug-iphonesimulator/mobileCrashCourseTemp.app",
-        "build": "xcodebuild -project ios/mobileCrashCourseTemp.xcodeproj -scheme mobileCrashCourseTemp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
-        "type": "ios.simulator",
-        "name": "iPhone 8"
-      }
-    }
+  "engines": {
+    "node": ">=16"
   }
 }

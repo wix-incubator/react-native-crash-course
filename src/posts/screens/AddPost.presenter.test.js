@@ -15,22 +15,26 @@ describe('AddPost presenter', () => {
 
     Presenter = require('./AddPost.presenter');
   });
+  
+  afterEach(() => {
+    Navigation.mergeOptions.mockClear();
+  });
 
-  it('should enable the save button if title is not blank', () => {
-    Presenter.onChangeTitle({
+  it('should enable the save button if title and text is not blank', () => {
+    Presenter.onChange({
       componentId: mockComponentId,
-      title: mockTitle
+      title: mockTitle,
+      text: mockText
     });
-
     expect(Navigation.mergeOptions.mock.calls[0][1].topBar.rightButtons[0].enabled).toBeTruthy();
   });
 
   it('should not enable the save button if title is blank', () => {
-    Presenter.onChangeTitle({
+    Presenter.onChange({
       componentId: mockComponentId,
-      title: ''
+      title: '',
+      text: ''
     });
-
     expect(Navigation.mergeOptions.mock.calls[0][1].topBar.rightButtons[0].enabled).not.toBeTruthy();
   });
 

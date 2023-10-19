@@ -12,13 +12,13 @@ module.exports = {
   apps: {
     'ios.debug': {
       type: 'ios.app',
-      binaryPath: 'ios/build/Build/Products/Debug-iphonesimulator/igorkhcountriesapp.app',
-      build: 'set -o pipefail && export APP_MODE=mocked && export CODE_SIGNING_REQUIRED=NO && xcodebuild -workspace ios/igorkhcountriesapp.xcworkspace -scheme igorkhcountriesapp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build'
+      binaryPath: 'ios/build/Build/Products/Debug-iphonesimulator/mobileCrashCourseTemp.app',
+      build: 'set -o pipefail && export APP_MODE=mocked && export CODE_SIGNING_REQUIRED=NO && xcodebuild -workspace ios/mobileCrashCourseTemp.xcworkspace -scheme mobileCrashCourseTemp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build'
     },
     'ios.release': {
       type: 'ios.app',
-      binaryPath: 'ios/build/Build/Products/Release-iphonesimulator/igorkhcountriesapp.app',
-      build: 'APP_MODE=mocked set -o pipefail && export APP_MODE=mocked && export CODE_SIGNING_REQUIRED=NO && xcodebuild -workspace ios/igorkhcountriesapp.xcworkspace -scheme igorkhcountriesapp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build'
+      binaryPath: 'ios/build/Build/Products/Release-iphonesimulator/mobileCrashCourseTemp.app',
+      build: 'APP_MODE=mocked set -o pipefail && export APP_MODE=mocked && export CODE_SIGNING_REQUIRED=NO && xcodebuild -workspace ios/mobileCrashCourseTemp.xcworkspace -scheme mobileCrashCourseTemp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build'
     },
     'android.debug': {
       type: 'android.apk',

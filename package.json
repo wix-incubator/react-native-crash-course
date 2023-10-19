@@ -8,6 +8,9 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
+    "start-e2e": "RN_SRC_EXT=e2e.js react-native start",
+    "e2e-build": "detox build -c ios.sim.debug",
+    "e2e": "detox test -c ios.sim.debug",
     "fake-server": "json-server --watch db.json"
   },
   "dependencies": {

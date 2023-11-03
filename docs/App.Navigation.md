@@ -244,13 +244,13 @@ class PostsList extends Component {
 <summary>With Functional Components</summary>
 
 ```js
-import React, {Component} from 'react';
+import React, {useCallback} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 
 const PostsList = (props) => {
 
-  const pushViewPostScreen = () => {
+  const pushViewPostScreen = useCallback(() => {
      Navigation.push(props.componentId, {
       component: {
         name: 'blog.ViewPost',
@@ -266,7 +266,7 @@ const PostsList = (props) => {
         }
       }
     });
-  }
+  }, [props.componentId]);
 
   return (
     <View style={styles.container}>
@@ -353,12 +353,12 @@ const PostsList = (props) => {
   }, []);
 
   ...
-  const pushViewPostScreen = () => {
+  const pushViewPostScreen = useCallback(() => {
   ...
   return (
   ...
   );
-}
+}, []);
 
 PostsList.options = {
     topBar: {
@@ -564,8 +564,10 @@ import {View, Text, TextInput, StyleSheet} from 'react-native';
 ...
 const AddPost = (props) => {
   ...
+  const [text, setText] = useState('');
 
-  const onChangeText = text => {
+  const onChangeText = useCallback(text => {
+    setText(text);
     Navigation.mergeOptions(props.componentId, {
       topBar: {
         rightButtons: [{
@@ -575,19 +577,18 @@ const AddPost = (props) => {
         }]
       }
     });
-  }
+  }, [props.componentId]);
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>AddPost Screen</Text>
-        <TextInput
-          placeholder="Start writing to enable the save btn"
-          onChangeText={onChangeText}
-        />
-      </View>
-    );
-  }
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>AddPost Screen</Text>
+      <TextInput
+        placeholder="Start writing to enable the save btn"
+        value={text}
+        onChangeText={onChangeText}
+      />
+    </View>
+  );
 }
 
 AddPost.options = {

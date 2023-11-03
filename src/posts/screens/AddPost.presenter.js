@@ -8,9 +8,9 @@ export function onChange({componentId, title, text}) {
         id: 'saveBtn',
         testID: 'save-post-btn',
         text: 'Save',
-        enabled: !!title && !!text
-      }]
-    }
+        enabled: !!title && !!text,
+      }],
+    },
   });
 }
 

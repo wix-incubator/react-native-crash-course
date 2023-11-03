@@ -6,20 +6,20 @@ describe('posts store', () => {
       id: 1,
       title: 'Post 1',
       text: 'Post 1 text',
-      img: 'https://picsum.photos/200/200/?image=977'
+      img: 'https://picsum.photos/200/200/?image=977',
     },
     {
       id: 2,
       title: 'Post 2',
       text: 'Post 2 text',
-      img: 'https://picsum.photos/200/200/?image=1'
-    }
+      img: 'https://picsum.photos/200/200/?image=1',
+    },
   ];
   const mockPost = {
     id: 3,
     title: 'Post 3',
     text: 'Post 3 text',
-    img: 'https://picsum.photos/200/200/?image=977'
+    img: 'https://picsum.photos/200/200/?image=977',
   };
 
   beforeEach(() => {
@@ -62,7 +62,7 @@ describe('posts store', () => {
     const updatedPost = {
       id: 1,
       title: 'new-title',
-      text: 'new-text'
+      text: 'new-text',
     };
     postsStore.setPosts(mockPosts);
     postsStore.updatePost(updatedPost);

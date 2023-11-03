@@ -29,7 +29,7 @@ describe('Example', () => {
   it('should add a post', async () => {
     const newPost = {
       title: 'New Post Title',
-      text: 'New post body'
+      text: 'New post body',
     };
 
     await driver.when.pressOnAddPostBtn();
@@ -62,5 +62,4 @@ describe('Example', () => {
     await expect(driver.get.postTitle()).toHaveText('Post 1-updated');
     await expect(driver.get.postText()).toHaveText('post 1 text');
   });
-
 });

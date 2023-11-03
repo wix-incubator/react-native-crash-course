@@ -14,14 +14,14 @@ Navigation.events().registerAppLaunchedListener(() => {
               options: {
                 topBar: {
                   title: {
-                    text: 'Blog'
-                  }
-                }
-              }
-            }
-          }
+                    text: 'Blog',
+                  },
+                },
+              },
+            },
+          },
         ],
-      }
-    }
+      },
+    },
   });
 });

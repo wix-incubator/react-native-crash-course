@@ -14,7 +14,7 @@ const PostsList = (props) => {
   const pushViewPostScreen = post => {
     postsNavigation.pushViewPostScreen({
       componentId: props.componentId,
-      postId: post.id
+      postId: post.id,
     });
   };
 
@@ -29,7 +29,6 @@ const PostsList = (props) => {
     );
     return () => subscription.remove();
   }, []);
-  
 
   const renderItem = ({item}) => (
     <ListItem
@@ -56,7 +55,7 @@ const PostsList = (props) => {
     </ListItem>
   );
 
-  const postKeyExtractor =  item => `${item.id}-key`;
+  const postKeyExtractor = item => `${item.id}-key`;
 
   return (
     <FlatList
@@ -66,7 +65,7 @@ const PostsList = (props) => {
       renderItem={renderItem}
     />
   );
-}
+};
 
 PostsList.options = {
   topBar: {
@@ -74,10 +73,10 @@ PostsList.options = {
       {
         id: 'addPost',
         testID: 'add-post-btn',
-        text: 'Add'
-      }
-    ]
-  }
+        text: 'Add',
+      },
+    ],
+  },
 };
 
 const styles = StyleSheet.create({
@@ -86,12 +85,12 @@ const styles = StyleSheet.create({
     height: 54,
     borderRadius: BorderRadiuses.br20,
     marginHorizontal: 14,
-    backgroundColor: Colors.purple70
+    backgroundColor: Colors.purple70,
   },
   border: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.dark60,
-  }
+  },
 });
 
 export default PostsList;

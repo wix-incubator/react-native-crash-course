@@ -6,7 +6,7 @@ const when = {
   typeText: text => get.textInput().typeText(text),
   pressOnSave: () => element(by.id('save-post-btn')).tap(),
   scrollToBottom: () => get.postsList().scrollTo('bottom'),
-  pressOnDeletePost: () => element(by.id('delete-post-btn')).tap()
+  pressOnDeletePost: () => element(by.id('delete-post-btn')).tap(),
 };
 
 const get = {
@@ -20,5 +20,5 @@ const get = {
 
 module.exports = {
   when,
-  get
+  get,
 };

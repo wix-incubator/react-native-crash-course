@@ -6,36 +6,30 @@ import * as Presenter from './AddPost.presenter';
 
 const AddPost = (props)=> {
   const {componentId, postToUpdate} = props;
-  
-  const [title, setTitle] =  useState(postToUpdate?.title);
-  const [text, setText] =  useState(postToUpdate?.text);
 
-  const onChangeTitle = title => {
-    setTitle(title);
-    onChange();
-  };
-
-  const onChangeText = text => {
-    setText(text);
-    onChange();
-  };
+  const [title, setTitle] = useState(postToUpdate?.title);
+  const [text, setText] = useState(postToUpdate?.text);
 
   const onChange = useCallback(() => {
     Presenter.onChange({
       componentId,
       title,
-      text
+      text,
     });
-  }, [title, text]);
-  
-  const onSavePressed = () => {
+  }, [componentId, title, text]);
+
+  const onSavePressed = useCallback(() => {
     Presenter.onSavePressed({
       componentId,
       title,
       text,
-      postToUpdate
+      postToUpdate,
     });
-  };
+  }, [componentId, postToUpdate, text, title]);
+
+  useEffect(() => {
+    onChange();
+  }, [componentId, title, text, onChange]);
 
   useEffect(() => {
     const subscription = Navigation.events().registerNavigationButtonPressedListener(
@@ -47,17 +41,17 @@ const AddPost = (props)=> {
             componentId,
             title,
             text,
-            postToUpdate
+            postToUpdate,
           });
         }
       },
     );
     return () => subscription.remove();
-  }, [componentId, title, text, postToUpdate]);
-  
+  }, [componentId, title, text, postToUpdate, onSavePressed]);
+
   return (
     <View flex padding-24>
-      <Text  text40 green10 marginB-12>AddPost Screen</Text>
+      <Text text40 green10 marginB-12>AddPost Screen</Text>
       <TextField
         testID="add-title-input"
         value={title}
@@ -65,7 +59,7 @@ const AddPost = (props)=> {
         containerStyle={{marginBottom: 12}}
         floatingPlaceholder
         placeholder="Post Title"
-        onChangeText={onChangeTitle}
+        onChangeText={setTitle}
         floatOnFocus
       />
       <TextField
@@ -74,30 +68,29 @@ const AddPost = (props)=> {
         text70
         floatingPlaceholder
         placeholder="Post text"
-        onChangeText={onChangeText}
+        onChangeText={setText}
         multiline
       />
     </View>
   );
-
-}
+};
 
 AddPost.options = ({postToUpdate}) => ({
   topBar: {
     title: {
-      text: postToUpdate ? 'Edit Post' : 'Add Post'
+      text: postToUpdate ? 'Edit Post' : 'Add Post',
     },
     rightButtons: [{
       id: 'saveBtn',
       testID: 'save-post-btn',
       text: 'Save',
-      enabled: false
+      enabled: false,
     }],
     leftButtons: [{
       id: 'cancelBtn',
-      icon: require('../../icons/x.png')
-    }]
-  }
+      icon: require('../../icons/x.png'),
+    }],
+  },
 });
 
 export default AddPost;

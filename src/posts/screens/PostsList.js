@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {StyleSheet, FlatList, Image} from 'react-native';
 import {Text, ListItem, Colors, BorderRadiuses} from 'react-native-ui-lib';
 import {Navigation} from 'react-native-navigation';
@@ -11,12 +11,12 @@ import {postsStore} from '../posts.store';
 const PostsList = (props) => {
   const posts = useConnect(postsStore.getPosts);
 
-  const pushViewPostScreen = post => {
+  const pushViewPostScreen = useCallback((post) => {
     postsNavigation.pushViewPostScreen({
       componentId: props.componentId,
       postId: post.id,
     });
-  };
+  }, [props.componentId]);
 
   useEffect(() => {
     postsActions.fetchPosts();

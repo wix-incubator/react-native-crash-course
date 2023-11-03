@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {View, Text, Button, LoaderScreen} from 'react-native-ui-lib';
 import {Navigation} from 'react-native-navigation';
 import {useConnect} from 'remx';
@@ -9,15 +9,15 @@ import * as postsNavigation from '../posts.navigation';
 
 const ViewPost = (props) => {
   const post = useConnect(postsStore.getPost, [props.postId]);
-  
-  const onEditPostPress = () => {
+
+  const onEditPostPress = useCallback(() => {
     postsNavigation.showAddPostModal(post);
-  }
+  }, [post]);
 
   const onPostDeletePressed = async () => {
     Navigation.pop(props.componentId);
     await postsActions.deletePost(post.id);
-  }
+  };
 
   useEffect(() => {
     const subscription = Navigation.events().registerNavigationButtonPressedListener(
@@ -28,11 +28,10 @@ const ViewPost = (props) => {
       },
     );
     return () => subscription.remove();
-  }, []);
+  }, [onEditPostPress]);
 
-
-  if(!post){
-    return <LoaderScreen/>
+  if (!post) {
+    return <LoaderScreen/>;
   }
 
   const {title, text} = post;
@@ -54,7 +53,7 @@ const ViewPost = (props) => {
       />
     </View>
   );
-}
+};
 
 ViewPost.options = {
   topBar: {
@@ -62,10 +61,10 @@ ViewPost.options = {
       {
         id: 'editPost',
         testID: 'edit-post-btn',
-        text: 'Edit'
-      }
-    ]
-  }
+        text: 'Edit',
+      },
+    ],
+  },
 };
 
 export default ViewPost;

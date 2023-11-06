@@ -569,6 +569,10 @@ class PostsList extends Component {
 ```js
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 ...
+
+
+const postKeyExtractor = item => `${item.id}-key`;
+
 const PostsList = (props) => {
 
   ...
@@ -593,15 +597,13 @@ const PostsList = (props) => {
     });
   };
 
-  ...
-
   const renderItem = ({item}) => (
     <Text onPress={() => pushViewPostScreen(item)}>
       {item.title}
     </Text>
   );
 
-  const postKeyExtractor = item => `${item.id}-key`;
+  ...
 
   return (
     <View style={styles.container}>

@@ -8,6 +8,8 @@ import * as postsNavigation from '../posts.navigation';
 import * as postsActions from '../posts.actions';
 import {postsStore} from '../posts.store';
 
+const postKeyExtractor = item => `${item.id}-key`;
+
 const PostsList = (props) => {
   const posts = useConnect(postsStore.getPosts);
 
@@ -54,8 +56,6 @@ const PostsList = (props) => {
       </ListItem.Part>
     </ListItem>
   );
-
-  const postKeyExtractor = item => `${item.id}-key`;
 
   return (
     <FlatList

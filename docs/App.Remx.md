@@ -446,34 +446,26 @@ const AddPost = (props) => {
   const [title, setTitle] =  useState(postToUpdate?.title);
   const [text, setText] =  useState(postToUpdate?.text);
 
-  const onChangeTitle = title => {
-    setTitle(title);
-    onChange();
-  };
-
-  const onChangeText = text => {
-    setText(text);
-    onChange();
-  };
-
-  const onChange = () => {
+  const onChange = useCallback(() => {
     Presenter.onChange({
       componentId,
       title,
-      text
+      text,
     });
-  };
-  
-  const onSavePressed = () => {
+  }, [componentId, title, text]);
+
+  const onSavePressed = useCallback(() => {
     Presenter.onSavePressed({
       componentId,
       title,
       text,
-      postToUpdate
+      postToUpdate,
     });
-  };
+  }, [componentId, postToUpdate, text, title]);
 
-  ...
+  useEffect(() => {
+    onChange();
+  }, [componentId, title, text, onChange]);
 
   return (
     <View style={styles.container}>
@@ -481,12 +473,12 @@ const AddPost = (props) => {
       <TextInput
         placeholder="Add a Catchy Title"
         value={title}
-        onChangeText={onChangeTitle}
+        onChangeText={setTitle}
       />
       <TextInput
         placeholder="This is the beginning of a great post"
         value={text}
-        onChangeText={onChangeText}
+        onChangeText={setText}
       />
     </View>
   );
@@ -578,7 +570,7 @@ const PostsList = (props) => {
   ...
   const posts = useConnect(postsStore.getPosts);
 
-  const pushViewPostScreen = post => {
+  const pushViewPostScreen = useCallback((post) => {
     Navigation.push(props.componentId, {
       component: {
         name: 'blog.ViewPost',
@@ -595,7 +587,7 @@ const PostsList = (props) => {
         }
       }
     });
-  };
+   }, [props.componentId]);
 
   const renderItem = ({item}) => (
     <Text onPress={() => pushViewPostScreen(item)}>

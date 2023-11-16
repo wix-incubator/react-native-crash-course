@@ -1,22 +1,19 @@
+const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+
 /**
- * Metro configuration for React Native
- * https://github.com/facebook/react-native
+ * Metro configuration
+ * https://facebook.github.io/metro/docs/configuration
  *
- * @format
+ * @type {import('metro-config').MetroConfig}
  */
 
-const defaultSourceExts = require('metro-config/src/defaults/defaults').sourceExts
-
-module.exports = {
+const defaultSourceExts = require('metro-config/src/defaults/defaults').sourceExts;
+const config = {
   resolver: {
-    sourceExts: process.env.RN_SRC_EXT ? process.env.RN_SRC_EXT.split(',').concat(defaultSourceExts) : defaultSourceExts
-  },
-  transformer: {
-    getTransformOptions: async () => ({
-      transform: {
-        experimentalImportSupport: false,
-        inlineRequires: true,
-      },
-    }),
+    sourceExts: process.env.APP_MODE === 'mocked' ?
+      ['mock.ts', ...defaultSourceExts] :
+      defaultSourceExts,
   },
 };
+
+module.exports = mergeConfig(getDefaultConfig(__dirname), config);

@@ -1,9 +1,6 @@
 {
   "plugins": ["react-native"],
-  "extends": [
-    "wix/react",
-    "wix/esnext"
-  ],
+  "extends": ["./node_modules/@wix/shono-lint/dist/src/shonoCommonEslint.js"],
   "rules": {
     "no-unused-labels": 0,
     "no-labels": 0,

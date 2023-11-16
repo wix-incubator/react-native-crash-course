@@ -2,6 +2,10 @@ const driver = require('./firstTest.driver');
 const MockServerApi = require('../src/posts/api.e2e');
 
 describe('Example', () => {
+  beforeAll(async () => {
+    await device.launchApp();
+  });
+
   beforeEach(async () => {
     await device.reloadReactNative();
   });
@@ -25,10 +29,12 @@ describe('Example', () => {
   it('should add a post', async () => {
     const newPost = {
       title: 'New Post Title',
+      text: 'New post body',
     };
 
     await driver.when.pressOnAddPostBtn();
     await driver.when.typeTitle(newPost.title);
+    await driver.when.typeText(newPost.text);
     await driver.when.pressOnSave();
     await driver.when.scrollToBottom();
     await driver.when.pressOnPost(9);
@@ -56,5 +62,4 @@ describe('Example', () => {
     await expect(driver.get.postTitle()).toHaveText('Post 1-updated');
     await expect(driver.get.postText()).toHaveText('post 1 text');
   });
-
 });

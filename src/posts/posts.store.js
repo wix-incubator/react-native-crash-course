@@ -3,7 +3,7 @@ import filter from 'lodash/filter';
 import _find from 'lodash/find';
 
 const initialState = {
-  posts: []
+  posts: [],
   // this is an example of how the state will look like
   // posts: [
   //   {
@@ -29,9 +29,9 @@ const getters = remx.getters({
   },
 
   getPost(id) {
-    const post = _find(state.posts, {id})
+    const post = _find(state.posts, {id});
     return post;
-  }
+  },
 });
 
 const setters = remx.setters({
@@ -47,22 +47,22 @@ const setters = remx.setters({
     state.posts = state.posts.map(item => {
       if (item.id !== post.id) {
         // This isn't the post we care about - keep it as-is
-        return item
+        return item;
       }
       // Otherwise, this is the one we want - return an updated value
       return {
         ...item,
-        ...post
-      }
-    })
+        ...post,
+      };
+    });
   },
 
   deletePost(id) {
     state.posts = filter(state.posts, post => post.id !== id);
-  }
+  },
 });
 
 export const postsStore = {
   ...getters,
-  ...setters
+  ...setters,
 };

@@ -1,27 +1,27 @@
 import * as ServerApi from './api';
 
 describe('posts actions', () => {
-
-  let postsActions, mockStore, mockFetchPosts, mockAddPost;
+  let postsActions; let mockStore; let mockFetchPosts; let
+    mockAddPost;
 
   const mockPosts = [
     {
       id: 1,
       title: 'Post 1',
       text: 'Post 1 text',
-      img: 'https://picsum.photos/200/200/?image=977'
+      img: 'https://picsum.photos/200/200/?image=977',
     },
     {
       id: 2,
       title: 'Post 2',
       text: 'Post 2 text',
-      img: 'https://picsum.photos/200/200/?image=1'
-    }
+      img: 'https://picsum.photos/200/200/?image=1',
+    },
   ];
   const mockPost = {
     title: 'Post 3',
     text: 'Post 3 text',
-    img: 'https://picsum.photos/200/200/?image=977'
+    img: 'https://picsum.photos/200/200/?image=977',
   };
 
   beforeEach(() => {
@@ -34,7 +34,7 @@ describe('posts actions', () => {
       fetchPosts: mockFetchPosts,
       addPost: mockAddPost,
       deletePost: jest.fn(),
-      updatePost: jest.fn()
+      updatePost: jest.fn(),
     }));
 
     postsActions = require('./posts.actions');
@@ -57,11 +57,8 @@ describe('posts actions', () => {
     expect(serverUpdatePost).toHaveBeenCalledWith(mockPost);
   });
 
-
   it('should delete a post', async () => {
     await postsActions.deletePost('mock-id');
     expect(mockStore.deletePost).toHaveBeenCalledWith('mock-id');
   });
-
-
 });

@@ -1,10 +1,9 @@
 describe('AddPost presenter', () => {
-
-  let Presenter, Navigation, postsActions;
+  let Presenter; let Navigation; let
+    postsActions;
   const mockComponentId = 'mock-componentId';
   const mockTitle = 'mock-title';
   const mockText = 'mock-text';
-
 
   beforeEach(() => {
     jest.mock('react-native-navigation');
@@ -16,21 +15,25 @@ describe('AddPost presenter', () => {
     Presenter = require('./AddPost.presenter');
   });
 
-  it('should enable the save button if title is not blank', () => {
-    Presenter.onChangeTitle({
-      componentId: mockComponentId,
-      title: mockTitle
-    });
+  afterEach(() => {
+    Navigation.mergeOptions.mockClear();
+  });
 
+  it('should enable the save button if title and text is not blank', () => {
+    Presenter.onChange({
+      componentId: mockComponentId,
+      title: mockTitle,
+      text: mockText,
+    });
     expect(Navigation.mergeOptions.mock.calls[0][1].topBar.rightButtons[0].enabled).toBeTruthy();
   });
 
   it('should not enable the save button if title is blank', () => {
-    Presenter.onChangeTitle({
+    Presenter.onChange({
       componentId: mockComponentId,
-      title: ''
+      title: '',
+      text: '',
     });
-
     expect(Navigation.mergeOptions.mock.calls[0][1].topBar.rightButtons[0].enabled).not.toBeTruthy();
   });
 
@@ -38,7 +41,7 @@ describe('AddPost presenter', () => {
     Presenter.onSavePressed({
       componentId: mockComponentId,
       title: mockTitle,
-      text: mockText
+      text: mockText,
     });
 
     expect(Navigation.dismissModal).toHaveBeenCalledWith(mockComponentId);
@@ -48,13 +51,13 @@ describe('AddPost presenter', () => {
     Presenter.onSavePressed({
       componentId: mockComponentId,
       title: mockTitle,
-      text: mockText
+      text: mockText,
     });
 
     expect(postsActions.addPost).toHaveBeenCalledWith({
       title: mockTitle,
       text: mockText,
-      img: expect.any(String)
+      img: expect.any(String),
     });
   });
 
@@ -63,21 +66,20 @@ describe('AddPost presenter', () => {
       id: 1,
       title: 'old-title',
       text: 'old-text',
-      img: 'old-image'
-    }
+      img: 'old-image',
+    };
     Presenter.onSavePressed({
       componentId: mockComponentId,
       title: mockTitle,
       text: mockText,
-      postToUpdate
+      postToUpdate,
     });
 
     expect(postsActions.updatePost).toHaveBeenCalledWith({
       id: 1,
       title: mockTitle,
       text: mockText,
-      img: 'old-image'
+      img: 'old-image',
     });
   });
-
 });

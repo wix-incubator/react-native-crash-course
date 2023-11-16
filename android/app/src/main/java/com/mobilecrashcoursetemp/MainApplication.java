@@ -1,50 +1,63 @@
 package com.mobilecrashcoursetemp;
 
 import android.app.Application;
-
-import com.facebook.react.ReactApplication;
+import com.facebook.react.PackageList;
+import com.reactnativenavigation.NavigationApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.react.shell.MainReactPackage;
-import com.facebook.soloader.SoLoader;
-
-import com.reactnativenavigation.NavigationApplication;
+import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
+import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
-import com.reactnativenavigation.react.ReactGateway;
-
-import java.util.Arrays;
+import com.facebook.soloader.SoLoader;
 import java.util.List;
-
 
 public class MainApplication extends NavigationApplication {
 
-            @Override
-    protected ReactGateway createReactGateway() {
-            ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
-            @Override
-            protected String getJSMainModuleName() {
-                        return "index";
-                    }
-        };
-            return new ReactGateway(this, isDebug(), host);
+  private final ReactNativeHost mReactNativeHost =
+      new NavigationReactNativeHost(this) {
+        @Override
+        public boolean getUseDeveloperSupport() {
+          return BuildConfig.DEBUG;
         }
 
-            @Override
-    public boolean isDebug() {
-            return BuildConfig.DEBUG;
+        @Override
+        protected List<ReactPackage> getPackages() {
+          @SuppressWarnings("UnnecessaryLocalVariable")
+          List<ReactPackage> packages = new PackageList(this).getPackages();
+          // Packages that cannot be autolinked yet can be added manually here, for example:
+          // packages.add(new MyReactNativePackage());
+          return packages;
         }
 
-            protected List<ReactPackage> getPackages() {
-            // Add additional packages you require here
-                    // No need to add RnnPackage and MainReactPackage
-                            return Arrays.<ReactPackage>asList(
-                        // eg. new VectorIconsPackage()
-                            );
+        @Override
+        protected String getJSMainModuleName() {
+          return "index";
         }
 
-            @Override
-    public List<ReactPackage> createAdditionalReactPackages() {
-            return getPackages();
+        @Override
+        protected boolean isNewArchEnabled() {
+          return BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
         }
 
+        @Override
+        protected Boolean isHermesEnabled() {
+          return BuildConfig.IS_HERMES_ENABLED;
         }
+      };
+
+  @Override
+  public ReactNativeHost getReactNativeHost() {
+    return mReactNativeHost;
+  }
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    
+    if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
+      // If you opted-in for the New Architecture, we load the native entry point for this app.
+      DefaultNewArchitectureEntryPoint.load();
+    }
+    ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+  }
+}

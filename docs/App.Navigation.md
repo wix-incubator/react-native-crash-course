@@ -55,6 +55,9 @@ Make sure your app is still running in both simulators and that you are not gett
 ### 3. Create and Register Screens
 
 In `src/posts/screens` create three screens: `PostsList.js`, `ViewPost.js` and `AddPost.js`. Each screen should be a very basic component that looks like this:
+<details>
+<summary>With Class Components</summary>
+  
 ```js
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
@@ -86,6 +89,39 @@ const styles = StyleSheet.create({
   }
 });
 ```
+</details>
+<details>
+<summary>With Functional Components</summary>
+  
+```js
+import React, {Component} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+
+const PostsList = (props) => {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>PostsList Screen</Text>
+      </View>
+    );
+}
+
+export default PostsList;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#D3EDFF',
+  },
+  text: {
+    fontSize: 28,
+    textAlign: 'center',
+    margin: 10,
+  }
+});
+```
+</details>
 
 Every screen component in your app must be registered with a unique name before you are able to use it. So create a `src/screens.js` file and [register the new screens](https://wix.github.io/react-native-navigation/api/component#registercomponent) you have just created.
 
@@ -159,6 +195,8 @@ To push a new screen into this screen’s navigation stack, we will use [Navigat
 So in `PostsList.js` create a `pushViewPostScreen` function and attach it to the `onPress` event of the Text item.
 
 Here is how `PostsList.js` will look like:
+<details>
+<summary>With Class Components</summary>
 
 ```js
 import React, {Component} from 'react';
@@ -201,6 +239,45 @@ class PostsList extends Component {
 }
 ...
 ```
+
+</details><details>
+<summary>With Functional Components</summary>
+
+```js
+import React, {useCallback} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import {Navigation} from 'react-native-navigation';
+
+const PostsList = (props) => {
+
+  const pushViewPostScreen = useCallback(() => {
+     Navigation.push(props.componentId, {
+      component: {
+        name: 'blog.ViewPost',
+        passProps: {
+          somePropToPass: 'Some props that we are passing'
+        },
+        options: {
+          topBar: {
+            title: {
+              text: 'Post1'
+            }
+          }
+        }
+      }
+    });
+  }, [props.componentId]);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text} onPress={pushViewPostScreen}>PostsList Screen</Text>
+    </View>
+  );
+}
+...
+```
+</details>
+
 > Several things in the code above that we didn't cover are:
 > - **passProps** - you can pass props to screen which we are pushing.
 > - **options** - you can style the appearance of the navigator and its behavior by passing any options via the [Options](https://wix.github.io/react-native-navigation/docs/style-options) object. This object can be declared in two different ways:
@@ -225,7 +302,9 @@ We want the component to [handle the button click](https://wix.github.io/react-n
 * When the top bar button press event is triggered, the app need to call the `navigationButtonPressed` - implement that and `alert` or `console.log` the pressed button id.
 
 Here is how your `postList.js` file will look like:
-
+<details>
+  <summary>With Class Components</summary>
+  
 ```js
 ...
 
@@ -257,6 +336,43 @@ class PostsList extends Component {
   pushViewPostScreen() {
   ...
 ```
+</details>
+<details>
+<summary>With Functional Components</summary>
+  
+```js
+...
+
+const PostsList = (props) => {
+
+  useEffect(() => {
+    const subscription = Navigation.events().registerNavigationButtonPressedListener(
+      ({buttonId}) => alert(buttonId),
+    );
+    return () => subscription.remove();
+  }, []);
+
+  ...
+  const pushViewPostScreen = useCallback(() => {
+  ...
+  return (
+  ...
+  );
+}, []);
+
+PostsList.options = {
+    topBar: {
+      rightButtons: [
+        {
+          id: 'addPost',
+          text: 'Add'
+        }
+      ]
+    }
+  };
+...
+```
+</details>
 
 Now you have an "Add" button and whenever you press it, you should get an alert (or a log message) with the `buttonId` (in our example it is `addPost`).
 
@@ -269,6 +385,9 @@ All the steps from this section can be viewed in this [commit](https://github.co
 Flowing the same logic we used to add the **Add** Button, now add the **Cancel** and **Save** buttons to the Top bar of the AddPost screen. Whenever the **Cancel** button is clicked, use [Navigation.dismissModal](https://wix.github.io/react-native-navigation/api/modal#dismissmodal) to dismiss the modal and go back to the PostsList screen.
 
 :exclamation: Left buttons on Android only support icons, so we will add an "X" icon which you can download from the [`/src/icons`](../src/icons) folder.
+
+<details>
+<summary>With Class Components</summary>
 
 ```js
 ...
@@ -314,6 +433,49 @@ class AddPost extends Component {
 
 ...
 ```
+</details>
+<details>
+<summary>With Functional Components</summary>
+  
+```js
+...
+import {Navigation} from 'react-native-navigation'
+
+const AddPost = (props) => {
+  ...
+  useEffect(() => {
+    const subscription = Navigation.events().registerNavigationButtonPressedListener(
+      ({buttonId}) => {
+        if (buttonId === 'cancelBtn') {
+          Navigation.dismissModal(props.componentId);
+        } else if (buttonId === 'saveBtn') {
+          alert('saveBtn');
+        }
+      },
+    );
+    return () => subscription.remove();
+  }, []);
+  ...
+}
+
+AddPost.options = {
+  topBar: {
+    title: {
+      text: 'Add Post'
+    },
+    rightButtons: [{
+      id: 'saveBtn',
+      text: 'Save'
+    }],
+    leftButtons: [{
+      id: 'cancelBtn',
+      icon: require('../../icons/x.png')
+    }]
+  }
+}
+...
+```
+</details>
 
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/addingButtons.gif" align="center" height="400px">
 
@@ -332,6 +494,10 @@ These options are merged with the existing Options object.
 Let's add a `TextInput` and set the `Save` Button dynamically.
 
 This is how our `AddPost` screen will look like:
+
+<details>
+<summary>With Class Components</summary>
+  
 ```js
 ...
 import {View, Text, TextInput, StyleSheet} from 'react-native';
@@ -388,6 +554,63 @@ class AddPost extends Component {
 
 export default AddPost;
 ```
+</details>
+<details>
+<summary>With Functional Components</summary>
+
+```js
+...
+import {View, Text, TextInput, StyleSheet} from 'react-native';
+...
+const AddPost = (props) => {
+  ...
+  const [text, setText] = useState('');
+
+  const onChangeText = useCallback(text => {
+    setText(text);
+    Navigation.mergeOptions(props.componentId, {
+      topBar: {
+        rightButtons: [{
+          id: 'saveBtn',
+          text: 'Save',
+          enabled: !!text
+        }]
+      }
+    });
+  }, [props.componentId]);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>AddPost Screen</Text>
+      <TextInput
+        placeholder="Start writing to enable the save btn"
+        value={text}
+        onChangeText={onChangeText}
+      />
+    </View>
+  );
+}
+
+AddPost.options = {
+  topBar: {
+    title: {
+      text: 'Add Post'
+    },
+    rightButtons: [{
+      id: 'saveBtn',
+      text: 'Save',
+      enabled: false
+    }],
+    leftButtons: [{
+      id: 'cancelBtn',
+      icon: require('../../icons/x.icon.png')
+    }]
+  }
+}
+
+export default AddPost;
+```
+</details>
 
 You can check this [commit](https://github.com/wix-playground/wix-mobile-crash-course/commit/263a128914b13a4c3ed302fe7a5943b6385fdbaa).
 
@@ -415,8 +638,7 @@ By this point you have:
 * Learned how to work with [Modals](https://wix.github.io/react-native-navigation/docs/modal), and
 * Learned how to [style the navigator](https://wix.github.io/react-native-navigation/docs/style-options) using the Options object and how to dynamically merge options.
 
-You can view the full project in [this repository](
-https://github.com/wix-playground/wix-mobile-crash-course).
+You can view the full project in [this repository](https://github.com/wix-playground/wix-mobile-crash-course). Also you can find class components version in [this branch](https://github.com/wix-incubator/react-native-crash-course/tree/class-components)
 
 ***
 # What’s Next

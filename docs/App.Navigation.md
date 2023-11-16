@@ -638,8 +638,7 @@ By this point you have:
 * Learned how to work with [Modals](https://wix.github.io/react-native-navigation/docs/modal), and
 * Learned how to [style the navigator](https://wix.github.io/react-native-navigation/docs/style-options) using the Options object and how to dynamically merge options.
 
-You can view the full project in [this repository](
-https://github.com/wix-playground/wix-mobile-crash-course). It's originally written with class components. Functional components version can be found in [this branch](https://github.com/wix-incubator/react-native-crash-course/tree/functional-components-hooks)
+You can view the full project in [this repository](https://github.com/wix-playground/wix-mobile-crash-course). Also you can find class components version in [this branch](https://github.com/wix-incubator/react-native-crash-course/tree/class-components)
 
 ***
 # What’s Next

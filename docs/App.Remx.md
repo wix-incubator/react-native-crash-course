@@ -169,6 +169,8 @@ export function fetchPosts() {
 In `componentDidMount`, use the `fetchPosts` action that you just created. Create a `mapStateToProps` function that will use the getter that we created to get the posts. You can also avoid using `mapStateToProps` and just call the getter when you need it. Connect your component to the `mapStateToProps` function. In the render function, add another Text component to display our posts as raw data (don’t worry, we will convert it to a list really soon).
 
 Here is what your `PostList.js` should look like:
+<details>
+<summary>With Class Components</summary>
 
 ```js
 ...
@@ -209,6 +211,35 @@ function mapStateToProps() {
 
 export default connect(mapStateToProps)(PostsList);
 ```
+</details>
+<details>
+<summary>With Functional Components</summary>
+
+```js
+...
+import {useConnect} from 'remx';
+import {postsStore} from '../posts.store';
+import * as postsActions from '../posts.actions';
+
+const PostsList = (props) => {
+
+  const posts = useConnect(postsStore.getPosts);
+
+  useEffect(() => {
+    postsActions.fetchPosts();
+  }, []);
+  
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text} onPress={pushViewPostScreen}>PostsList Screen</Text>
+      <Text>{JSON.stringify(posts)}</Text>
+    </View>
+  );
+}
+
+export default PostsList;
+```
+</details>
 
 Upon refreshing the app you should see the posts' raw data:
 
@@ -330,6 +361,9 @@ Now, we will use the `addPost` action to save new posts. We will:
 
 Here is what your `AddPost.js` should look like:
 
+<details>
+<summary>With Class Components</summary>
+
 ```js
 import * as postsActions from '../posts.actions';
 
@@ -396,6 +430,58 @@ class AddPost extends Component {
 
 export default AddPost;
 ```
+</details><details>
+<summary>With Functional Components</summary>
+
+```js
+import * as postsActions from '../posts.actions';
+
+const AddPost = (props) => {
+  const {componentId, postToUpdate} = props;
+  const [title, setTitle] =  useState(postToUpdate?.title);
+  const [text, setText] =  useState(postToUpdate?.text);
+
+  const onChange = useCallback(() => {
+    Presenter.onChange({
+      componentId,
+      title,
+      text,
+    });
+  }, [componentId, title, text]);
+
+  const onSavePressed = useCallback(() => {
+    Presenter.onSavePressed({
+      componentId,
+      title,
+      text,
+      postToUpdate,
+    });
+  }, [componentId, postToUpdate, text, title]);
+
+  useEffect(() => {
+    onChange();
+  }, [componentId, title, text, onChange]);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>AddPost Screen</Text>
+      <TextInput
+        placeholder="Add a Catchy Title"
+        value={title}
+        onChangeText={setTitle}
+      />
+      <TextInput
+        placeholder="This is the beginning of a great post"
+        value={text}
+        onChangeText={setText}
+      />
+    </View>
+  );
+}
+
+export default AddPost;
+```
+</details>
 
 Now you should be able to add a new post. Your new post will be visible in the `PostsList` screen.
 
@@ -408,6 +494,10 @@ It’s time to spend some time on our posts list and ViewPost screens.
 Use react-native [FlatList](https://facebook.github.io/react-native/docs/flatlist) to create a list of your posts and pass the post to the ViewPost screen.
 
 This is how your `PostsList.js` file should look like
+
+<details>
+<summary>With Class Components</summary>
+
 ```js
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 ...
@@ -459,6 +549,62 @@ class PostsList extends Component {
 }
 ...
 ```
+</details>
+<details>
+<summary>With Functional Components</summary>
+
+```js
+import {View, Text, StyleSheet, FlatList} from 'react-native';
+...
+
+
+const postKeyExtractor = item => `${item.id}-key`;
+
+const PostsList = (props) => {
+
+  const posts = useConnect(postsStore.getPosts);
+
+  const pushViewPostScreen = useCallback((post) => {
+    Navigation.push(props.componentId, {
+      component: {
+        name: 'blog.ViewPost',
+        passProps: {
+          somePropToPass: 'Some props that we are passing',
+          post
+        },
+        options: {
+          topBar: {
+            title: {
+              text: 'Post1'
+            }
+          }
+        }
+      }
+    });
+   }, [props.componentId]);
+
+  const renderItem = ({item}) => (
+    <Text onPress={() => pushViewPostScreen(item)}>
+      {item.title}
+    </Text>
+  );
+
+  ...
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>PostsList Screen</Text>
+      <FlatList
+        data={posts}
+        keyExtractor={postKeyExtractor}
+        renderItem={renderItem}
+      />
+    </View>
+  );
+}
+...
+```
+</details>
 
 We are now passing the post as a prop to the `ViewPost` screen. Go ahead and render the post on the ViewPost screen.
 
@@ -507,7 +653,8 @@ Think about the following questions before you start:
 3. Would the `ViewPost` screen be re-rendered and updated? Why? What do we need to do to make it work?
 4. Do you need to create a new `EditPost` screen or can we use the `AddPost` screen?
 
-You can check out the repo if you need a hint.
+You can check out the [repo](
+https://github.com/wix-incubator/react-native-crash-course) ( + [class components branch](https://github.com/wix-incubator/react-native-crash-course/tree/class-components)) if you need a hint.
 
 -----
 

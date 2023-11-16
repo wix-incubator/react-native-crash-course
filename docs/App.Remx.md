@@ -222,7 +222,6 @@ import {postsStore} from '../posts.store';
 import * as postsActions from '../posts.actions';
 
 const PostsList = (props) => {
- ...
 
   const posts = useConnect(postsStore.getPosts);
 
@@ -230,16 +229,12 @@ const PostsList = (props) => {
     postsActions.fetchPosts();
   }, []);
   
-  ...
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text} onPress={pushViewPostScreen}>PostsList Screen</Text>
-        <Text>{JSON.stringify(posts)}</Text>
-      </View>
-    );
-  }
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text} onPress={pushViewPostScreen}>PostsList Screen</Text>
+      <Text>{JSON.stringify(posts)}</Text>
+    </View>
+  );
 }
 
 export default PostsList;
@@ -567,7 +562,6 @@ const postKeyExtractor = item => `${item.id}-key`;
 
 const PostsList = (props) => {
 
-  ...
   const posts = useConnect(postsStore.getPosts);
 
   const pushViewPostScreen = useCallback((post) => {
@@ -660,7 +654,7 @@ Think about the following questions before you start:
 4. Do you need to create a new `EditPost` screen or can we use the `AddPost` screen?
 
 You can check out the [repo](
-https://github.com/wix-incubator/react-native-crash-course) ( + [functional components branch](https://github.com/wix-incubator/react-native-crash-course/tree/functional-components-hooks)) if you need a hint.
+https://github.com/wix-incubator/react-native-crash-course) ( + [class components branch](https://github.com/wix-incubator/react-native-crash-course/tree/class-components)) if you need a hint.
 
 -----
 

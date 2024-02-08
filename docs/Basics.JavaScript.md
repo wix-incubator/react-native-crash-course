@@ -24,7 +24,7 @@ Feel like you just need to refresh your knowledge? Or are you a kind of person t
 
 1. Read the following short guides:
    * [A Simple, Comprehensive Overview of Javascript](https://betterexplained.com/articles/the-single-page-javascript-overview/)
-   * [ES6 Interactive Guide](http://stack.formidable.com/es6-interactive-guide/#/)
+   * [ES6 Guide](https://flaviocopes.com/es6/)
 2. [ES2015+ cheatsheet](https://devhints.io/es6) - Go over it and use it.
 3. [CodeWars](https://www.codewars.com) - Achieve code mastery through challenge. Reach [4kyu Rank](https://www.codewars.com/about)
 

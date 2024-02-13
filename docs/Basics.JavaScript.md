@@ -6,14 +6,11 @@ The cornerstone of React Native programming is the Javascript language. Take the
 1. Know what is special about JS (compared to other languages)
 1. Understand value types and references
 1. Understand the scopes, concept of closures
-1. Understand passing callbacks, promises (+ async/await)
+1. Understand async code (timers passing callbacks, promises + async/await)
+1. Understand modern (ES6+) JS syntax
 
-Advanced (optional)
-> This isn't mandatory during onboarding; you can return to this lately
-1. Understand the Event loop
-1. Understand Memory management
-1. Understand prototypical inheritance
-1. Understand how functional programming in JS works (high-order functions, map, reduce)
+[Advanced (optional)](#advanced)
+> This isn't mandatory during onboarding, but we suggest reading the most interest to you and returning to this lately
 
 ## Interpreters
 Find a convenient JS interpreter so you can run stuff and see what you’re getting.
@@ -40,6 +37,7 @@ Feel like you want to take it slow? Go through each of the following sections, l
 ## Basics
 #### Learn
 
+* [Overview](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Grammar and types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#data_structures_and_types)
 * [Control flow and error handling](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
 * [Loops and iteration]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration
@@ -56,6 +54,7 @@ Now check yourself with [Review basics](https://github.com/getify/You-Dont-Know-
 * [Function and Block scopes](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/scope%20%26%20closures/ch3.md)
 * [Hoisting](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/scope%20%26%20closures/ch4.md)
 * [Closures](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/scope%20%26%20closures/ch5.md)
+* [Callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
 #### Practice
 * Complete at least 5 katas from the following [list](https://www.codewars.com/kata/search/javascript?q=&tags=Functional%20Programming&beta=false&order_by=popularity%20desc)
 
@@ -69,29 +68,34 @@ Now check yourself with [Review basics](https://github.com/getify/You-Dont-Know-
 
 ## Async code
 #### Learn
-* [Timers](https://medium.freecodecamp.org/javascript-timers-everything-you-need-to-know-5f31eaa37162)
-* [Promises](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/ch3.md)
+* [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
+* [Using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+* [Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
 * [Video- async / await in JavaScript - What, Why and How - Fun Fun Function](https://www.youtube.com/watch?v=568g8hxJJp4&index=4&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
-* [Async Await](https://hackernoon.com/an-ode-to-async-await-7da2dd3c2056)
+
 #### Practice
 * Complete the following katas from the following [list](https://www.codewars.com/collections/async-and-promises)
 
 ## ES6 syntax
 #### Learn
 * [Learn ES6 - EggHead](https://egghead.io/courses/learn-es6-ecmascript-2015)
-* [Overview](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/es6%20%26%20beyond/ch2.md)
-* [var, let and const - What, why and how - ES6 JavaScript Features](https://www.youtube.com/watch?v=sjyJBL5fkp8&index=5&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
-* [Arrow functions in JavaScript - What, Why and How - FunFunFunction](https://www.youtube.com/watch?v=6sQDTgOqh-I&index=7&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
-* [Destructuring: What, Why and How - Part 1 of ES6 JavaScript Features](https://www.youtube.com/watch?v=PB_d3uBkQPs&index=8&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
+* (optional) [var, let and const - What, why and how - ES6 JavaScript Features](https://www.youtube.com/watch?v=sjyJBL5fkp8&index=5&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
+* (optional) [Arrow functions in JavaScript - What, Why and How - FunFunFunction](https://www.youtube.com/watch?v=6sQDTgOqh-I&index=7&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
+* (optional) [Destructuring: What, Why and How - Part 1 of ES6 JavaScript Features](https://www.youtube.com/watch?v=PB_d3uBkQPs&index=8&list=PL0zVEGEvSaeHJppaRLrqjeTPnCH6vw-sm&t=0s)
 #### Practice
 * [ES6 katas](http://es6katas.org/) (Promise, Array, Class, Destructuring, Template strings, Arrow functions, Block scope, Rest operator, Spread operator, Default parameters)
-* Solve [ES5 Quiz](http://dmitrysoshnikov.com/ecmascript/the-quiz/)
-* Solve [ES6 Quiz](http://perfectionkills.com/javascript-quiz-es6/)
+* (optional) [ES5 Quiz](http://dmitrysoshnikov.com/ecmascript/the-quiz/)
+* (optional) [ES6 Quiz](http://perfectionkills.com/javascript-quiz-es6/)
 
-## Advanced (optional)
+## Advanced
+* [Timers](https://medium.freecodecamp.org/javascript-timers-everything-you-need-to-know-5f31eaa37162)
+* [Promises detailed](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/ch3.md)
+* [Promises API (any, race, finally, allSettled)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
+* [An Ode to Async-Await](https://hackernoon.com/an-ode-to-async-await-7da2dd3c2056)
 * [Memory managment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management)
 * [Event loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop)
 * [Object.create](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20%26%20object%20prototypes/ch5.md)
+* [WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap)
 * [Functional programming in JavaScript](https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84) (High-order functions, Map, Reduce, Closures)
 
 ## Links you should probably bookmark

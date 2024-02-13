@@ -69,7 +69,6 @@ Some developers use Git via command line, some use it via 3rd party apps like So
 * [SourceTree](https://www.sourcetreeapp.com/)
 * [GitHub Desktop client](https://desktop.github.com/)
 * [GitKraken Client](https://www.gitkraken.com/git-client)
-* [Atom Editor](https://atom.io/)
 
 ## React Native Environment
 
@@ -81,6 +80,7 @@ Most common code IDEs React Native developers using are:
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [WebStorm](https://www.jetbrains.com/webstorm/)
+* [Atom Editor](https://atom.io/)
 
 No matter which editor you select, make sure to install recommended plugins for React Native development:
 
@@ -113,7 +113,7 @@ To understand more about debugging, please read [React Native debugging best pra
 For the purposes of this course we will talk about these two commons debuggers:
 * [Chrome dev tools with a react native extension](https://facebook.github.io/react-native/docs/debugging#chrome-developer-tools)
 * **[recommended]** [React native debugger](https://github.com/jhen0409/react-native-debugger) - Open source, cross-platform and a quite well maintained, it provides all the features that come with the Chrome dev tools and many more, like an ability to easily inspect network requests.
-* [Reactatron](https://github.com/infinitered/reactotron) - A cross-platform desktop app for inspecting your React JS and React Native projects.
+* [Reactotron](https://github.com/infinitered/reactotron) - A cross-platform desktop app for inspecting your React JS and React Native projects.
 
 ## iOS / Android
 

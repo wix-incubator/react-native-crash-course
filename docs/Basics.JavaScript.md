@@ -22,7 +22,7 @@ Here are a couple of recommendations:
 * Or you can just use the browser [Dev tools](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/up%20%26%20going/ch1.md#try-it-yourself) (Chrome or Firefox, for instance)
 
 # The Express Route
-Feel like you just need to refresh your knowledge? Or are you a kind of person that likes to dive straight into code and learn on the go?
+Feel like you just need to refresh your knowledge? Or are you a kind of person who likes to dive straight into code and learn on the go?
 
 1. Read the following short guides:
    * [A Simple, Comprehensive Overview of Javascript](https://betterexplained.com/articles/the-single-page-javascript-overview/)
@@ -32,7 +32,7 @@ Feel like you just need to refresh your knowledge? Or are you a kind of person t
 
 # The Pro Route
 
-Feel like you want to take it slow? Go through each of the following sections, learn from articles and videos and practice after every section.
+Feel like you want to take it slow? Go through each of the following sections, learn from articles and videos, and practice after every section.
 
 ## Basics
 #### Learn
@@ -40,9 +40,9 @@ Feel like you want to take it slow? Go through each of the following sections, l
 * [Overview](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Grammar and types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#data_structures_and_types)
 * [Control flow and error handling](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
-* [Loops and iteration]https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration
+* [Loops and iteration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration)
 
-Now check yourself with [Review basics](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/up%20%26%20going/ch1.md#review) only and if you are familiar with all it you can switch to the next step
+Now check yourself with [Review basics](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/up%20%26%20going/ch1.md#review) only and if you are familiar with all of it you can switch to the next step
  
 #### Practice
 * Complete at least 10 katas from the following [list](https://www.codewars.com/kata/search/javascript?q=&r%5B%5D=-8&tags=Fundamentals&beta=false&order_by=popularity+desc)

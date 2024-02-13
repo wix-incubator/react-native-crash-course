@@ -10,7 +10,7 @@ The cornerstone of React Native programming is the Javascript language. Take the
 1. Understand modern (ES6+) JS syntax
 
 [Advanced (optional)](#advanced)
-> This isn't mandatory during onboarding, but we suggest reading the most interest to you and returning to this lately
+> This isn't mandatory during onboarding, but we suggest reading the most interesting for you and returning to the next parts lately
 
 ## Interpreters
 Find a convenient JS interpreter so you can run stuff and see what you’re getting.

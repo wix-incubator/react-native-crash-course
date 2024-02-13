@@ -177,6 +177,12 @@ So far you have:
 * Written E2E tests for the main flows in your app.
 * Refactored your tests to use [mock data](https://github.com/wix/Detox/blob/master/docs/Guide.Mocking.md#mocking).
 
+
+## FAQ
+
+* Android Emulator started, but nothing happened
+  - Probably you missed `Create a Detox-Test Class` step: https://wix.github.io/Detox/docs/introduction/android/#5-create-a-detox-test-class
+
 -----
 ## What's Next
 

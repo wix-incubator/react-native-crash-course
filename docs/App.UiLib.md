@@ -16,7 +16,7 @@ It was designed to enable developers to build and customize their own visual lan
 <img src="https://github.com/wix-playground/wix-mobile-crash-course/blob/master/assets/ui-lib%20screens%20(1).png" align="center" height="600px">
 
 ## Prerequisites
-1. Follow [these steps](https://github.com/wix/react-native-ui-lib/wiki/SETUP) to run the **ui-lib demo project** and play with it for a bit. Go over **Presets**, check out **components and inputs screen**, as well as **lists** and view the **Apple music example**.
+1. Follow [these steps](https://github.com/wix/react-native-ui-lib/blob/master/docs/getting-started/setup.md#demo-app) to run the **ui-lib demo project** and play with it for a bit. Go over **Presets**, check out **components and inputs screen**, as well as **lists** and view the **Apple music example**.
 
 1. Read this article about **layout modifiers**: [Easy Layouting with React Native](https://medium.com/the-react-native-log/easy-layouting-with-react-native-b96c4c6fae7) (10 min)
 
@@ -109,8 +109,8 @@ All of the changes above can be found in this [commit](https://github.com/wix-pl
 
 ## 4. Make the “Delete” button special
 
-The [Button](https://wix.github.io/react-native-ui-lib/docs/Button/) component is a good example of a simple component in the ui-lib.
-You can [see](https://wix.github.io/react-native-ui-lib/docs/Button/) that it wraps the react-native `TouchableOpacity` component and adds a bunch of props, which together comprise a default styling that you can easily play with. Let's import our `Button` from the ui-lib instead of react-native and give it the following props:
+The [Button](https://wix.github.io/react-native-ui-lib/docs/components/controls/Button) component is a good example of a simple component in the ui-lib.
+You can [see](https://wix.github.io/react-native-ui-lib/docs/components/controls/Button) that it wraps the react-native `TouchableOpacity` component and adds a bunch of props, which together comprise a default styling that you can easily play with. Let's import our `Button` from the ui-lib instead of react-native and give it the following props:
 
 ```js
 <Button
@@ -128,7 +128,7 @@ Now try to use the `View` component and it's modifier to make the screen look so
 
 ## 5. Make your Text Inputs float and open
 
-Import the ui-lib's [`TextField`](https://wix.github.io/react-native-ui-lib/docs/TextField/) component. Use it to get a "floating" placeholder text for the title and to open a modal which will be used to write in the actual text of the blog post.
+Import the ui-lib's [`TextField`](https://wix.github.io/react-native-ui-lib/docs/components/form/TextField) component. Use it to get a "floating" placeholder text for the title and to open a modal which will be used to write in the actual text of the blog post.
 
 ```js
  <TextField
@@ -153,7 +153,7 @@ Here is how our `TextField` components should look like now:
 
 ## 6. Style your Posts List
 
-Use the ui-lib's [ListItem](https://wix.github.io/react-native-ui-lib/docs/ListItem/) component. Update your `renderItem` function to give the list some basic styling:
+Use the ui-lib's [ListItem](https://wix.github.io/react-native-ui-lib/docs/components/lists/ListItem/ListItem) component. Update your `renderItem` function to give the list some basic styling:
 
 ```js
 import {Text, ListItem, Colors, BorderRadiuses, Image} from 'react-native-ui-lib';
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-The [ListItem](https://wix.github.io/react-native-ui-lib/docs/ListItem/) component is very flexible and was designed to support various styles, this is why the `renderItem` function seems a bit long. You can move it into a separated component, if you like.
+The [ListItem](https://wix.github.io/react-native-ui-lib/docs/components/lists/ListItem/ListItem) component is very flexible and was designed to support various styles, this is why the `renderItem` function seems a bit long. You can move it into a separated component, if you like.
 
 As mentioned above, the wix-react-native-ui-lib uses `ListItem` from the ui-lib and applies styling relevant only for the Wix App. So its API will look something like this:
 ```js
